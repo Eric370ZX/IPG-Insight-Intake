@@ -1,0 +1,180 @@
+<head>
+  <script type="text/javascript" src="../../../adx_scripts/jquery1.10.2.min.js"></script>
+  <script src="../../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+  <script type="text/javascript" src="../Utility.js"></script>
+  <script type="text/javascript" src="POPreview.js"></script>
+  <link rel="stylesheet" href="pdl.css">
+  <script>
+    $(document).ready(function () {
+      Intake.Incident.POPreview();
+      $("#GeneratePO").click(function () {
+        Intake.Incident.GeneratePO();
+      });
+      $("#close").click(function () {
+        window.close();
+      });
+    }); 
+  </script>
+</head>
+
+<div master-page>
+  <div class="content">
+    <div id="container">
+
+      <table id="zpoHeader" width="100%" style="display:none">
+        <tbody>
+          <tr>
+            <th style='text-align:left;' width="10%">MFG: </th>
+            <td id="zpoManufacturerName" colspan="3"></td>
+          </tr>
+          <tr>
+            <td colspan="2" width="50%">
+              <table width="100%">
+                <tr>
+                  <th colspan="2" style='text-align:left;'>SHIP TO:</th>
+                </tr>
+                <tr>
+                  <td width="20%">Facility Name: </td>
+                  <td id="zpofacilityName"></td>
+                </tr>
+                <tr>
+                  <td>Contact Name: </td>
+                  <td id="zpocontactName"></td>
+                </tr>
+                <tr>
+                  <td>Shipping Address: </td>
+                  <td id="zposhippingAddress"></td>
+                </tr>
+                <tr>
+                  <td>City, State, Zip: </td>
+                  <td id="zpofacilityStateZip"></td>
+                </tr>
+                <tr>
+                  <td>Phone: </td>
+                  <td id="zpoPhone"></td>
+                </tr>
+                <tr>
+                  <td>E-mail: </td>
+                  <td id="zpoEmail">unknown</td>
+                </tr>
+              </table>
+            </td>
+            <td colspan="2" width="50%" style="vertical-align: top;">
+              <table width="100%">
+                <tr>
+                  <th colspan="2" style='text-align:left;'>BILL TO:</th>
+                </tr>
+                <tr>
+                  <td colspan="2">IPG, Inc.</td>
+                </tr>
+                <tr>
+                  <td colspan="2" id="IPGAddress"></td>
+                </tr>
+                <tr>
+                  <td colspan="2" id="IPGCityStateZip"></td>
+                </tr>
+                <tr>
+                  <td colspan="2">(770) 753-0046</td>
+                </tr>
+                <tr>
+                  <td colspan="2" id="zpoIPGAccountName"></td>
+                </tr>
+                <tr>
+                  <th width="20%" style='text-align:left;'>IPG Account #: </th>
+                  <td id="zpoIPGAccountNumber">unknown</td>
+                </tr>
+                <tr>
+                  <td style="text-align:left" colspan="2">&lt;Be sure to bill IPG per agreed pricing&gt;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="mpoHeader" width="100%" style="display:none">
+        <tbody>
+          <tr>
+            <th width="20%" style="text-align:left">MFG</th>
+            <td id="manufacturer" colspan=3></td>
+          </tr>
+          <tr>
+            <td>MFG. Rep:</td>
+            <td id="manufacturerRep">&nbsp;</td>
+            <td width="20%">Patient</td>
+            <td id="patient">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>IPG Field Rep.:</td>
+            <td id="IPGRep">&nbsp;</td>
+            <td>Date P.O. Issued:</td>
+            <td id="datePO">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Procedure #:</td>
+            <td id="title">&nbsp;</td>
+            <td>Date of Service:</td>
+            <td id="surgeryDate">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Physician:</td>
+            <td id="physician">&nbsp;</td>
+            <td>Equipment List Rcv:</td>
+            <td id="equipmentListRcv">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Facility:</td>
+            <td id="facility">&nbsp;</td>
+            <td>Account#:</td>
+            <td id="accountNumber">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Facility State and ZIP:</td>
+            <td id="facilityStateZip">&nbsp;</td>
+            <td>&lt;Be sure to bill IPG per agreed pricing&gt;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr style="display:none" id="communicateToRow">
+            <th width="20%" style="text-align:left">Communicate To:</th>
+            <td colspan=3><input type="email" id="emailaddress"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <table width="100%">
+      <tbody>
+        <tr>
+          <th id="procedure"></th>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-bordered table-striped table-condensed" width="100%" border="1">
+
+      <thead>
+
+        <tr>
+          <th style='text-align:center'>Description</th>
+          <th style='text-align:center'>Model#</th>
+          <th style='text-align:center'>Serial# / Lot#</th>
+          <th style='text-align:center'>QTY</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="parts"></tbody>
+
+    </table>
+
+  </div>
+</div>
+
+<div class="col-md-12 text-center preview-inputs">
+  <span class="communicate-po-container">
+    <input checked="true" type="checkbox" id="communicate-po-checkbox" />
+    <label for="communicate-po-checkbox">Communicate the PO</label>
+  </span>
+
+  <input id="GeneratePO" type="submit" value="Generate PO" />
+  <input id="close" type="submit" value="Close" />
+</div>

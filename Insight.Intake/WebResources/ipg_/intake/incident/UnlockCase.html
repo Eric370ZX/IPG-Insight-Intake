@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title>Unlock Case</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+  .wizardValue {
+  width: 100%;
+}
+
+.required::after {
+  content: "* ";
+  color: red;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">   
+    <p class="col-12">Do you wish to proceed with unlocking with Case? 
+        If yes, then select a Reason for Unlock, enter additional details in 'Unlock Case Notes' and select 'Confirm.' 
+        Otherwise, select 'Cancel' to close this message and return to the Case</p>
+    </div>
+    <div class="row">
+        <div class="col-4">
+        <label class="required" for="reason">Reason</label>
+        </div>
+        <div class="col-8">
+        <select id="reason" class="wizardValue">
+            <option selected></option>
+            <option>Facility Error</option>
+            <option>Internal Error</option>
+        </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+        <label for="notes">Notes</label>
+        </div>
+        <div class="col-8">
+        <textarea id="notes" rows="5" class="wizardValue"></textarea>
+        </div>
+    </div>
+    <div class="fixed-bottom" style="padding: 20px;">
+        <div class="right-block text-right">
+            <button type="button" class="btn btn-info"id="confirmBtn">Confirm</button>
+            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+          </div>
+        </div>
+    </div>
+  <script src="UnlockCase.js" type="text/javascript"></script>
+</body>
+</html>
+

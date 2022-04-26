@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title>Reschedule task</title>
+  <link href="rescheduleTask.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../../ipg_jquery-ui.min.js"></script>
+  <link href="../../../ipg_jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 id="lblHeader">Reschedule task</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label id="lblStartDate">StartDate</label>
+      </div>
+      <div class="col-9">
+        <input type="text" name="startdate" id="startdate" required="required" class="wizardValue" size="11" maxlength="10" style="text-align:right;">
+        <script>
+          $(function () {
+            
+            $("#startdate").datepicker();
+          });
+        </script>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label>Reason</label>
+      </div>
+      <div class="col-9">
+        <textarea id="reason" rows="5" required="required" class="wizardValue"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="float-right">
+          <button type="button" class="btn btn-primary" id="okBtn">Ok</button>
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="rescheduleTask.js" type="text/javascript"></script>
+</body>
+</html>

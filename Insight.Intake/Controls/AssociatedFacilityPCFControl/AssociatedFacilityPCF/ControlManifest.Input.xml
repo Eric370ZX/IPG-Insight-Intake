@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Intake.AssociatedFacility" constructor="AssociatedFacilityPCF" version="0.0.2" display-name-key="AssociatedFacilityPCF" description-key="AssociatedFacilityPCF description" control-type="standard">
+    <property name="primarycontrol" display-name-key="primarycontrol" description-key="primarycontrol" of-type="SingleLine.Text" usage="bound" required="true" />
+    <resources>
+      <code path="index.ts" order="1"/>
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

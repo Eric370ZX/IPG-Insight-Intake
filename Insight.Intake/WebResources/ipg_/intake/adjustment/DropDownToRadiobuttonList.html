@@ -1,0 +1,80 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="../../../adx_scripts/jquery1.10.2.min.js"></script>
+  <style>
+    #ErrorPercent, #ErrorValue {
+      color: red;
+      display: none;
+      font-size: 10pt;
+    }
+  </style>
+  <script type="text/javascript">
+    function convertDropDownToRadiobuttonList() {
+      var amountTypeField = "ipg_amounttype";
+      var dropdownOptions = parent.Xrm.Page.getAttribute(amountTypeField).getOptions();
+      var selectedValue = parent.Xrm.Page.getAttribute(amountTypeField).getValue();
+      $(dropdownOptions).each(function (i, e) {
+        var rText = $(this)[0].text;
+        var rvalue = $(this)[0].value;
+        if (rvalue != '-1' && rText != "") {
+          //var radiobutton = "<input type='radio' name='r' style='border-style:none;font-size: 14px;' />" + rText + "</br></br>"
+          var radiobutton = "<input type='radio' id='" + rvalue + "' name='r' style='border-style:none;font-size: 14px;'/><label id='" + rvalue + "' name='r' for='" + rvalue + "'>" + rText + "</label>";
+          $(radiobutton)
+            .attr("value", rvalue)
+            .attr("checked", rvalue == selectedValue)
+            .attr("disabled", parent.Xrm.Page.ui.getFormType() != 1)
+            .click(function () {
+              parent.Xrm.Page.getAttribute(amountTypeField).setValue((rvalue ? true : false));
+              parent.Xrm.Page.getAttribute(amountTypeField).fireOnChange();
+            })
+            .appendTo(radiobuttonList);
+          var input = "<input type='text'/>" + (rvalue ? "<div id='ErrorValue'>Amount specified to write-off is greater than remaining balance.  Please revise the amount and try again.</div>" : "<div id='ErrorPercent'>Percentage specified to write-off is greater 100% of the balance.  Please revise the percentage and try again.</div>") + "<br><br>";
+          $(input)
+            .attr("value", parent.Xrm.Page.getAttribute((rvalue ? "ipg_amount" : "ipg_percent")).getValue())
+            .attr("disabled", parent.Xrm.Page.ui.getFormType() != 1)
+            .change(function () {
+              if (!rvalue) {
+                debugger;
+                var node = $('#ErrorPercent');
+                if (node.length) {
+                  parent.Xrm.Page.getAttribute("ipg_percent").setValue(Number($(this).val()));
+                  parent.Xrm.Page.OnPercentChange();
+                  if (Number($(this).val()) > 100) {
+                    node.show();
+                  }
+                  else {
+                    node.hide();
+                  }
+                }
+              }
+              else {
+                var node = $('#ErrorValue');
+                if (node.length) {
+                  parent.Xrm.Page.getAttribute("ipg_amount").setValue(Number($(this).val()));
+                  parent.Xrm.Page.OnAmountChange();
+                  if (Number($(this).val()) > parent.Xrm.Page.getAttribute("ipg_amounttoapply").getValue()) {
+                    node.show();
+                  }
+                  else {
+                    node.hide();
+                  }
+                }
+              }
+              parent.Xrm.Page.getAttribute((rvalue ? "ipg_amount" : "ipg_percent")).setValue(Number($(this).val()));
+              parent.Xrm.Page.getAttribute((rvalue ? "ipg_amount" : "ipg_percent")).fireOnChange();
+            })
+            .insertAfter($("label[id='" + rvalue + "']"));
+          if (!rvalue) {
+            $("input").trigger("change");
+          }
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="convertDropDownToRadiobuttonList()">
+  <div id="radiobuttonList">
+  </div>
+</body>
+</html>

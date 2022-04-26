@@ -1,0 +1,72 @@
+.content {
+  font-size: 10px;
+}
+
+.address {
+  margin-top: 150px;
+  font-size: 9px;
+}
+
+.footer {
+  font-size: 8px;
+}
+
+.panel {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.border-top-black {
+  border-top: 1px solid #150B0B;
+}
+
+@media screen {
+  .pdlBanner {
+    max-width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*To hide href when print*/
+
+@media print {
+  .noprint {
+    visibility: hidden;
+  }
+  a[href]:after {
+    content: none !important;
+  }
+  /*Hide page header and footer(containing url and date)*/
+  @page {
+    margin: 0mm 10mm 0 10mm;
+  }
+  .pdlBanner {
+    max-width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#container {
+  display: flex;
+}
+
+#left {
+  flex: 0 0 65%;
+}
+
+#right {
+  flex: 1;
+}
+
+span.communicate-po-container {
+  margin-right: 5px;
+}
+
+div.preview-inputs {
+  text-align: center;
+  padding: 5px;
+}

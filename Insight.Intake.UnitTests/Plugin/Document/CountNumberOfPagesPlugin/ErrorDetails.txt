@@ -1,0 +1,36 @@
+Exception Message: Error: Could not load file or assembly 'PdfSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=84fb82f1da331c44' or one of its dependencies. The system cannot find the file specified.
+
+ErrorCode: -2147220891
+HexErrorCode: 0x80040265
+
+ErrorDetails: 
+	OperationStatus: 0
+	SubErrorCode: -2146233088
+
+HelpLink: http://go.microsoft.com/fwlink/?LinkID=398563&error=Microsoft.Crm.CrmException%3a80040265&client=platform
+
+TraceText: 
+	[Insight.Intake.AT: Insight.Intake.AT.Plugin.Document.CountNumberOfPages]
+	[c3f1dd20-e992-eb11-b1ac-000d3a58bcab: Insight.Intake.AT.Plugin.Document.CountNumberOfPages: Create of ipg_document]
+	
+		
+		Entered Insight.Intake.AT.Plugin.Document.CountNumberOfPages.Execute(), Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Depth = 1, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		PrimaryEntityName = ipg_document, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		MessageName = Create, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Mode = 0, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Stage = 20, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Insight.Intake.AT.Plugin.Document.CountNumberOfPages is firing for Entity: ipg_document, Message: Create, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Exception: System.IO.FileNotFoundException: Could not load file or assembly 'PdfSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=84fb82f1da331c44' or one of its dependencies. The system cannot find the file specified.
+		File name: 'PdfSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=84fb82f1da331c44'
+		   at Insight.Intake.AT.Plugin.Document.CountNumberOfPages.PreOperationCreateOrUpdateHandler(LocalPluginContext localPluginContext)
+		   at Insight.Intake.AT.PluginBase.Execute(IServiceProvider serviceProvider)
+		
+		WRN: Assembly binding logging is turned OFF.
+		To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+		Note: There is some performance penalty associated with assembly bind failure logging.
+		To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+		, Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+		Exiting Insight.Intake.AT.Plugin.Document.CountNumberOfPages.Execute(), Correlation Id: 10e5e0c9-900c-4fd6-9bcd-18e1e02e31be, Initiating User: 8f0ac822-1c63-eb11-bb23-000d3a33f0ae
+
+Activity Id: 69592a84-6f9d-4098-8862-ec16375f6290

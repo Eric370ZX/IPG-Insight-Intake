@@ -1,0 +1,9 @@
+.grid-search {
+    width: 320px;
+}
+
+li[id^="parts-search-option"] {
+    line-height: 1.2;
+    font-size: 1rem;
+    padding: 4px 12px 4px 12px
+}

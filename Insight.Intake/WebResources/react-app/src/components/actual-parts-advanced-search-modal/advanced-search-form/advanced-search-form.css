@@ -1,0 +1,45 @@
+.search-submit {
+    margin: 10px !important;
+}
+
+.advanced-search-inputs {
+    display: table;
+}
+
+.search-input-col-container {
+    display: table-cell !important;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+}
+
+.search-input-col {
+    display: table;
+}
+
+.search-input-container {
+    display: table;
+    padding-bottom: 5px;
+}
+
+.search-input {
+    display: table-cell !important;
+    min-width: 120px;
+}
+
+.search-input-label {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+.col1-label {
+    width: 80px;
+}
+
+.col2-label {
+    width: 130px;
+}
+
+.col3-label {
+    width: 160px;
+}

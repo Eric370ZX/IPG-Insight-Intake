@@ -1,0 +1,230 @@
+<html>
+<head>
+  <style>
+    #table {
+      border-collapse: collapse;
+      border: 1px solid;
+      width: 100%
+    }
+    #table td {
+      border: 1px solid;
+    }
+    .value {
+      text-align: right;
+    }
+  </style>
+  <script type="text/javascript" src="../../../adx_scripts/jquery1.10.2.min.js"></script>
+  <script type="text/javascript">
+    function FormatFields() {
+      $(".value").each(function (field) {
+        var value = $(this).html();
+        if (value.substr(0, 1) != '$') {
+          $(this).html("$" + (parseFloat((value ? value : 0)).toFixed(2)));
+        }
+      });
+    }
+    function UpdateTable() {
+      var caseId = parent.Xrm.Page.getAttribute("ipg_caseid").getValue()[0].id;
+      parent.Xrm.WebApi.retrieveRecord("incident", caseId, "?$select=ipg_casebalance,ipg_remainingcarrierbalance,ipg_remainingpatientbalance,ipg_remainingsecondarycarrierbalance,ipg_totalcarrierrespadjustments,ipg_totalcarrierwriteoff,ipg_totalpatientrespadjustments,ipg_totalpatientwriteoff,ipg_totalreceived,ipg_totalreceivedfromcarrier,ipg_totalreceivedfrompatient,ipg_totalreceivedfromsecondarycarrier,ipg_totalrespadjustments,ipg_totalsecondarycarrierrespadjustments,ipg_totalsecondarycarrierwriteoff,ipg_totalwriteoff").then(
+        function success(result) {
+          var ipg_casebalance = result["ipg_casebalance"];
+          var ipg_currentcarrierbalance = result["ipg_remainingcarrierbalance"];
+          var ipg_currentpatientbalance = result["ipg_remainingpatientbalance"];
+          var ipg_currentsecondarycarrierbalance = result["ipg_remainingsecondarycarrierbalance"];
+          var ipg_totalcarrierrespadjustments = result["ipg_totalcarrierrespadjustments"];
+          var ipg_totalcarrierwriteoff = result["ipg_totalcarrierwriteoff"];
+          var ipg_totalpatientrespadjustments = result["ipg_totalpatientrespadjustments"];
+          var ipg_totalpatientwriteoff = result["ipg_totalpatientwriteoff"];
+          var ipg_totalreceived = result["ipg_totalreceived"];
+          var ipg_totalreceivedfromcarrier = result["ipg_totalreceivedfromcarrier"];
+          var ipg_totalreceivedfrompatient = result["ipg_totalreceivedfrompatient"];
+          var ipg_totalreceivedfromsecondarycarrier = result["ipg_totalreceivedfromsecondarycarrier"];
+          var ipg_totalrespadjustments = result["ipg_totalrespadjustments"];
+          var ipg_totalsecondarycarrierrespadjustments = result["ipg_totalsecondarycarrierrespadjustments"];
+          var ipg_totalsecondarycarrierwriteoff = result["ipg_totalsecondarycarrierwriteoff"];
+          var ipg_totalwriteoff = result["ipg_totalwriteoff"];
+
+          var ipg_remainingcarrierbalance = ipg_currentcarrierbalance;
+          var ipg_remainingsecondarycarrierbalance = ipg_currentsecondarycarrierbalance;
+          var ipg_remainingpatientbalance = ipg_currentpatientbalance;
+          var ipg_remainingcasebalance = ipg_casebalance;
+
+          if (parent.Xrm.Page.entityReference.entityType == "ipg_payment") {
+            if (parent.Xrm.Page.ui.getFormType() == 1) {
+
+              if (parent.Xrm.Page.getAttribute("ipg_applyadjustment").getValue()) {
+                ipg_remainingcarrierbalance = parent.Xrm.Page.getAttribute("ipg_remainingcarrierbalance").getValue();
+                ipg_remainingsecondarycarrierbalance = parent.Xrm.Page.getAttribute("ipg_remainingsecondarycarrierbalance").getValue();
+                ipg_remainingpatientbalance = parent.Xrm.Page.getAttribute("ipg_remainingpatientbalance").getValue();
+                ipg_remainingcasebalance = parent.Xrm.Page.getAttribute("ipg_casebalance").getValue();
+                $('#CR').html(ipg_remainingcarrierbalance);
+                $('#SR').html(ipg_remainingsecondarycarrierbalance);
+                $('#PR').html(ipg_remainingpatientbalance);
+                $('#TR').html(ipg_remainingcasebalance);
+              }
+              else {
+                var claimResponseHeader = parent.Xrm.Page.getAttribute("ipg_claimresponseheader").getValue()[0].id;
+                parent.Xrm.WebApi.retrieveRecord("ipg_claimresponseheader", claimResponseHeader, "?$select=ipg_amountpaid,_ipg_claimresponsebatchid_value").then(
+                  function success(result) {
+                    var ipg_amountpaid = result["ipg_amountpaid"];
+                    var _ipg_claimresponsebatchid_value = result["_ipg_claimresponsebatchid_value"];
+                    parent.Xrm.WebApi.retrieveRecord("ipg_claimresponsebatch", _ipg_claimresponsebatchid_value, "?$select=ipg_paymentfrom").then(
+                      function success(result) {
+                        var ipg_paymentfrom = result["ipg_paymentfrom"];
+                        if (ipg_paymentfrom == 427880000) {
+                          var claim = parent.Xrm.Page.getAttribute("ipg_claim").getValue();
+                          if (claim) {
+                            var claimId = claim[0].id;
+                            parent.Xrm.WebApi.retrieveRecord("invoice", claimId, "?$select=_customerid_value").then(
+                              function success(result) {
+                                var _customerid_value = result["_customerid_value"];
+                                parent.Xrm.WebApi.retrieveRecord("incident", caseId, "?$select=_ipg_carrierid_value,_ipg_secondarycarrierid_value").then(
+                                  function success(result) {
+                                    var _ipg_carrierid_value = result["_ipg_carrierid_value"];
+                                    var _ipg_secondarycarrierid_value = result["_ipg_secondarycarrierid_value"];
+                                    if (_customerid_value == _ipg_carrierid_value) {
+                                      $('#CR').html(ipg_remainingcarrierbalance - ipg_amountpaid);
+                                      $('#SR').html(ipg_remainingsecondarycarrierbalance);
+                                      $('#PR').html(ipg_remainingpatientbalance);
+                                      $('#TR').html(ipg_remainingcasebalance - ipg_amountpaid);
+                                    }
+                                    else if (_customerid_value == _ipg_secondarycarrierid_value) {
+                                      $('#CR').html(ipg_remainingcarrierbalance);
+                                      $('#SR').html(ipg_remainingsecondarycarrierbalance - ipg_amountpaid);
+                                      $('#PR').html(ipg_remainingpatientbalance);
+                                      $('#TR').html(ipg_remainingcasebalance - ipg_amountpaid);
+                                    }
+                                    FormatFields();
+                                  },
+                                  function (error) {
+                                    parent.Xrm.Utility.alertDialog(error.message, null);
+                                  }
+                                );
+                              },
+                              function (error) {
+                                parent.Xrm.Utility.alertDialog(error.message, null);
+                              }
+                            );
+                          }
+                        }
+                        else {
+                          $('#CR').html(ipg_remainingcarrierbalance);
+                          $('#SR').html(ipg_remainingsecondarycarrierbalance);
+                          $('#PR').html(ipg_remainingpatientbalance - ipg_amountpaid);
+                          $('#TR').html(ipg_remainingcasebalance - ipg_amountpaid);
+                          FormatFields();
+                        }
+                      },
+                      function (error) {
+                        parent.Xrm.Utility.alertDialog(error.message, null);
+                      }
+                    );
+                  },
+                  function (error) {
+                    parent.Xrm.Utility.alertDialog(error.message, null);
+                  }
+                );
+              }
+            }
+            else {
+              $('#CR').html(ipg_currentcarrierbalance);
+              $('#SR').html(ipg_currentsecondarycarrierbalance);
+              $('#PR').html(ipg_currentpatientbalance);
+              $('#TR').html(ipg_casebalance);
+            }
+          }
+          else {
+
+            if (parent.Xrm.Page.ui.getFormType() == 1) {
+              ipg_remainingcarrierbalance = parent.Xrm.Page.getAttribute("ipg_remainingcarrierbalance").getValue();
+              ipg_remainingsecondarycarrierbalance = parent.Xrm.Page.getAttribute("ipg_remainingsecondarycarrierbalance").getValue();
+              ipg_remainingpatientbalance = parent.Xrm.Page.getAttribute("ipg_remainingpatientbalance").getValue();
+              ipg_remainingcasebalance = parent.Xrm.Page.getAttribute("ipg_casebalance").getValue();
+            }
+
+            if (ipg_remainingcasebalance >= -.99 && ipg_remainingcasebalance <= .99) {
+              ipg_remainingcasebalance = 0.00;
+            }
+
+            $('#CR').html(ipg_remainingcarrierbalance);
+            $('#SR').html(ipg_remainingsecondarycarrierbalance);
+            $('#PR').html(ipg_remainingpatientbalance);
+            $('#TR').html(ipg_remainingcasebalance);
+          }
+
+          $('#CC').html(ipg_currentcarrierbalance);
+          $('#CP').html(ipg_totalreceivedfromcarrier);
+          $('#CA').html(ipg_totalcarrierrespadjustments);
+          $('#CW').html(ipg_totalcarrierwriteoff);
+
+          $('#SC').html(ipg_currentsecondarycarrierbalance);
+          $('#SP').html(ipg_totalreceivedfromsecondarycarrier);
+          $('#SA').html(ipg_totalsecondarycarrierrespadjustments);
+          $('#SW').html(ipg_totalsecondarycarrierwriteoff);
+
+          $('#PC').html(ipg_currentpatientbalance);
+          $('#PP').html(ipg_totalreceivedfrompatient);
+          $('#PA').html(ipg_totalpatientrespadjustments);
+          $('#PW').html(ipg_totalpatientwriteoff);
+
+          $('#TC').html(ipg_casebalance);
+          $('#TP').html(ipg_totalreceived);
+          $('#TA').html(ipg_totalrespadjustments);
+          $('#TW').html(ipg_totalwriteoff);
+
+          FormatFields();
+        },
+        function (error) {
+          parent.Xrm.Utility.alertDialog(error.message, null);
+        }
+      );
+    }
+  </script>
+</head>
+<body onload="UpdateTable()">
+  <table id="table" border='1'>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>Current Balance</td>
+        <td>Total Payments</td>
+        <td>Total Adjustments</td>
+        <td>Total Write Offs</td>
+        <td>Remaining Balance</td>
+      </tr>
+      <tr>
+        <td>Primary carrier</td>
+        <td id='CC' class='value'></td>
+        <td id='CP' class='value'></td>
+        <td id='CA' class='value'></td>
+        <td id='CW' class='value'></td>
+        <td id='CR' class='value'></td>
+      </tr>
+      <tr>
+        <td>Seconday carrier</td>
+        <td id='SC' class='value'></td>
+        <td id='SP' class='value'></td>
+        <td id='SA' class='value'></td>
+        <td id='SW' class='value'></td>
+        <td id='SR' class='value'></td>
+      </tr>
+      <tr>
+        <td>Patient</td>
+        <td id='PC' class='value'></td>
+        <td id='PP' class='value'></td>
+        <td id='PA' class='value'></td>
+        <td id='PW' class='value'></td>
+        <td id='PR' class='value'></td>
+      </tr>
+      <tr>
+        <td>Totals</td>
+        <td id='TC' class='value'></td>
+        <td id='TP' class='value'></td>
+        <td id='TA' class='value'></td>
+        <td id='TW' class='value'></td>
+        <td id='TR' class='value'></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

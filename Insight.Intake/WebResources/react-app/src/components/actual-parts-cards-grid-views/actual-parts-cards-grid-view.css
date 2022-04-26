@@ -1,0 +1,13 @@
+.grid-view-selector-container {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.grid-view-selector {
+    width: 200px;
+}
+
+.grid-view-selector-label {
+    display: inline-block;
+    margin-right: 15px;
+}

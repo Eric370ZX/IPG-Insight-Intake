@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <control namespace="Ipg.AdvancedAutoComplete" constructor="AdvancedAutoCompleteControl" version="1.0.3" display-name-key="AdvancedAutoComplete" description-key="AdvancedAutoComplete">
+    <modes>
+      <read />
+      <edit />
+    </modes>
+    <property name="value" display-name-key="CC_Field" description-key="CC_Field_Desc" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="fetch" display-name-key="CC_Fetch_SL" description-key="CC_Fetch_SL_Desc" of-type="SingleLine.Text" usage="input" />
+    <property name="distinct" usage="input" of-type="Enum" display-name-key="Distinct" description-key="Distinct_Desc">
+      <value name="Yes" display-name-key="CC_Distinct_Enable" description-key="CC_Distinct_Enable_Desc" default="true">Yes</value>
+      <value name="No" display-name-key="CC_Distinct_Disable" description-key="CC_Distinct_Disable_Desc">No</value>
+    </property>
+    <groups name="dataSourceSwitch" display-name-key="CC_Source" description-key="CC_Source_Desc" required="true">
+      <group name="DataSetGroup" display-name-key="CC_View">
+        <data-set name="dynamicSource" display-name-key="CC_View" description-key="CC_View_Source_Desc">
+          <property-set name="displayValue" display-name-key="CC_Field" description-key="CC_View_Field_Desc" of-type="SingleLine.Text" usage="bound" required="true" />
+        </data-set>
+      </group>
+      <group name="OptionSetGroup" display-name-key="CC_OptionSet_Name">
+        <property name="source" display-name-key="CC_OptionSet_Name" description-key="CC_OptionSet_Source_Desc" of-type="OptionSet" usage="bound" required="true" />
+      </group>
+    </groups>
+    <AvailableOn>
+      <web classic="disable" />
+      <phone />
+      <tablet />
+    </AvailableOn>
+    <resources>
+      <library name="jquery" version="&gt;=2" order="1">
+        <packaged_library path="libs/jquery-2.1.1.js" version="2.1.1" />
+      </library>
+      <library name="wijmo" version="&gt;=5" order="2">
+        <packaged_library path="libs/wijmo.js" version="5.20172.328" />
+      </library>
+      <library name="wijmo-input" version="&gt;=5" order="3">
+        <packaged_library path="libs/wijmo.input.js" version="5.20172.328" />
+      </library>
+      <library name="mscommon" version="&gt;=1" order="4">
+        <packaged_library path="libs/mscommonlib-1.0.0.js" version="1.2.1" />
+      </library>
+      <code path="AdvancedAutoCompleteControl.js" order="5" />
+      <css path="css/wijmo.css" order="6" />
+      <css path="css/crm.wijmo.autocomplete.css" order="7" />
+      <resx path="locale/AdvancedAutoCompleteControl.1033.resx" version="1.0.0" />
+    </resources>
+  </control>
+</manifest>

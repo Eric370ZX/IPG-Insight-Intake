@@ -1,0 +1,60 @@
+<head>
+  <script type="text/javascript" src="../../../adx_scripts/jquery1.10.2.min.js"></script>
+  <script type="text/javascript" src="../../../lat_/CRMRESTBuilder/scripts/jqueryui1.10.3.min.js"></script>
+  <link href="../../../lat_/CRMRESTBuilder/css/smoothness/jqueryui1.10.3.custom.min.css" rel="stylesheet" />
+  <script src="../../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+  <script type="text/javascript" src="PaymentProcessing.js"></script>
+  <link href="select2.min.css" rel="stylesheet" />
+  <script src="select2.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      Intake.Claim.FillPayment();
+      $('#claim_id').on('change', function () {
+        Intake.Claim.BuildLineItems($('#claim_id').val());
+        $('.denials').select2();
+      });
+      $('.denials').select2();
+      $("#savebutton").click(function () {
+        Intake.Claim.SavePayment();
+      });
+    });
+              //$('#claim_id').on('claimChange', function () {
+              //  Intake.Claim.BuildLineItems();
+              //});
+  </script>
+</head>
+<div id="case"></div>
+<div id="patient"></div>
+<li>
+  <label for="claim_id">Claim #</label>
+  <select name="claim_id" id="claim_id" title="" tabindex="1"></select>
+</li>
+<table border='1' width='100%' cellpadding='0' cellspacing='0' class='listview'>
+  <tr height='20'>
+    <td class='listViewThS1' align='center'>Proc Code</td>
+    <!-- <td class='listViewThS1' align='center'>IPG&nbsp;Charge&nbsp;Master</td> -->
+    <td class='listViewThS1' align='center'>Units</td>
+    <td class='listViewThS1' align='center'>Gross Billed Charges</td>
+    <td class='listViewThS1' align='center'>Contractual Adjmt.</td>
+    <!-- <td class='listViewThS1' align='center'>Price&nbsp;By</td> -->
+    <td class='listViewThS1' align='center'>Unit Price</td>
+    <td class='listViewThS1' align='center'>Net Charges</td>
+    <td class='listViewThS1' align='center'>Carrier Balance</td>
+    <td class='listViewThS1' align='center'>Patient Balance</td>
+    <td class='listViewThS1' align='center'>Allowed Amt.</td>
+    <td class='listViewThS1' align='center'>Carrier Paid Amt</td>
+    <td class='listViewThS1' align='center'>Denial Code(s)</td>
+  </tr>
+  <tbody id="claimlineitemts"></tbody>
+</table>
+<p></p>
+<legend>CHECK RECONCILIATION</legend>
+<label>Member Paid</label>
+  <input type="text" name="memberpaid" id="memberpaid" style="text-align:right;" value="0.00">
+<p></p>
+<legend>PAYMENT INFORMATION</legend>
+<label>Payment Date</label>
+  <input type="text" name="paymentdate" id="paymentdate" size="11" maxlength="10" style="text-align:right;">
+<div align='center'>
+  <p><input id="savebutton" type="submit" value="Save" /></p>
+</div>

@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script type="text/javascript" src="../Utility.js"></script>
+  <script type="text/javascript" src="/WebResources/ipg_/intake/benefitsVerificationForm/benefitsVerificationForm.js"></script>
+  <script>
+    // This function need to be added to your html webresource
+    function setClientApiContext(xrm, formContext) {
+      // You can set xrm and formContext to your variables or use them directly
+      // Optionally set Xrm and formContext as global variables on the page.
+      // globalThis is new way to access global this value
+      // find more here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
+      globalThis.Xrm = xrm;
+      globalThis.formContext = formContext;
+    }
+    function SameAsPatientChange(e) {
+      Intake.benefitsVerificationForm.Form.SameAsPatientChange(globalThis.formContext, e.checked);
+    }
+  </script>
+</head>
+
+<body>
+  <input type="checkbox" id="sameAsPatient" name="subscribe" value="newsletter" onchange="SameAsPatientChange(this)">
+  <label for="sameAsPatient">Same as Patient</label>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EligibilityInquiry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <id>4fc8d532-6686-4586-9f25-bd9d2e44aff5</id>
+  <CaseId>fb97b9f9-47f1-45dc-9da7-ec2173a0d193</CaseId>
+  <IsUserGenerated>true</IsUserGenerated>
+  <CreatedAt>2018-12-06T20:16:36.9069839Z</CreatedAt>
+  <Status>PENDING</Status>
+  <SenderId>174645</SenderId>
+  <ReceiverId>ZIRMED</ReceiverId>
+  <PayerName>66666</PayerName>
+  <PayerCode>66666</PayerCode>
+  <ProviderName>IMPLANTABLE PROVIDER GROUP, INC</ProviderName>
+  <ProviderNpi>HPI-1114077419</ProviderNpi>
+  <ProviderTaxId>113667807</ProviderTaxId>
+  <MemberId>12345</MemberId>
+  <RelationToInsured>19</RelationToInsured>
+  <SubscriberLastName>LastName1</SubscriberLastName>
+  <SubscriberFirstName>FirstName1</SubscriberFirstName>
+  <SubscriberMiddleName>MiddleName1</SubscriberMiddleName>
+  <SubscriberDOB>1960-01-25T00:00:00</SubscriberDOB>
+  <SubscriberGender>M</SubscriberGender>
+  <DependentLastName>LastName2</DependentLastName>
+  <DependentFirstName>FirstName2</DependentFirstName>
+  <DependentMiddleName>MiddleName2</DependentMiddleName>
+  <DependentDOB>1961-02-26T00:00:00</DependentDOB>
+  <DependentGender>F</DependentGender>
+  <DOS>2018-09-20T00:00:00</DOS>
+</EligibilityInquiry>

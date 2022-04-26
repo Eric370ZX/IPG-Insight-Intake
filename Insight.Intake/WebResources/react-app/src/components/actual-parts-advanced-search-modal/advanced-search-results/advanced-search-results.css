@@ -1,0 +1,47 @@
+.custom-overflow {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+.part-name {
+    max-width: 450px !important;
+    width: 450px !important;
+}
+
+.part-number {
+    max-width: 125px !important;
+    width: 125px !important;
+}
+
+.part-manufacturer {
+    max-width: 125px !important;
+    width: 125px !important;
+}
+
+.part-checkbox {
+    max-width: 13px !important;
+    width: 13px !important;
+}
+
+@media (max-width: 1280px) {
+    .part-name {
+        max-width: 250px !important;
+        width: 250px !important;
+    }
+    
+    .part-number {
+        max-width: 100px !important;
+        width: 100px !important;
+    }
+    
+    .part-manufacturer {
+        max-width: 100px !important;
+        width: 100px !important;
+    }
+    
+    .part-checkbox {
+        max-width: 13px !important;
+        width: 13px !important;
+    }
+}

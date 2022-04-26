@@ -1,0 +1,33 @@
+.DocumentUploadComponent\.DocumentUploadComponent button {
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    margin: 4px 6px;
+    cursor: pointer;
+    color: white;
+    border-radius: 0px;
+    background-color: rgb(59, 121, 183);
+    border: none;
+    padding: 5px;
+    text-align: center;
+}
+
+.DocumentUploadComponent\.DocumentUploadComponent img {
+    display: block;
+    box-shadow: 0 5px 10px 0 rgba(30, 30, 30, 0.3);
+    width: 60px;
+    height: 60px;
+}
+
+.DocumentUploadComponent\.DocumentUploadComponent .NoImage > .RemoveButton {
+    display: none;
+}
+
+.DocumentUploadComponent\.DocumentUploadComponent label {
+    display: none;
+}
+
+.DocumentUploadComponent\.DocumentUploadComponent .ShowError > label {
+    display: block;
+    color: red;
+}

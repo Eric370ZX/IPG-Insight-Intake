@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title>Generate Statement</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+  .wizardValue {
+  width: 100%;
+}
+
+.required:before {
+  content: "* ";
+  color: red;
+}
+.container{
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <label class="required">Delivery Method</label>
+      </div>
+      <div class="col-8">
+        <select id="delivetyMethodSelect" class="wizardValue">
+          <option value="Paper" selected>Paper</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <label class="required">Statement Type</label>
+      </div>
+      <div class="col-8">
+        <select id="statementTypesSelect" class="wizardValue">
+        </select>
+      </div>
+    </div>
+    <div class="fixed-bottom" style="padding: 20px;">
+      <div class="center-block text-center">
+          <button type="button" class="btn btn-info"id="generateBtn">Continue</button>
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  <script src="GeneratePatientStatement.js" type="text/javascript"></script>
+</body>
+</html>
+

@@ -1,0 +1,1414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props" Condition="Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props')" />
+  <Import Project="..\packages\xunit.core.2.3.1\build\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.3.1\build\xunit.core.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F063B96D-9089-40BC-BB48-28F512D51E31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Insight.Intake_EA</RootNamespace>
+    <AssemblyName>Insight.Intake_EA</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.27\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.3\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.27\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.3\lib\net452\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.3\lib\net452\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.3\lib\net452\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.3\lib\net452\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=84fb82f1da331c44, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.3.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.3.1\lib\netstandard1.1\xunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.3.1\lib\net452\xunit.execution.desktop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeActivities\AddBusinessDays.cs" />
+    <Compile Include="CodeActivities\AttachBVFasPDFDoc.cs" />
+    <Compile Include="CodeActivities\CancelPrimaryEntityWorkflows.cs" />
+    <Compile Include="CodeActivities\GenerateFollowUpTaskOnHold.cs" />
+    <Compile Include="CodeActivities\ReadGlobalSetting.cs" />
+    <Compile Include="CodeActivities\WorkFlowActivityBase.cs" />
+    <Compile Include="Context\Account.cs" />
+    <Compile Include="Context\Actions.cs" />
+    <Compile Include="Context\ActivityMimeAttachment.cs" />
+    <Compile Include="Context\ActivityParty.cs" />
+    <Compile Include="Context\ActivityPointer.cs" />
+    <Compile Include="Context\adx_portalcomment.cs" />
+    <Compile Include="Context\Adx_webrole.cs" />
+    <Compile Include="Context\adx_webrole_contact.cs" />
+    <Compile Include="Context\Annotation.cs" />
+    <Compile Include="Context\applicationuserprofile.cs" />
+    <Compile Include="Context\Appointment.cs" />
+    <Compile Include="Context\AsyncOperation.cs" />
+    <Compile Include="Context\AttributeMap.cs" />
+    <Compile Include="Context\BusinessUnit.cs" />
+    <Compile Include="Context\Calendar.cs" />
+    <Compile Include="Context\CalendarRule.cs" />
+    <Compile Include="Context\Contact.cs" />
+    <Compile Include="Context\ContactInvoices.cs" />
+    <Compile Include="Context\ContactLeads.cs" />
+    <Compile Include="Context\ContactOrders.cs" />
+    <Compile Include="Context\ContactQuotes.cs" />
+    <Compile Include="Context\ConvertRule.cs" />
+    <Compile Include="Context\ConvertRuleItem.cs" />
+    <Compile Include="Context\CrmServiceContext.cs" />
+    <Compile Include="Context\CustomerAddress.cs" />
+    <Compile Include="Context\Discount.cs" />
+    <Compile Include="Context\DiscountType.cs" />
+    <Compile Include="Context\DisplayString.cs" />
+    <Compile Include="Context\DocumentTemplate.cs" />
+    <Compile Include="Context\DuplicateRecord.cs" />
+    <Compile Include="Context\DuplicateRule.cs" />
+    <Compile Include="Context\DuplicateRuleCondition.cs" />
+    <Compile Include="Context\Email.cs" />
+    <Compile Include="Context\Entitlement.cs" />
+    <Compile Include="Context\EntitlementChannel.cs" />
+    <Compile Include="Context\EntitlementContacts.cs" />
+    <Compile Include="Context\EntitlementEntityAllocationTypeMapping.cs" />
+    <Compile Include="Context\EntitlementProducts.cs" />
+    <Compile Include="Context\EntitlementTemplate.cs" />
+    <Compile Include="Context\EntitlementTemplateChannel.cs" />
+    <Compile Include="Context\EntitlementTemplateProducts.cs" />
+    <Compile Include="Context\EntityAnalyticsConfig.cs" />
+    <Compile Include="Context\EntityImageConfig.cs" />
+    <Compile Include="Context\EntityMap.cs" />
+    <Compile Include="Context\ExpanderEvent.cs" />
+    <Compile Include="Context\ExpiredProcess.cs" />
+    <Compile Include="Context\ExportSolutionUpload.cs" />
+    <Compile Include="Context\ExternalParty.cs" />
+    <Compile Include="Context\ExternalPartyItem.cs" />
+    <Compile Include="Context\Fax.cs" />
+    <Compile Include="Context\Feedback.cs" />
+    <Compile Include="Context\FixedMonthlyFiscalCalendar.cs" />
+    <Compile Include="Context\flowsession.cs" />
+    <Compile Include="Context\Incident.cs" />
+    <Compile Include="Context\IncidentKnowledgeBaseRecord.cs" />
+    <Compile Include="Context\IncidentResolution.cs" />
+    <Compile Include="Context\InteractionForEmail.cs" />
+    <Compile Include="Context\InvalidDependency.cs" />
+    <Compile Include="Context\Invoice.cs" />
+    <Compile Include="Context\InvoiceDetail.cs" />
+    <Compile Include="Context\ipg_accountspayable.cs" />
+    <Compile Include="Context\ipg_accountuser.cs" />
+    <Compile Include="Context\ipg_account_contact.cs" />
+    <Compile Include="Context\ipg_activitytype.cs" />
+    <Compile Include="Context\ipg_adjustment.cs" />
+    <Compile Include="Context\ipg_assigntocsrule.cs" />
+    <Compile Include="Context\ipg_assigntorule.cs" />
+    <Compile Include="Context\ipg_associatedcpt.cs" />
+    <Compile Include="Context\ipg_associatedcptdaterange.cs" />
+    <Compile Include="Context\ipg_authorization.cs" />
+    <Compile Include="Context\ipg_benefit.cs" />
+    <Compile Include="Context\ipg_benefitsverificationform.cs" />
+    <Compile Include="Context\ipg_cagc.cs" />
+    <Compile Include="Context\ipg_carc.cs" />
+    <Compile Include="Context\ipg_carrierclaimsmailingaddress.cs" />
+    <Compile Include="Context\ipg_carriercontractparent.cs" />
+    <Compile Include="Context\ipg_carriercontractparenttocarriermap.cs" />
+    <Compile Include="Context\ipg_carriercptrule.cs" />
+    <Compile Include="Context\ipg_carrierfeeschedule.cs" />
+    <Compile Include="Context\ipg_carriermanufacturerrelationship.cs" />
+    <Compile Include="Context\ipg_carriernamerule.cs" />
+    <Compile Include="Context\ipg_carriernetwork.cs" />
+    <Compile Include="Context\ipg_carriernetworkcptrule.cs" />
+    <Compile Include="Context\ipg_carrierpart.cs" />
+    <Compile Include="Context\ipg_carrierprecertcpt.cs" />
+    <Compile Include="Context\ipg_carrierprecerthcpcs.cs" />
+    <Compile Include="Context\ipg_carrierpricinginformation.cs" />
+    <Compile Include="Context\ipg_CarrierStateRelationship.cs" />
+    <Compile Include="Context\ipg_carriertyperule.cs" />
+    <Compile Include="Context\ipg_carrier_audit_history.cs" />
+    <Compile Include="Context\ipg_caseassignmentconfig.cs" />
+    <Compile Include="Context\ipg_CaseCarrierAddingParameters.cs" />
+    <Compile Include="Context\ipg_casecloseconfiguration.cs" />
+    <Compile Include="Context\ipg_casegateexecution.cs" />
+    <Compile Include="Context\ipg_casegateexecutiondetail.cs" />
+    <Compile Include="Context\ipg_caseholdconfiguration.cs" />
+    <Compile Include="Context\ipg_caseinnamarkpoc.cs" />
+    <Compile Include="Context\ipg_caseinputfield.cs" />
+    <Compile Include="Context\ipg_casepartdetail.cs" />
+    <Compile Include="Context\ipg_caseplantyperule.cs" />
+    <Compile Include="Context\ipg_casestatusdisplayed.cs" />
+    <Compile Include="Context\ipg_caseworkflowtask.cs" />
+    <Compile Include="Context\ipg_chargecenter.cs" />
+    <Compile Include="Context\ipg_claimconfiguration.cs" />
+    <Compile Include="Context\ipg_claimdenialcodecategory.cs" />
+    <Compile Include="Context\ipg_claimeventsmapping.cs" />
+    <Compile Include="Context\ipg_claimgenerationoverride.cs" />
+    <Compile Include="Context\ipg_claimgenerationparameters.cs" />
+    <Compile Include="Context\ipg_claimlineitem.cs" />
+    <Compile Include="Context\ipg_claimpdffieldsmapping.cs" />
+    <Compile Include="Context\ipg_claimresponsebatch.cs" />
+    <Compile Include="Context\ipg_claimresponseentity.cs" />
+    <Compile Include="Context\ipg_claimresponseheader.cs" />
+    <Compile Include="Context\ipg_claimresponseline.cs" />
+    <Compile Include="Context\ipg_claimresponselineadjustment.cs" />
+    <Compile Include="Context\ipg_claimresponselineremark.cs" />
+    <Compile Include="Context\ipg_claimresponseprovideradjustment.cs" />
+    <Compile Include="Context\ipg_claimresponseremarkcode.cs" />
+    <Compile Include="Context\ipg_claimshistory.cs" />
+    <Compile Include="Context\ipg_claimstatuscode.cs" />
+    <Compile Include="Context\ipg_claimtaskconfiguration.cs" />
+    <Compile Include="Context\ipg_claimzirmedeventcode.cs" />
+    <Compile Include="Context\ipg_claimzirmedstatus.cs" />
+    <Compile Include="Context\ipg_contactemailpreference.cs" />
+    <Compile Include="Context\ipg_contactsaccounts.cs" />
+    <Compile Include="Context\ipg_contactsubtype.cs" />
+    <Compile Include="Context\ipg_contacttype.cs" />
+    <Compile Include="Context\ipg_cptcode.cs" />
+    <Compile Include="Context\ipg_distributor_manufacturer_relationship.cs" />
+    <Compile Include="Context\ipg_document.cs" />
+    <Compile Include="Context\ipg_documentbygate.cs" />
+    <Compile Include="Context\ipg_documentcategorytype.cs" />
+    <Compile Include="Context\ipg_documentrecordcopy.cs" />
+    <Compile Include="Context\ipg_documenttype.cs" />
+    <Compile Include="Context\ipg_dxcode.cs" />
+    <Compile Include="Context\ipg_dxcptrelationship.cs" />
+    <Compile Include="Context\ipg_EBVBenefit.cs" />
+    <Compile Include="Context\ipg_EBVEntity.cs" />
+    <Compile Include="Context\ipg_EBVInquiry.cs" />
+    <Compile Include="Context\ipg_EBVInquiryAutoNumber.cs" />
+    <Compile Include="Context\ipg_EBVResponse.cs" />
+    <Compile Include="Context\ipg_ebvresponsemapping.cs" />
+    <Compile Include="Context\ipg_EBVSubscriber.cs" />
+    <Compile Include="Context\ipg_ehrcarriermap.cs" />
+    <Compile Include="Context\ipg_EHRCarrierMapping.cs" />
+    <Compile Include="Context\ipg_ehrreview.cs" />
+    <Compile Include="Context\ipg_EHRSoftwareDateRange.cs" />
+    <Compile Include="Context\ipg_EHRstaging.cs" />
+    <Compile Include="Context\ipg_entitlement_ipg_cptcode.cs" />
+    <Compile Include="Context\ipg_estimatedcasepartdetail.cs" />
+    <Compile Include="Context\ipg_facilitycarriercptrule.cs" />
+    <Compile Include="Context\ipg_facilitycarriercptrulecontract.cs" />
+    <Compile Include="Context\ipg_facilitycpt.cs" />
+    <Compile Include="Context\ipg_facilitycptprocedurecode.cs" />
+    <Compile Include="Context\ipg_FacilityEhrConnection.cs" />
+    <Compile Include="Context\ipg_facilitymanufacturerrelationship.cs" />
+    <Compile Include="Context\ipg_facilityphysician.cs" />
+    <Compile Include="Context\ipg_faxnumber.cs" />
+    <Compile Include="Context\ipg_feeschedule.cs" />
+    <Compile Include="Context\ipg_gateactivity.cs" />
+    <Compile Include="Context\ipg_gateconfiguration.cs" />
+    <Compile Include="Context\ipg_gateconfigurationdetail.cs" />
+    <Compile Include="Context\ipg_gatedetermination.cs" />
+    <Compile Include="Context\ipg_gateexecutionlog.cs" />
+    <Compile Include="Context\ipg_gateprocessingrule.cs" />
+    <Compile Include="Context\ipg_gatingoutcome.cs" />
+    <Compile Include="Context\ipg_globalsetting.cs" />
+    <Compile Include="Context\ipg_GLTransaction.cs" />
+    <Compile Include="Context\ipg_GWLookup.cs" />
+    <Compile Include="Context\ipg_GWServiceTypeCode.cs" />
+    <Compile Include="Context\ipg_highdollaracuitycptrule.cs" />
+    <Compile Include="Context\ipg_historicaudit.cs" />
+    <Compile Include="Context\ipg_homeplancarriermap.cs" />
+    <Compile Include="Context\ipg_importanteventconfig.cs" />
+    <Compile Include="Context\ipg_importanteventslog.cs" />
+    <Compile Include="Context\ipg_incident_ipg_document.cs" />
+    <Compile Include="Context\ipg_incident_ipg_dxcode.cs" />
+    <Compile Include="Context\ipg_informationtyperequiredinformationrule.cs" />
+    <Compile Include="Context\ipg_insurance.cs" />
+    <Compile Include="Context\ipg_ipgcasebpfmainflow.cs" />
+    <Compile Include="Context\ipg_ipgreferralbpfmainflow.cs" />
+    <Compile Include="Context\ipg_ipg_carriernetwork_ipg_state.cs" />
+    <Compile Include="Context\ipg_ipg_caseholdconfiguration_ipg_casestatu.cs" />
+    <Compile Include="Context\ipg_ipg_casepartdetail_ipg_document.cs" />
+    <Compile Include="Context\ipg_ipg_document_account.cs" />
+    <Compile Include="Context\ipg_ipg_document_ipg_referral.cs" />
+    <Compile Include="Context\ipg_ipg_medrecordsconditions_ipg_documentty.cs" />
+    <Compile Include="Context\ipg_ipg_taskreasondetails_ipg_statementgene.cs" />
+    <Compile Include="Context\ipg_ipg_taskreasondetails_ipg_taskreason.cs" />
+    <Compile Include="Context\ipg_ipg_tasktype_ipg_casestatusdisplayed.cs" />
+    <Compile Include="Context\ipg_ipg_workflowtask_ipg_workflowtaskinput.cs" />
+    <Compile Include="Context\ipg_legacycarrierhistory.cs" />
+    <Compile Include="Context\ipg_lifecyclestep.cs" />
+    <Compile Include="Context\ipg_manufacturer_contact.cs" />
+    <Compile Include="Context\ipg_manufacturer_distributor.cs" />
+    <Compile Include="Context\ipg_masterhcpcs.cs" />
+    <Compile Include="Context\ipg_medrecordsconditions.cs" />
+    <Compile Include="Context\ipg_melissazipcode.cs" />
+    <Compile Include="Context\ipg_nextstatementgenerationrule.cs" />
+    <Compile Include="Context\ipg_patientpaymentnotification.cs" />
+    <Compile Include="Context\ipg_payment.cs" />
+    <Compile Include="Context\ipg_physician_facility.cs" />
+    <Compile Include="Context\ipg_portalquery.cs" />
+    <Compile Include="Context\ipg_portalupdates.cs" />
+    <Compile Include="Context\ipg_preauthorization.cs" />
+    <Compile Include="Context\ipg_procedurename.cs" />
+    <Compile Include="Context\ipg_propelcptrule.cs" />
+    <Compile Include="Context\ipg_propelprocedurerule.cs" />
+    <Compile Include="Context\ipg_rarc.cs" />
+    <Compile Include="Context\ipg_referral.cs" />
+    <Compile Include="Context\ipg_referral_task_if_no_contract.cs" />
+    <Compile Include="Context\ipg_requiredinformation.cs" />
+    <Compile Include="Context\ipg_requiredinformationtemplate.cs" />
+    <Compile Include="Context\ipg_ServiceTrack.cs" />
+    <Compile Include="Context\ipg_state.cs" />
+    <Compile Include="Context\ipg_statementgenerationeventconfiguration.cs" />
+    <Compile Include="Context\ipg_statementgenerationtask.cs" />
+    <Compile Include="Context\ipg_staterule.cs" />
+    <Compile Include="Context\ipg_taskcategory.cs" />
+    <Compile Include="Context\ipg_taskconfiguration.cs" />
+    <Compile Include="Context\ipg_taskreason.cs" />
+    <Compile Include="Context\ipg_taskreasondetails.cs" />
+    <Compile Include="Context\ipg_tasksubcategory.cs" />
+    <Compile Include="Context\ipg_tasktype.cs" />
+    <Compile Include="Context\ipg_teamleadnavigation.cs" />
+    <Compile Include="Context\ipg_teammembernavigation.cs" />
+    <Compile Include="Context\ipg_unsupporteddxcode.cs" />
+    <Compile Include="Context\ipg_unsupportedpart.cs" />
+    <Compile Include="Context\ipg_unsupportedprocedure.cs" />
+    <Compile Include="Context\ipg_UpdateAPChecksTransaction.cs" />
+    <Compile Include="Context\ipg_wftaskdependency.cs" />
+    <Compile Include="Context\ipg_wftaskgroup.cs" />
+    <Compile Include="Context\ipg_wftasks.cs" />
+    <Compile Include="Context\ipg_workflowtask.cs" />
+    <Compile Include="Context\ipg_workflowtaskinputfield.cs" />
+    <Compile Include="Context\ipg_workflowtaskinputfieldsource.cs" />
+    <Compile Include="Context\ipg_workflowtaskoutputconfig.cs" />
+    <Compile Include="Context\ipg_zipcode.cs" />
+    <Compile Include="Context\ipg_zirmedvalidationcode.cs" />
+    <Compile Include="Context\IsvConfig.cs" />
+    <Compile Include="Context\KbArticle.cs" />
+    <Compile Include="Context\KbArticleComment.cs" />
+    <Compile Include="Context\KbArticleTemplate.cs" />
+    <Compile Include="Context\KnowledgeArticle.cs" />
+    <Compile Include="Context\KnowledgeArticleIncident.cs" />
+    <Compile Include="Context\KnowledgeArticlesCategories.cs" />
+    <Compile Include="Context\KnowledgeArticleViews.cs" />
+    <Compile Include="Context\KnowledgeBaseRecord.cs" />
+    <Compile Include="Context\KnowledgeSearchModel.cs" />
+    <Compile Include="Context\LanguageLocale.cs" />
+    <Compile Include="Context\Lead.cs" />
+    <Compile Include="Context\LeadAddress.cs" />
+    <Compile Include="Context\LeadCompetitors.cs" />
+    <Compile Include="Context\LeadProduct.cs" />
+    <Compile Include="Context\LeadToOpportunitySalesProcess.cs" />
+    <Compile Include="Context\Letter.cs" />
+    <Compile Include="Context\OptionSets.cs" />
+    <Compile Include="Context\OrderClose.cs" />
+    <Compile Include="Context\OwnerMapping.cs" />
+    <Compile Include="Context\PhoneCall.cs" />
+    <Compile Include="Context\PickListMapping.cs" />
+    <Compile Include="Context\Position.cs" />
+    <Compile Include="Context\Post.cs" />
+    <Compile Include="Context\PostComment.cs" />
+    <Compile Include="Context\PriceLevel.cs" />
+    <Compile Include="Context\PrincipalObjectAttributeAccess.cs" />
+    <Compile Include="Context\Privilege.cs" />
+    <Compile Include="Context\Product.cs" />
+    <Compile Include="Context\ProductAssociation.cs" />
+    <Compile Include="Context\ProductPriceLevel.cs" />
+    <Compile Include="Context\ProductSalesLiterature.cs" />
+    <Compile Include="Context\ProductSubstitute.cs" />
+    <Compile Include="Context\QuarterlyFiscalCalendar.cs" />
+    <Compile Include="Context\Queue.cs" />
+    <Compile Include="Context\QueueItem.cs" />
+    <Compile Include="Context\QueueMembership.cs" />
+    <Compile Include="Context\Quote.cs" />
+    <Compile Include="Context\QuoteClose.cs" />
+    <Compile Include="Context\QuoteDetail.cs" />
+    <Compile Include="Context\RecurrenceRule.cs" />
+    <Compile Include="Context\RecurringAppointmentMaster.cs" />
+    <Compile Include="Context\RelationshipRole.cs" />
+    <Compile Include="Context\RelationshipRoleMap.cs" />
+    <Compile Include="Context\revokeinheritedaccessrecordstracker.cs" />
+    <Compile Include="Context\Role.cs" />
+    <Compile Include="Context\SalesOrder.cs" />
+    <Compile Include="Context\SalesOrderDetail.cs" />
+    <Compile Include="Context\SavedQuery.cs" />
+    <Compile Include="Context\SavedQueryVisualization.cs" />
+    <Compile Include="Context\Service.cs" />
+    <Compile Include="Context\ServiceAppointment.cs" />
+    <Compile Include="Context\ServicePlanAppModules.cs" />
+    <Compile Include="Context\SLA.cs" />
+    <Compile Include="Context\SLAItem.cs" />
+    <Compile Include="Context\SLAKPIInstance.cs" />
+    <Compile Include="Context\Subject.cs" />
+    <Compile Include="Context\SystemUser.cs" />
+    <Compile Include="Context\SystemUserLicenses.cs" />
+    <Compile Include="Context\SystemUserProfiles.cs" />
+    <Compile Include="Context\SystemUserRoles.cs" />
+    <Compile Include="Context\SystemUserSyncMappingProfiles.cs" />
+    <Compile Include="Context\Task.cs" />
+    <Compile Include="Context\Team.cs" />
+    <Compile Include="Context\TeamMembership.cs" />
+    <Compile Include="Context\Template.cs" />
+    <Compile Include="Context\TransactionCurrency.cs" />
+    <Compile Include="Context\UoM.cs" />
+    <Compile Include="Context\UoMSchedule.cs" />
+    <Compile Include="Context\UserMapping.cs" />
+    <Compile Include="Context\UserSettings.cs" />
+    <Compile Include="Context\Workflow.cs" />
+    <Compile Include="Data\CarrierHomePlanNetworkOptionSet.cs" />
+    <Compile Include="Data\CustomerTypeCodeOptionSet.cs" />
+    <Compile Include="Data\DeviceStageOptionSet.cs" />
+    <Compile Include="Data\FacilityOrdersOptionSet.cs" />
+    <Compile Include="Data\Genders.cs" />
+    <Compile Include="Data\ImplantUsedOptionSet.cs" />
+    <Compile Include="Data\PostSourceCode.cs" />
+    <Compile Include="Data\PostTypeCode.cs" />
+    <Compile Include="Data\ProductInventoryTypeOptionSet.cs" />
+    <Compile Include="Data\ProductTypeOptionSet.cs" />
+    <Compile Include="Data\RelationsToInsured.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Extensions\EntityExtension.cs" />
+    <Compile Include="Extensions\OptionSetValueExtensions.cs" />
+    <Compile Include="Extensions\OrganizationServiceExtensions.cs" />
+    <Compile Include="Extensions\PluginExecutionContextExtenstions.cs" />
+    <Compile Include="Extensions\PluginExtensions.cs" />
+    <Compile Include="Extensions\ReferralExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Helpers\BusinessDayHelper.cs" />
+    <Compile Include="Helpers\CaseHelper.cs" />
+    <Compile Include="Helpers\CaseSoonestTasksHelper.cs" />
+    <Compile Include="Helpers\CloneEntityHelper.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\D365Helpers.cs" />
+    <Compile Include="Helpers\MfgPriceListHelper.cs" />
+    <Compile Include="Helpers\PluginConfiguration.cs" />
+    <Compile Include="Helpers\PreImagePostImageHelper.cs" />
+    <Compile Include="Helpers\ReferralHelper.cs" />
+    <Compile Include="Helpers\RetrieveAttributeResponseWrapper.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
+    <Compile Include="Helpers\Utf8StringWriter.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\CaseActualPart.cs" />
+    <Compile Include="Models\CaseSoonestTaskMapping.cs" />
+    <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\ContactAccountInfo.cs" />
+    <Compile Include="Models\Dependency.cs" />
+    <Compile Include="Models\EligibilityInquiry.cs" />
+    <Compile Include="Models\GeneratePDFFromDocTemplateRequest.cs" />
+    <Compile Include="Models\PersonInfo.cs" />
+    <Compile Include="Models\PortalContactBackUpJson.cs" />
+    <Compile Include="Models\Settings\SlaTaskSettings.cs" />
+    <Compile Include="PluginBase.cs" />
+    <Compile Include="Plugin\AccountUser\CheckAccountUserOnDuplicatePlugin.cs" />
+    <Compile Include="Plugin\AccountUser\CheckThereIsOnlyOnePrimaryCaseManager.cs" />
+    <Compile Include="Plugin\AccountUser\CreateTaskWhenThereIsNoCaseManagerForAccount.cs" />
+    <Compile Include="Plugin\Account\CheckFacilityBSAEntitlementsPlugin.cs" />
+    <Compile Include="Plugin\Account\FacilityBAADocumentValidation.cs" />
+    <Compile Include="Plugin\Account\FacilityDIFDocumentValidation.cs" />
+    <Compile Include="Plugin\Account\PreventDuplicateMfgDistRelationPlugIn.cs" />
+    <Compile Include="Plugin\Account\PreventDuplicateMfgFacilityRelationPlugIn.cs" />
+    <Compile Include="Plugin\Account\SetBillToPatient.cs" />
+    <Compile Include="Plugin\Account\SetCarrierTimelyFilingRulePlugin.cs" />
+    <Compile Include="Plugin\Account\SetDocumentAssociationDate.cs" />
+    <Compile Include="Plugin\Account\VerifyBenefitByCarrier.cs" />
+    <Compile Include="Plugin\Actions\AddBusinessDays.cs" />
+    <Compile Include="Plugin\Adjustment\AdjustmentGateExecution.cs" />
+    <Compile Include="Plugin\Adjustment\AutomatedWriteOff.cs" />
+    <Compile Include="Plugin\Adjustment\CalculateCaseAdjustmentAndWriteOff.cs" />
+    <Compile Include="Plugin\Adjustment\InsertGLTransactionOnAdjustmentCreation.cs" />
+    <Compile Include="Plugin\Adjustment\ProcessAdjustment.cs" />
+    <Compile Include="Plugin\Associated CPT Date Range\CheckForOverlappingDates.cs" />
+    <Compile Include="Plugin\AssociatedCpt\CheckCarrierCPTOverlappingDates.cs" />
+    <Compile Include="Plugin\AssociatedCpt\PopulatePrimaryAttributePlugin.cs" />
+    <Compile Include="Plugin\Authorization\AddGatingSkip.cs" />
+    <Compile Include="Plugin\Authorization\CaseRecentAuthorization.cs" />
+    <Compile Include="Plugin\Authorization\CompleteTasks.cs" />
+    <Compile Include="Plugin\Authorization\CreateCall.cs" />
+    <Compile Include="Plugin\Authorization\ResetAuthWfTasks.cs" />
+    <Compile Include="Plugin\BenefitsVerificationForm\AttachBVFAsPDF.cs" />
+    <Compile Include="Plugin\Benefit\CreateImportantEventLog.cs" />
+    <Compile Include="Plugin\Benefit\UpdateCaseCoverageLevels.cs" />
+    <Compile Include="Plugin\BVF\PopulatePrimaryAttributePlugin.cs" />
+    <Compile Include="Plugin\BVF\SubmitBVFPlugin.cs" />
+    <Compile Include="Plugin\CarrierPrecertCPT\ValidateDuplicateOrOverlappingCarrierPrecertCPT.cs" />
+    <Compile Include="Plugin\CaseGateExecution\CalculateExecutionTime.cs" />
+    <Compile Include="Plugin\CasePartDetail\CasePartPostPlugin.cs" />
+    <Compile Include="Plugin\CasePartDetail\CasePartValidationPlugin.cs" />
+    <Compile Include="Plugin\CasePartDetail\PopulateHCPCS.cs" />
+    <Compile Include="Plugin\CasePartDetail\Remove.cs" />
+    <Compile Include="Plugin\CasePartDetail\SetActualPartIsChangedFlag.cs" />
+    <Compile Include="Plugin\CasePartDetail\SetCaseCriticalFieldsLastChangeDate.cs" />
+    <Compile Include="Plugin\CasePartDetail\UpdatePOLines.cs" />
+    <Compile Include="Plugin\CasePartDetail\Void.cs" />
+    <Compile Include="Plugin\Case\AddNewBenefitNoteAndAuthorizationNote.cs" />
+    <Compile Include="Plugin\Case\AddSecondCarrier.cs" />
+    <Compile Include="Plugin\Case\AttachCaseToReferralLogs.cs" />
+    <Compile Include="Plugin\Case\CalculateProcedureDate.cs" />
+    <Compile Include="Plugin\Case\CaseDisplayStatusUpdated.cs" />
+    <Compile Include="Plugin\Case\CaseIsClosed.cs" />
+    <Compile Include="Plugin\Case\CaseIsUnlocked.cs" />
+    <Compile Include="Plugin\Case\CaseOwnerAssignment.cs" />
+    <Compile Include="Plugin\Case\CheckIfCaseCanBeClosed.cs" />
+    <Compile Include="Plugin\Case\CloseCaseActionPlugin.cs" />
+    <Compile Include="Plugin\Case\ClosePatientCollectionTasks.cs" />
+    <Compile Include="Plugin\Case\CreateDefaultAuthRecord.cs" />
+    <Compile Include="Plugin\Case\CreateImportantEventLogCaseReopened.cs" />
+    <Compile Include="Plugin\Case\CreateTissueRequestFormTask.cs" />
+    <Compile Include="Plugin\Case\DeriveHomePlanPlugin.cs" />
+    <Compile Include="Plugin\Case\DeriveInfoFromBilledCPT.cs" />
+    <Compile Include="Plugin\Case\DeriveInfoFromFacility.cs" />
+    <Compile Include="Plugin\Case\DetermineCMtoAssign.cs" />
+    <Compile Include="Plugin\Case\DetermineCStoAssign.cs" />
+    <Compile Include="Plugin\Case\GatingCompletedPlugin.cs" />
+    <Compile Include="Plugin\Case\GenerateClaimPlugin.cs" />
+    <Compile Include="Plugin\Case\GenerateDefaultBenefit.cs" />
+    <Compile Include="Plugin\Case\GeneratePO.cs" />
+    <Compile Include="Plugin\Case\HoldCaseActionPlugin.cs" />
+    <Compile Include="Plugin\Case\InitPatientOutreachTaskOnStatement.cs" />
+    <Compile Include="Plugin\Case\OnUpdateAllRecievedPlugin.cs" />
+    <Compile Include="Plugin\Case\OnUpdateScheduledProcedureDate.cs" />
+    <Compile Include="Plugin\Case\OpenCaseAction.cs" />
+    <Compile Include="Plugin\Case\POChangesAction.cs" />
+    <Compile Include="Plugin\Case\PreValidatePO.cs" />
+    <Compile Include="Plugin\Case\PutCaseIntoPool.cs" />
+    <Compile Include="Plugin\Case\RemoveCaseFromPool.cs" />
+    <Compile Include="Plugin\Case\RunGatingOnUpdateCalcRev.cs" />
+    <Compile Include="Plugin\Case\SavePatientDemographicInformation.cs" />
+    <Compile Include="Plugin\Case\SetAuthorizationRequired.cs" />
+    <Compile Include="Plugin\Case\SetBilledCptOnCase.cs" />
+    <Compile Include="Plugin\Case\SetBillToPatient.cs" />
+    <Compile Include="Plugin\Case\SetCaseLocked.cs" />
+    <Compile Include="Plugin\Case\SetCaseManagerFromPoolTask.cs" />
+    <Compile Include="Plugin\Case\SetCriticalFieldsLastChangeDate.cs" />
+    <Compile Include="Plugin\Case\SetOwnerByStateLifecycle.cs" />
+    <Compile Include="Plugin\Case\SetReferralTypeCanBeModified.cs" />
+    <Compile Include="Plugin\Case\SetRelatedToInsured.cs" />
+    <Compile Include="Plugin\Case\TrackAllReceived.cs" />
+    <Compile Include="Plugin\Case\TriggerEHRUpdateFeedProcess.cs" />
+    <Compile Include="Plugin\Case\UnlockCaseAction.cs" />
+    <Compile Include="Plugin\Case\UpdateCarrierNetworkOnCase.cs" />
+    <Compile Include="Plugin\Case\UpdateCaseBenefitType.cs" />
+    <Compile Include="Plugin\Case\UpdateCaseInOutNetwork.cs" />
+    <Compile Include="Plugin\Case\UpdateCollectionVendorValueToIPG.cs" />
+    <Compile Include="Plugin\Case\UpdateCollectionVendorValueToSCG.cs" />
+    <Compile Include="Plugin\Case\UpdatePatientInformationPlugin.cs" />
+    <Compile Include="Plugin\Case\UpdateReferralTypeOnCase.cs" />
+    <Compile Include="Plugin\Case\ValidateCarrierChange.cs" />
+    <Compile Include="Plugin\Case\ValidateMissingInformation.cs" />
+    <Compile Include="Plugin\Case\ValidateRequiredDocuments.cs" />
+    <Compile Include="Plugin\Case\VerifyBenefits.cs" />
+    <Compile Include="Plugin\ClaimResponseHeader\CloseMatchClaimCaseTask.cs" />
+    <Compile Include="Plugin\ClaimResponseHeader\CreateClaimResponseLinesFromClaim.cs" />
+    <Compile Include="Plugin\ClaimResponseHeader\UpdateCaseId.cs" />
+    <Compile Include="Plugin\ClaimResponseHeader\UpdateClaimId.cs" />
+    <Compile Include="Plugin\ClaimResponseHeader\UpdateClaimResponseBatchAmounts.cs" />
+    <Compile Include="Plugin\ClaimResponseLineAdjustment\UpdateClaimResponseLine.cs" />
+    <Compile Include="Plugin\ClaimResponseLine\UpdateClaimResponseHeaderAmounts.cs" />
+    <Compile Include="Plugin\ClaimResponse\AssignClaimResponseBatch.cs" />
+    <Compile Include="Plugin\ClaimResponse\CalculatePatientResponsibility.cs" />
+    <Compile Include="Plugin\ClaimResponse\CheckHeaderTotals.cs" />
+    <Compile Include="Plugin\ClaimResponse\FillDenialCodePresentation.cs" />
+    <Compile Include="Plugin\ClaimResponse\FillRemarkCodePresentation.cs" />
+    <Compile Include="Plugin\ClaimResponse\ProcessClaimResponseBatch.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateClaimResponseBatchStatus.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateManualBatchName.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateManualHeaderName.cs" />
+    <Compile Include="Plugin\Claim\CreateClaimTask.cs" />
+    <Compile Include="Plugin\Claim\UpdateClaimStatus.cs" />
+    <Compile Include="Plugin\Claim\UpdateExpectedReimbursement.cs" />
+    <Compile Include="Plugin\Common\Benefits\BenefitVerifier.cs" />
+    <Compile Include="Plugin\Common\Benefits\CarrierNumbers.cs" />
+    <Compile Include="Plugin\Common\Benefits\CaseBenefitSwitcher.cs" />
+    <Compile Include="Plugin\Common\Benefits\EbvBenefitImporter.cs" />
+    <Compile Include="Plugin\Common\CasePartValidator.cs" />
+    <Compile Include="Plugin\Common\Constants.cs" />
+    <Compile Include="Plugin\Common\HttpClientService.cs" />
+    <Compile Include="Plugin\Common\Interfaces\ICaseBenefitSwitcher.cs" />
+    <Compile Include="Plugin\Common\Interfaces\IHttpClientService.cs" />
+    <Compile Include="Plugin\ContactAccounts\UpsertContactAccount.cs" />
+    <Compile Include="Plugin\Contact\CreateTaskForFacilityUserPlugin.cs" />
+    <Compile Include="Plugin\Contact\CreateTaskForPhysicianPlugin.cs" />
+    <Compile Include="Plugin\Contact\Impersonation.cs" />
+    <Compile Include="Plugin\Contact\NewPhysicianRequestPlugin.cs" />
+    <Compile Include="Plugin\Contact\PortalContactDisallowDuplicates.cs" />
+    <Compile Include="Plugin\Contact\PotentialDuplicatePatient.cs" />
+    <Compile Include="Plugin\Contact\RequestNewFacilityUserNotificationPlugin.cs" />
+    <Compile Include="Plugin\Contact\SetFullName.cs" />
+    <Compile Include="Plugin\Contact\SyncContactCustomerTypeCodeWithContactType.cs" />
+    <Compile Include="Plugin\CptCode\CheckCPTCodeForDuplicate.cs" />
+    <Compile Include="Plugin\CptCode\SetProcedureNameOnCase.cs" />
+    <Compile Include="Plugin\Document\AssociateDocument.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToAccount.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToCase.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToReferral.cs" />
+    <Compile Include="Plugin\Document\AutoCloseCaseTasks.cs" />
+    <Compile Include="Plugin\Document\CountNumberOfPages.cs" />
+    <Compile Include="Plugin\Document\CreateApproveMfgPriceListTask.cs" />
+    <Compile Include="Plugin\Document\CreateApprovePriceListUserTask.cs" />
+    <Compile Include="Plugin\Document\CreateNoteFromFile.cs" />
+    <Compile Include="Plugin\Document\DocumentOwnerAssignment.cs" />
+    <Compile Include="Plugin\Document\MergeDocumentsPlugin.cs" />
+    <Compile Include="Plugin\Document\PreventMultiplePifsPerReferralCase.cs" />
+    <Compile Include="Plugin\Document\ReassignDocumentToReferral.cs" />
+    <Compile Include="Plugin\Document\ReassingDocumentToCase.cs" />
+    <Compile Include="Plugin\Document\RenameDocumentWhenPropertiesChange.cs" />
+    <Compile Include="Plugin\Document\RetrieveDocumentsForDynamicView.cs" />
+    <Compile Include="Plugin\Document\SplitDocumentPlugin.cs" />
+    <Compile Include="Plugin\Document\UpdateTaskPlugin.cs" />
+    <Compile Include="Plugin\Document\ValidateFileExtension.cs" />
+    <Compile Include="Plugin\Document\ValidateMfgPriceList.cs" />
+    <Compile Include="Plugin\DxCode\PopulatePrimaryAttributePlugin.cs" />
+    <Compile Include="Plugin\EhrCarrierMapping\CompleteEhrCarrierMappingTasks.cs" />
+    <Compile Include="Plugin\Entitlement\SetBillToPatient.cs" />
+    <Compile Include="Plugin\Entitlement\UpdateEntitlementExpirationDate.cs" />
+    <Compile Include="Plugin\Entitlement\ValidateFacilityCarrierEntitlementCreateAndUpdate.cs" />
+    <Compile Include="Plugin\EstimatedCasePartDetail\EstimatedPartsValidationPlugin.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRuleContract\ValidateOverlapFacilityCarrierCPTRuleContract.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRule\UpdateFacilityCarrierCPTRuleName.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRule\ValidateOverlappingCPTRules.cs" />
+    <Compile Include="Plugin\FacilityCPT\FaciltyCPTValidator.cs" />
+    <Compile Include="Plugin\FacilityCPT\OnFacilityCPTCreateAndUpdate.cs" />
+    <Compile Include="Plugin\FacilityEhrConnection\EhrConnectionDatesValidationPlugin.cs" />
+    <Compile Include="Plugin\FacilityEhrConnection\UpdateStatusOnFacility.cs" />
+    <Compile Include="Plugin\GateProcessingRule\CheckUniqueness.cs" />
+    <Compile Include="Plugin\GatingV2\CommonWfTask\WFTaskBase.cs" />
+    <Compile Include="Plugin\GatingV2\CommonWfTask\WFTaskContext.cs" />
+    <Compile Include="Plugin\GatingV2\CommonWfTask\WfTaskFactory.cs" />
+    <Compile Include="Plugin\GatingV2\CommonWfTask\WFTaskResult.cs" />
+    <Compile Include="Plugin\GatingV2\Context\GatingContext.cs" />
+    <Compile Include="Plugin\GatingV2\GateProcessing_2.cs" />
+    <Compile Include="Plugin\GatingV2\TaskManager_2.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\CaseIsOnHold.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\DetermineBenefitStatus.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsAutoCarrier.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsCPTSupportedByCarrier.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsCPTSupportedByFacilityCarrier.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsPatientDemographicsNotProvided.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsPatientInsuranceNotProvided.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\IsProcedureNameNotApproved.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\RequiredDocumentsByGatePIF.cs" />
+    <Compile Include="Plugin\GatingV2\WFTasks\ValidateDxCode.cs" />
+    <Compile Include="Plugin\GatingV3\FillCaseInputFields.cs" />
+    <Compile Include="Plugin\GatingV3\FillWorkflowTaskList.cs" />
+    <Compile Include="Plugin\Gating\CaseHasSubmittedClaims.cs" />
+    <Compile Include="Plugin\Gating\CaseHasSubmittedClaimsBCBSNC.cs" />
+    <Compile Include="Plugin\Gating\CheckActualProcedureDate.cs" />
+    <Compile Include="Plugin\Gating\CheckAutoCarrier.cs" />
+    <Compile Include="Plugin\Gating\CheckBandingRules.cs" />
+    <Compile Include="Plugin\Gating\CheckBSAVerification.cs" />
+    <Compile Include="Plugin\Gating\CheckCalcRevDate.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierBalance.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierIsAccepted.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierNetworkCPTRules.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierType.cs" />
+    <Compile Include="Plugin\Gating\CheckCasePartDetails.cs" />
+    <Compile Include="Plugin\Gating\CheckClaimGenerationOverride.cs" />
+    <Compile Include="Plugin\Gating\CheckCptCodesPlugin.cs" />
+    <Compile Include="Plugin\Gating\CheckCPTorProcedureName.cs" />
+    <Compile Include="Plugin\Gating\CheckCPTWithProcedure.cs" />
+    <Compile Include="Plugin\Gating\CheckCriticalFieldsLastChangeDate.cs" />
+    <Compile Include="Plugin\Gating\CheckDisplayedStatusForCancel.cs" />
+    <Compile Include="Plugin\Gating\CheckDMEBenefitsJQUPrefix.cs" />
+    <Compile Include="Plugin\Gating\CheckDuplicateCase.cs" />
+    <Compile Include="Plugin\Gating\CheckDxGender.cs" />
+    <Compile Include="Plugin\Gating\CheckFacilityAcceptCpt.cs" />
+    <Compile Include="Plugin\Gating\CheckForCarrierAcceptCPT.cs" />
+    <Compile Include="Plugin\Gating\CheckHasBilledCPT.cs" />
+    <Compile Include="Plugin\Gating\CheckHCPSCCaseDos.cs" />
+    <Compile Include="Plugin\Gating\CheckHighDollarAuth.cs" />
+    <Compile Include="Plugin\Gating\CheckHighPriorityTasks.cs" />
+    <Compile Include="Plugin\Gating\CheckIfPrimaryCarrierIsContracted.cs" />
+    <Compile Include="Plugin\Gating\CheckIncidentBalances.cs" />
+    <Compile Include="Plugin\Gating\CheckMedicalRecords.cs" />
+    <Compile Include="Plugin\Gating\CheckMissingInfoCPTCodes.cs" />
+    <Compile Include="Plugin\Gating\CheckMissingInfoDXCodes.cs" />
+    <Compile Include="Plugin\Gating\CheckPatientBalance.cs" />
+    <Compile Include="Plugin\Gating\CheckPatientBalanceWithAction.cs" />
+    <Compile Include="Plugin\Gating\CheckPatientPrimaryInfo.cs" />
+    <Compile Include="Plugin\Gating\CheckPhysicianValue.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthCarrierName.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthCarrierPreCertCPT.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthHCPCS.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthMemberId.cs" />
+    <Compile Include="Plugin\Gating\CheckPropelNasalStentOnCPT.cs" />
+    <Compile Include="Plugin\Gating\CheckPropelNasalStentOnProcedureName.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralAssociatedCase.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralDOS.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralRequiredFields.cs" />
+    <Compile Include="Plugin\Gating\CheckRequiredAuthForHMO.cs" />
+    <Compile Include="Plugin\Gating\CheckRequiredDocumentByGate.cs" />
+    <Compile Include="Plugin\Gating\CheckSupportedParts.cs" />
+    <Compile Include="Plugin\Gating\CheckValidatedAcceptedClaim.cs" />
+    <Compile Include="Plugin\Gating\CheckVerifyAllReceivedDate.cs" />
+    <Compile Include="Plugin\Gating\Common\DocumentsManager.cs" />
+    <Compile Include="Plugin\Gating\Common\GateManager.cs" />
+    <Compile Include="Plugin\Gating\Common\GateManagerPostAction.cs" />
+    <Compile Include="Plugin\Gating\Common\GatingDocumentManager.cs" />
+    <Compile Include="Plugin\Gating\Common\GatingOutcomes.cs" />
+    <Compile Include="Plugin\Gating\Common\GatingPluginBase.cs" />
+    <Compile Include="Plugin\Gating\Common\GatingReponsePatientBalance.cs" />
+    <Compile Include="Plugin\Gating\Common\GatingResponse.cs" />
+    <Compile Include="Plugin\Gating\Common\PreAuthGatingManager.cs" />
+    <Compile Include="Plugin\Gating\Common\ProcessResult.cs" />
+    <Compile Include="Plugin\Gating\Common\TaskManager.cs" />
+    <Compile Include="Plugin\Gating\Constants\LifeCycleStep.cs" />
+    <Compile Include="Plugin\Gating\CptCodesValidation.cs" />
+    <Compile Include="Plugin\Gating\CPTSupportedByFacility.cs" />
+    <Compile Include="Plugin\Gating\CPTSupportedByIPG.cs" />
+    <Compile Include="Plugin\Gating\CPTValidation\BasicCPTValidation.cs" />
+    <Compile Include="Plugin\Gating\CPTValidation\CPTSupportedByIPG.cs" />
+    <Compile Include="Plugin\Gating\CPTValidation\CPTValidationResult.cs" />
+    <Compile Include="Plugin\Gating\DetermineFacilityCarrierStatus\DOSIsOutOfContract.cs" />
+    <Compile Include="Plugin\Gating\DetermineFacilityCarrierStatus\NoContract.cs" />
+    <Compile Include="Plugin\Gating\DeterminePrimaryCarrierPlugin.cs" />
+    <Compile Include="Plugin\Gating\FacilityCarrierContractExists.cs" />
+    <Compile Include="Plugin\Gating\GateProcessing.cs" />
+    <Compile Include="Plugin\Gating\GateProcessingPostAction.cs" />
+    <Compile Include="Plugin\Gating\GatingDocumentActions\TestActionAlwaysTrue.cs" />
+    <Compile Include="Plugin\Gating\PatientDemographicsNotProvided.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate10.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate11.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate12.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate2.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate3.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate4.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate6.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate8.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate9.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\GateEHR.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\PostProcessManager.cs" />
+    <Compile Include="Plugin\Gating\PreProcess\Gate2.cs" />
+    <Compile Include="Plugin\Gating\PreProcess\Gate8.cs" />
+    <Compile Include="Plugin\Gating\PreProcess\PreProcessManager.cs" />
+    <Compile Include="Plugin\Gating\SetInitialGateConfigurationValue.cs" />
+    <Compile Include="Plugin\Gating\TimelyFilingRequirements.cs" />
+    <Compile Include="Plugin\Gating\ValidateCPTCodesByApprovement.cs" />
+    <Compile Include="Plugin\Gating\ValidateDxCode.cs" />
+    <Compile Include="Plugin\Gating\ValidateEhrPatientAddress.cs" />
+    <Compile Include="Plugin\Gating\ValidCarrierPairedAutoCarrier.cs" />
+    <Compile Include="Plugin\Gating\VerifyBenefits.cs" />
+    <Compile Include="Plugin\Gating\WFTGroups\PostProcessIfFailed\PreAuthFailed.cs" />
+    <Compile Include="Plugin\Gating\WFTGroups\WFGroup.cs" />
+    <Compile Include="Plugin\Gating\WFTGroups\WFGTreeManager.cs" />
+    <Compile Include="Plugin\General\FindChangesForGatingPlugin.cs" />
+    <Compile Include="Plugin\GLTransaction\PopulateFieldsFromCase.cs" />
+    <Compile Include="Plugin\GLTransaction\UpdateCaseFields.cs" />
+    <Compile Include="Plugin\ImportantEventsLog\Helpers\QueryVisitor.cs" />
+    <Compile Include="Plugin\ImportantEventsLog\RetrieveMultipleImportantEventsLogFilter.cs" />
+    <Compile Include="Plugin\InformationTypeRequiredInformationRule\InformationTypeRequiredInformationRuleValidateDuplicate.cs" />
+    <Compile Include="Plugin\Logging\CasePromotedToCollectionLogPlugin.cs" />
+    <Compile Include="Plugin\Managers\AccountManager.cs" />
+    <Compile Include="Plugin\Managers\BvfManager.cs" />
+    <Compile Include="Plugin\Managers\CaseManager.cs" />
+    <Compile Include="Plugin\Managers\CasePartDetailManager.cs" />
+    <Compile Include="Plugin\Managers\ClaimGenerationManager.cs" />
+    <Compile Include="Plugin\Managers\DocumentManager.cs" />
+    <Compile Include="Plugin\Managers\ImportantEventManager.cs" />
+    <Compile Include="Plugin\Managers\OrderManager.cs" />
+    <Compile Include="Plugin\Managers\PaymentManager.cs" />
+    <Compile Include="Plugin\Managers\PdfManager.cs" />
+    <Compile Include="Plugin\Managers\PortalContactManager.cs" />
+    <Compile Include="Plugin\Managers\TaskManager.cs" />
+    <Compile Include="Plugin\Managers\UserManager.cs" />
+    <Compile Include="Plugin\Note\ConvertDocxToPdfPlugin.cs" />
+    <Compile Include="Plugin\Note\CreateDocumentFromNote.cs" />
+    <Compile Include="Plugin\Note\GeneratePDFPatientStatement.cs" />
+    <Compile Include="Plugin\Note\ModifyNotesView.cs" />
+    <Compile Include="Plugin\Note\SetNoOfPagesOnPDFUpload.cs" />
+    <Compile Include="Plugin\Order\CreateOrderImportantEventLog.cs" />
+    <Compile Include="Plugin\Order\OrderCreateUpdateCaptureCaseAIFields.cs" />
+    <Compile Include="Plugin\Order\PopulateDownloadedFromPortalField.cs" />
+    <Compile Include="Plugin\Order\SetIsLockedOnActualParts.cs" />
+    <Compile Include="Plugin\Order\SetPOIssuedOrPOPaidOnCase.cs" />
+    <Compile Include="Plugin\Order\UpdateMostRecentPOs.cs" />
+    <Compile Include="Plugin\Order\VoidPO.cs" />
+    <Compile Include="Plugin\Patches\VirtualEntityCosmosDBPatch.cs" />
+    <Compile Include="Plugin\Payment\CopyClaimLineItemsValues.cs" />
+    <Compile Include="Plugin\Payment\CreateAdjustment.cs" />
+    <Compile Include="Plugin\Payment\CreatePaymentNote.cs" />
+    <Compile Include="Plugin\Payment\FillPaymentFields.cs" />
+    <Compile Include="Plugin\Payment\GateExecution.cs" />
+    <Compile Include="Plugin\Payment\InsertGLTransactionOnPaymentCreation.cs" />
+    <Compile Include="Plugin\Payment\PreValidatePayment.cs" />
+    <Compile Include="Plugin\Payment\ProcessClaimLineItems.cs" />
+    <Compile Include="Plugin\Payment\ProcessPayment.cs" />
+    <Compile Include="Plugin\Payment\RoundBalance.cs" />
+    <Compile Include="Plugin\Payment\UpdateCaseFields.cs" />
+    <Compile Include="Plugin\Payment\UpdateClaimResponseHeaderStatus.cs" />
+    <Compile Include="Plugin\PortalComment\AssignRecordToFacilityCaseManagerPlugin.cs" />
+    <Compile Include="Plugin\PortalComment\AssignToUserOrTeam.cs" />
+    <Compile Include="Plugin\PortalComment\SetDefaultPortalFields.cs" />
+    <Compile Include="Plugin\PortalComment\SetMessageStatus.cs" />
+    <Compile Include="Plugin\ProcedureName\CheckProcedureNameForDuplicate.cs" />
+    <Compile Include="Plugin\ProcedureName\CreateTaskForNewProcedureName.cs" />
+    <Compile Include="Plugin\Product\CheckProductOnDuplicatePlugin.cs" />
+    <Compile Include="Plugin\QueueItem\RouteQueueItemPlugin.cs" />
+    <Compile Include="Plugin\Referral\AssociateDocumentsToReferralPlugin.cs" />
+    <Compile Include="Plugin\Referral\CheckReferralDuplicate.cs" />
+    <Compile Include="Plugin\Referral\CreateCaseFromReferralPlugin.cs" />
+    <Compile Include="Plugin\Referral\CreateAnnotationFromReferralNote.cs" />
+    <Compile Include="Plugin\Referral\CreatePatientPlugin.cs" />
+    <Compile Include="Plugin\Referral\EhrCptOverride.cs" />
+    <Compile Include="Plugin\Referral\GeneratePifDocumentFromPortal.cs" />
+    <Compile Include="Plugin\Referral\PopulatePrimaryAttributePlugin.cs" />
+    <Compile Include="Plugin\Referral\PreventBusinessProccesFlowStageChange.cs" />
+    <Compile Include="Plugin\Referral\PreventCreationNotFromInitiateReferral.cs" />
+    <Compile Include="Plugin\Referral\ReferralOwnerAssignment.cs" />
+    <Compile Include="Plugin\Referral\ReopenReferralPlugin.cs" />
+    <Compile Include="Plugin\Referral\SetClosedDate.cs" />
+    <Compile Include="Plugin\Referral\UpdatePatientInformationPlugin.cs" />
+    <Compile Include="Plugin\Referral\UpdateReferralType.cs" />
+    <Compile Include="Plugin\SLA\ChangeSlaTaskDueDate.cs" />
+    <Compile Include="Plugin\SLA\CompleteDecisionCase.cs" />
+    <Compile Include="Plugin\SLA\CompleteGeneratePo.cs" />
+    <Compile Include="Plugin\SLA\CompletePayProvider.cs" />
+    <Compile Include="Plugin\SLA\CreateReferral.cs" />
+    <Compile Include="Plugin\SLA\DecisionCase.cs" />
+    <Compile Include="Plugin\SLA\GeneratePo.cs" />
+    <Compile Include="Plugin\SLA\PayProvider.cs" />
+    <Compile Include="Plugin\StatementGenerationTask\CreateCtatmentTaskForMigratedCases.cs" />
+    <Compile Include="Plugin\StatementGenerationTask\UpdateCaseCollectionVendor.cs" />
+    <Compile Include="Plugin\StatementGenerationTask\UpdateLastStatementType.cs" />
+    <Compile Include="Plugin\Task\AssociateCaseToReferralTasks.cs" />
+    <Compile Include="Plugin\Task\CloseByExceptionApprovedStatus.cs" />
+    <Compile Include="Plugin\Task\CloseByRegarding.cs" />
+    <Compile Include="Plugin\Task\CloseTaskActionPlugin.cs" />
+    <Compile Include="Plugin\Task\Common\ValidationResponse.cs" />
+    <Compile Include="Plugin\Task\ConfigureTask.cs" />
+    <Compile Include="Plugin\Task\CreateDocumentFromTaskNote.cs" />
+    <Compile Include="Plugin\Task\CreateEventLogOnOverridingSystemRejection.cs" />
+    <Compile Include="Plugin\Task\CreateTaskImportantEventLog.cs" />
+    <Compile Include="Plugin\Task\EhrCarrierMappingTasks.cs" />
+    <Compile Include="Plugin\Task\GenerateClaimsBatch.cs" />
+    <Compile Include="Plugin\Task\ManageCaseOnHoldByTask.cs" />
+    <Compile Include="Plugin\Task\PopulateAuthDueOrCreatedOn.cs" />
+    <Compile Include="Plugin\Task\PopulateCustomCaseField.cs" />
+    <Compile Include="Plugin\Task\PopulateSoonestAuthTaskOnCase.cs" />
+    <Compile Include="Plugin\Task\PopulateSoonestTasksOnCase.cs" />
+    <Compile Include="Plugin\Task\RequestToCloseIsResolved.cs" />
+    <Compile Include="Plugin\Task\RescheduleTaskActionPlugin.cs" />
+    <Compile Include="Plugin\Task\RouteTaskPlugin.cs" />
+    <Compile Include="Plugin\Task\RunClaimGenerationJob.cs" />
+    <Compile Include="Plugin\Task\SetRequestToClose.cs" />
+    <Compile Include="Plugin\Task\UpdateAlertFieldOnCase.cs" />
+    <Compile Include="Plugin\Task\UpdateTaskTitleDescription.cs" />
+    <Compile Include="Plugin\Task\VerifyAllMissingInformationForPoolTask.cs" />
+    <Compile Include="Plugin\User\CreateContactAccount.cs" />
+    <Compile Include="Plugin\User\RemoveCaseManagerRelationshipOnDeactivation.cs" />
+    <Compile Include="Plugin\Workflow\CheckCptCodesPlugin.cs" />
+    <Compile Include="Plugin\Workflow\CloneRecordPlugin.cs" />
+    <Compile Include="Plugin\Workflow\CopyDocumentsPlugin.cs" />
+    <Compile Include="Plugin\Workflow\CopyPostsPlugin.cs" />
+    <Compile Include="Plugin\Workflow\DeterminePrimaryCarrierPlugin.cs" />
+    <Compile Include="Plugin\Workflow\ValidatePreCertRequirementsOnCase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AuthorizationRepository.cs" />
+    <Compile Include="Repositories\CalendarRepository.cs" />
+    <Compile Include="Repositories\CasePartDetailRepository.cs" />
+    <Compile Include="Repositories\ClaimPDFConfigurationRepository.cs" />
+    <Compile Include="Repositories\DocumentRepository.cs" />
+    <Compile Include="Repositories\DocumentTypeRepository.cs" />
+    <Compile Include="Repositories\PatientStatementTaskRepository.cs" />
+    <Compile Include="Repositories\TaskCategoryRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Repositories\TaskTypeRepository.cs" />
+    <Compile Include="Repositories\TeamRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\coretools\CrmSvcUtil.exe.config" />
+    <None Include="bin\coretools\LicenseTerms.docx" />
+    <None Include="bin\coretools\SolutionPackager.exe.config" />
+    <None Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCFSolution\AssociatedFacilityPCFSolution.cdsproj" />
+    <None Include="Controls\AssociatedFacilityPCFControl\AssocitatedFacilityPCF.pcfproj" />
+    <None Include="Controls\AssociatedFacilityPCFControl\package-lock.json" />
+    <None Include="Controls\AssociatedFacilityPCFControl\package.json" />
+    <None Include="Controls\AssociatedFacilityPCFControl\pcfconfig.json" />
+    <None Include="Controls\AssociatedFacilityPCFControl\tsconfig.json" />
+    <None Include="Controls\DocumentUploadControl\DocumentUploadComponent\.vs\slnx.sqlite" />
+    <None Include="Controls\DocumentUploadControl\DocumentUploadComponent\.vs\VSWorkspaceState.json" />
+    <None Include="ILMerge.props">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Key.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="spkl.json" />
+    <None Include="WebResources\react-app\.env" />
+    <None Include="WebResources\react-app\package-lock.json" />
+    <None Include="WebResources\react-app\package.json" />
+    <None Include="WebResources\react-app\proxy.json" />
+    <None Include="WebResources\react-app\public\manifest.json" />
+    <None Include="WebResources\react-app\README.md" />
+    <None Include="WebResources\react-app\src\mocks\ipg_casepartdetails.json" />
+    <None Include="WebResources\react-app\tsconfig.json" />
+    <None Include="WebResources\react-app\tsconfig.server.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\coretools\CrmSvcUtil.exe" />
+    <Content Include="bin\coretools\CrmSvcUtil.xml" />
+    <Content Include="bin\coretools\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="bin\coretools\Microsoft.Rest.ClientRuntime.dll" />
+    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
+    <Content Include="bin\coretools\Newtonsoft.Json.dll" />
+    <Content Include="bin\coretools\Other Redistributable.txt" />
+    <Content Include="bin\coretools\SolutionPackager.exe" />
+    <Content Include="bin\Debug\Insight.Intake.dll" />
+    <Content Include="bin\Debug\Insight.Intake.pdb" />
+    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.xml" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.xml" />
+    <Content Include="bin\Debug\xunit.abstractions.dll" />
+    <Content Include="bin\Debug\xunit.abstractions.xml" />
+    <Content Include="bin\Debug\xunit.assert.dll" />
+    <Content Include="bin\Debug\xunit.assert.xml" />
+    <Content Include="bin\Debug\xunit.core.dll" />
+    <Content Include="bin\Debug\xunit.core.xml" />
+    <Content Include="bin\Debug\xunit.execution.desktop.dll" />
+    <Content Include="bin\Debug\xunit.execution.desktop.xml" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\AdvancedAutoCompleteControl.js" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\ControlManifest.xml" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\css\crm.wijmo.autocomplete.css" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\css\wijmo.css" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\libs\jquery-2.1.1.js" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\libs\mscommonlib-1.0.0.js" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\libs\wijmo.input.js" />
+    <Content Include="Controls\AdvancedAutoCompleteControl\libs\wijmo.js" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\.gitignore" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCFSolution\.gitignore" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCFSolution\src\Other\Customizations.xml" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCFSolution\src\Other\Relationships.xml" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCFSolution\src\Other\Solution.xml" />
+    <Content Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCF\ControlManifest.Input.xml" />
+    <Content Include="Controls\DocumentUploadControl\DocumentUploadComponent\ControlManifest.Input.xml" />
+    <Content Include="Controls\DocumentUploadControl\DocumentUploadComponent\css\DocumentUploadComponent.css" />
+    <Content Include="Controls\DocumentUploadControl\DocumentUploadComponent\img\default.png" />
+    <Content Include="Controls\ReadMe.txt" />
+    <Content Include="EarlyBoundGenerator.InsightIntakeSettings.xml" />
+    <Content Include="ILMergeOrder.txt" />
+    <Content Include="lib\PdfSharp.dll" />
+    <Content Include="WebResources\.editorconfig" />
+    <Content Include="WebResources\ipg_\core\document\InitiateReferralCommand.js" />
+    <Content Include="WebResources\ipg_\intake\accountUser\AccountUserRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\account\Account.js" />
+    <Content Include="WebResources\ipg_\intake\account\AccountRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\account\Carrier.js" />
+    <Content Include="WebResources\ipg_\intake\account\CarrierCPT.js" />
+    <Content Include="WebResources\ipg_\intake\account\CPTExclusions.js" />
+    <Content Include="WebResources\ipg_\intake\account\DisplayContacts.js" />
+    <Content Include="WebResources\ipg_\intake\account\FacilityCPT.js" />
+    <Content Include="WebResources\ipg_\intake\account\FilterCPTGrid.js" />
+    <Content Include="WebResources\ipg_\intake\account\FilterCPTGrid.ts" />
+    <Content Include="WebResources\ipg_\intake\activity\ActivityPointerRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\AddNewCarrierToCase\AddNewCarrierToCase.js" />
+    <Content Include="WebResources\ipg_\intake\adjustment\Adjustment.js" />
+    <Content Include="WebResources\ipg_\intake\adjustment\AdjustmentRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\adjustment\DropDownToRadiobuttonList.html" />
+    <Content Include="WebResources\ipg_\intake\applicationRibbon\applicationRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\authorization\authorization.js" />
+    <Content Include="WebResources\ipg_\intake\authorization\AuthorizationRule.js" />
+    <Content Include="WebResources\ipg_\intake\authorization\caseAuthButtons.html" />
+    <Content Include="WebResources\ipg_\intake\authorization\caseAuthButtons.js" />
+    <Content Include="WebResources\ipg_\intake\benefitsVerificationForm\benefitsVerificationForm.js" />
+    <Content Include="WebResources\ipg_\intake\CallActionProcess.js" />
+    <Content Include="WebResources\ipg_\intake\CallActionProcess.ts" />
+    <Content Include="WebResources\ipg_\intake\CallOnDemandProcess.js" />
+    <Content Include="WebResources\ipg_\intake\CallOnDemandProcess.ts" />
+    <Content Include="WebResources\ipg_\intake\CancelRecordRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\CarrierClaimsAddress\ClaimAddress.js" />
+    <Content Include="WebResources\ipg_\intake\casegateexecution\seconds-end-execution.html" />
+    <Content Include="WebResources\ipg_\intake\casegateexecution\seconds-start-execution.html" />
+    <Content Include="WebResources\ipg_\intake\casePartDetail\casePartDetail.js" />
+    <Content Include="WebResources\ipg_\intake\casePartDetail\CasePartDetailEditableGrid.js" />
+    <Content Include="WebResources\ipg_\intake\casePartDetail\casePartDetailRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\casePartDetail\Manage.html" />
+    <Content Include="WebResources\ipg_\intake\casePartDetail\Manage.js" />
+    <Content Include="WebResources\ipg_\intake\case\ARSummary.html" />
+    <Content Include="WebResources\ipg_\intake\case\AssignCaseModal.html" />
+    <Content Include="WebResources\ipg_\intake\case\AssignCaseModal.js" />
+    <Content Include="WebResources\ipg_\intake\case\CallGeneratePurchaseOrders.js" />
+    <Content Include="WebResources\ipg_\intake\case\CheckCPTCode.js" />
+    <Content Include="WebResources\ipg_\intake\case\CheckEquipmentListDate.js" />
+    <Content Include="WebResources\ipg_\intake\case\CheckReferralTypeAccess.js" />
+    <Content Include="WebResources\ipg_\intake\case\ClaimOverride.js" />
+    <Content Include="WebResources\ipg_\intake\case\CreateClaim.js" />
+    <Content Include="WebResources\ipg_\intake\case\FillInsuredFields.js" />
+    <Content Include="WebResources\ipg_\intake\case\FilterPlanTypeInCase.js" />
+    <Content Include="WebResources\ipg_\intake\case\HideOrShowRetrieveBenefitsButton.js" />
+    <Content Include="WebResources\ipg_\intake\case\HideOrShowRetrieveBenefitsButton.ts" />
+    <Content Include="WebResources\ipg_\intake\case\Incident.js" />
+    <Content Include="WebResources\ipg_\intake\case\Incident_InsuranceTab.js" />
+    <Content Include="WebResources\ipg_\intake\case\SetCaseCarrierType.js" />
+    <Content Include="WebResources\ipg_\intake\case\UnlockEquipmentListDateField.js" />
+    <Content Include="WebResources\ipg_\intake\ChangeColumnTitles.js" />
+    <Content Include="WebResources\ipg_\intake\ChargeCenter\ChargeCenter.js" />
+    <Content Include="WebResources\ipg_\intake\CheckCPTForDuplicates.js" />
+    <Content Include="WebResources\ipg_\intake\CheckCPTForFormat.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimConfiguration\ClaimConfiguration.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimGenerationOverride\ClaimGenerationOverride.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseBatch\ClaimResponseBatch.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseBatch\ClaimResponseBatchRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseHeader\ClaimResponseHeader.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseHeader\ClaimResponseHeaderRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseLineAdjustment\ClaimResponseLineAdjustment.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimResponseLineRemark\ClaimResponseLineRemark.js" />
+    <Content Include="WebResources\ipg_\intake\claim\Claim.js" />
+    <Content Include="WebResources\ipg_\intake\claim\ClaimResponseLine.js" />
+    <Content Include="WebResources\ipg_\intake\claim\ClaimRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\claim\PaymentProcessing.html" />
+    <Content Include="WebResources\ipg_\intake\claim\PaymentProcessing.js" />
+    <Content Include="WebResources\ipg_\intake\claim\select2.min.css" />
+    <Content Include="WebResources\ipg_\intake\claim\select2.min.js" />
+    <Content Include="WebResources\ipg_\intake\configs\duplicateButton.js" />
+    <Content Include="WebResources\ipg_\intake\contactsAccount\contactsAccount.js" />
+    <Content Include="WebResources\ipg_\intake\contactsAccount\contactsAccountRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\contact\Contact.js" />
+    <Content Include="WebResources\ipg_\intake\contact\ContactRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\contact\PatientDocuments.html" />
+    <Content Include="WebResources\ipg_\intake\contact\PatientDocuments.js" />
+    <Content Include="WebResources\ipg_\intake\document\document.js" />
+    <Content Include="WebResources\ipg_\intake\document\DocumentCommon.js" />
+    <Content Include="WebResources\ipg_\intake\document\DocumentFile.html" />
+    <Content Include="WebResources\ipg_\intake\document\merge.html" />
+    <Content Include="WebResources\ipg_\intake\document\merge.js" />
+    <Content Include="WebResources\ipg_\intake\document\split.js" />
+    <TypeScriptCompile Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCF\generated\ManifestTypes.d.ts" />
+    <TypeScriptCompile Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCF\index.ts" />
+    <TypeScriptCompile Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCF\MultiselectOptionSetControl.tsx" />
+    <TypeScriptCompile Include="Controls\AssociatedFacilityPCFControl\AssociatedFacilityPCF\types.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\core\document\InitiateReferralCommand.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\Carrier.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\CarrierCPT.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\CPTExclusions.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\DisplayContacts.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\FacilityCPT.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\activity\ActivityPointerRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\AddNewCarrierToCase\AddNewCarrierToCase.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\adjustment\AdjustmentRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\authorization\authorization.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\authorization\AuthorizationRule.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\authorization\caseAuthButtons.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\benefitsVerificationForm\CoInsurance.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\CancelRecordRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\CarrierClaimsAddress\ClaimAddress.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\casePartDetail\Manage.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\casePartDetail\casePartDetailRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\casePartDetail\CasePartDetailEditableGrid.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\AssignCaseModal.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\CheckEquipmentListDate.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\adjustment\Adjustment.ts" />
+    <Content Include="WebResources\ipg_\intake\case\SetReferralSource.js" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\Incident_InsuranceTab.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\PatientInformation.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\SetCaseCarrierType.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\SetReferralSource.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\UnlockEquipmentListDateField.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\CheckReferralTypeAccess.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\CheckCPTForFormat.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimGenerationOverride\ClaimGenerationOverride.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseBatch\ClaimResponseBatchRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseHeader\ClaimResponseHeader.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseLineAdjustment\ClaimResponseLineAdjustment.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseLineRemark\ClaimResponseLineRemark.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\claim\Claim.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\ClaimOverride.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\claim\ClaimResponseLine.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\configs\duplicateButton.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contact\file1.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contact\PatientDocuments.ts" />
+    <Content Include="WebResources\ipg_\intake\document\DocumentCommon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\dxcodes\CodeType.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\dxcodes\DXCodeDates.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\EBVResponse\ViewDetails.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\EBVResponse\EBVResponseRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\EBVInquiry\EBVInquiryRibbon.ts" />
+    <Content Include="WebResources\ipg_\intake\dxcodes\CodeType.js" />
+    <Content Include="WebResources\ipg_\intake\dxcodes\DXCodeDates.js" />
+    <Content Include="WebResources\ipg_\intake\EBVInquiry\EBVInquiryRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\EBVResponse\EBVResponseRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\EBVResponse\ViewDetails.html" />
+    <Content Include="WebResources\ipg_\intake\EBVResponse\ViewDetails.js" />
+    <Content Include="WebResources\ipg_\intake\EHRCarrierMapping\EHRCarrierMapping.js" />
+    <Content Include="WebResources\ipg_\intake\EHRStaging\EHRStagingRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\entitlement\Entitlement.js" />
+    <Content Include="WebResources\ipg_\intake\entitlement\EntitlementRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\entitlement\GetContractName.js" />
+    <Content Include="WebResources\ipg_\intake\estimatedPart\EstimatedPart.js" />
+    <Content Include="WebResources\ipg_\intake\estimatedPart\estimatedPartRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\FacilityManufacturer\FacilityManuacturerRelationship.js" />
+    <Content Include="WebResources\ipg_\intake\FacilityPhysician\FacilityPhysician.js" />
+    <Content Include="WebResources\ipg_\intake\FilterPlanTypes.js" />
+    <Content Include="WebResources\ipg_\intake\document\DocumentRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\document\split.html" />
+    <Content Include="WebResources\ipg_\intake\GLTransaction\GLTransactionRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\HomePlanCarrierMap\ValidateHomePlanMap.js" />
+    <Content Include="WebResources\ipg_\intake\incident\CarrierButtons.js" />
+    <Content Include="WebResources\ipg_\intake\incident\CarriersFilter.html" />
+    <Content Include="WebResources\ipg_\intake\incident\CarriersFilter.js" />
+    <Content Include="WebResources\ipg_\intake\incident\caseObtainAuth.html" />
+    <Content Include="WebResources\ipg_\intake\incident\GeneratePatientStatement.html" />
+    <Content Include="WebResources\ipg_\intake\incident\GeneratePatientStatement.js" />
+    <Content Include="WebResources\ipg_\intake\incident\highlightBilledCPT.js" />
+    <Content Include="WebResources\ipg_\intake\incident\holdCase.css" />
+    <Content Include="WebResources\ipg_\intake\incident\holdCase.html" />
+    <Content Include="WebResources\ipg_\intake\incident\closeCase.css" />
+    <Content Include="WebResources\ipg_\intake\incident\CloseCase.html" />
+    <Content Include="WebResources\ipg_\intake\incident\closeCase.js" />
+    <Content Include="WebResources\ipg_\intake\incident\holdCase.js" />
+    <Content Include="WebResources\ipg_\intake\incident\incidentRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\case\Model\EntityReference.js" />
+    <Content Include="WebResources\ipg_\intake\case\Model\Patient.js" />
+    <Content Include="WebResources\ipg_\intake\case\RemoveDraftCasePartDetailsAfterApproving.js" />
+    <Content Include="WebResources\ipg_\intake\case\ValidatePhoneNumber.js" />
+    <Content Include="WebResources\ipg_\intake\ClaimGenerationParameters\InitiallizeQuickCreateForm.js" />
+    <Content Include="WebResources\ipg_\intake\ClearDummyLookupValue.js" />
+    <Content Include="WebResources\ipg_\intake\ClearDummyLookupValue.ts" />
+    <Content Include="WebResources\ipg_\intake\document\CallCloneDocumentAction.js" />
+    <Content Include="WebResources\ipg_\intake\document\SetInlineContentDisposition.js" />
+    <Content Include="WebResources\ipg_\intake\document\SetDefaultPublishDate.js" />
+    <Content Include="WebResources\ipg_\intake\document\SetDefaultPublishDate.ts" />
+    <Content Include="WebResources\ipg_\intake\FormatPhoneNumber.js" />
+    <Content Include="WebResources\ipg_\intake\img\submit.svg" />
+    <Content Include="WebResources\ipg_\intake\incident\IPG_PDL_BannerLogo.jpg" />
+    <Content Include="WebResources\ipg_\intake\incident\PDL.css" />
+    <Content Include="WebResources\ipg_\intake\incident\PDL.html" />
+    <Content Include="WebResources\ipg_\intake\incident\PDL.js" />
+    <Content Include="WebResources\ipg_\intake\incident\POPreview.html" />
+    <Content Include="WebResources\ipg_\intake\incident\POPreview.js" />
+    <Content Include="WebResources\ipg_\intake\facilitycarriercptrule\facilitycarriercptrule.js" />
+    <Content Include="WebResources\ipg_\intake\ipg_jirafeedback.js" />
+    <Content Include="WebResources\ipg_\intake\incident\CarrierButtons.html" />
+    <Content Include="WebResources\ipg_\intake\incident\PreauthorizationButtons.html" />
+    <Content Include="WebResources\ipg_\intake\Lookup.js" />
+    <Content Include="WebResources\ipg_\intake\Lookup.ts" />
+    <Content Include="WebResources\ipg_\intake\NextGen\NextGenApp.html" />
+    <Content Include="WebResources\ipg_\intake\orderProduct\orderProductRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\order\order.js" />
+    <Content Include="WebResources\ipg_\intake\payment\ARSummary.html" />
+    <Content Include="WebResources\ipg_\intake\payment\Payment.js" />
+    <Content Include="WebResources\ipg_\intake\payment\PaymentRibbon.js" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\EHRCarrierMapping\EHRCarrierMapping.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\EHRStaging\EHRStagingRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\entitlement\GetContractName.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\estimatedPart\EstimatedPart.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\estimatedPart\estimatedPartRibbon.ts" />
+    <Content Include="WebResources\ipg_\intake\incident\GeneratePatientStatement.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\FacilityManufacturer\FacilityManuacturerRelationship.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\FacilityPhysician\facilityPhysician.ts" />
+    <Content Include="WebResources\ipg_\intake\ImportantEventConfig\ImportantEventConfig.js" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\HomePlanCarrierMap\ValidateHomePlanMap.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ImportantEventConfig\ImportantEventConfig.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\CarriersFilter.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\CarrierButtons.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\highlightBilledCPT.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\PortalComment\PortalComment.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\PortalComment\PortalCommentRibbon.ts" />
+    <Content Include="WebResources\ipg_\intake\PortalComment\PortalCommentRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\PortalUpdate\PortalUpdate.js" />
+    <Content Include="WebResources\ipg_\intake\product\Product.js" />
+    <Content Include="WebResources\ipg_\intake\referral\AdditionalAutoLabel.html" />
+    <Content Include="WebResources\ipg_\intake\referral\AdditionalWorkerCompLabel.html" />
+    <Content Include="WebResources\ipg_\intake\referral\DisablePatientSectionIfRecordCreated.js" />
+    <Content Include="WebResources\ipg_\intake\referral\DisablePatientSectionIfRecordCreated.ts" />
+    <Content Include="WebResources\ipg_\intake\referral\FilterPatientGrid.js" />
+    <Content Include="WebResources\ipg_\intake\referral\FilterPatientGrid.ts" />
+    <Content Include="WebResources\ipg_\intake\NextGen\NextGenApp.ts" />
+    <TypeScriptCompile Include="Controls\DocumentUploadControl\DocumentUploadComponent\generated\ManifestTypes.d.ts" />
+    <TypeScriptCompile Include="Controls\DocumentUploadControl\DocumentUploadComponent\index.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\accountUser\AccountUserRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\Account.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\account\AccountRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\benefitsVerificationForm\benefitsVerificationForm.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\casePartDetail\casePartDetail.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\CheckCPTCode.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\Incident.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\CreateClaim.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\CallGeneratePurchaseOrders.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\FillInsuredFields.ts" />
+    <Content Include="WebResources\ipg_\intake\referral\Insurance1Information.html" />
+    <Content Include="WebResources\ipg_\intake\referral\Insurance2Information.html" />
+    <Content Include="WebResources\ipg_\intake\referral\referral.js" />
+    <Content Include="WebResources\ipg_\intake\referral\referralRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\referral\SearchPatientProcedures.ts" />
+    <Content Include="WebResources\ipg_\intake\referral\SearchPatientProcedures.js" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowCPTCodeReasonForBlocking.js" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowCPTCodeReasonForBlocking.ts" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowStateSectionIfRecordCreated.js" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowStateSectionIfRecordCreated.ts" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowTimelineSectionIfRecordCreated.js" />
+    <Content Include="WebResources\ipg_\intake\referral\ShowTimelineSectionIfRecordCreated.ts" />
+    <Content Include="WebResources\ipg_\intake\RibbonCommands\RemoveRecordsFromGrid.js" />
+    <Content Include="WebResources\ipg_\intake\SetDistributorVendorId.js" />
+    <Content Include="WebResources\ipg_\intake\ShowComponentIfRecordCreated.js" />
+    <Content Include="WebResources\ipg_\intake\ShowComponentIfRecordCreated.ts" />
+    <Content Include="WebResources\ipg_\intake\ShowQuickViewFormIfRecordNotFound.js" />
+    <Content Include="WebResources\ipg_\intake\StatementGenerationTask\StatementGenerationTaskRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\State\StateOptionSet.js" />
+    <Content Include="WebResources\ipg_\intake\task\AssignTask.html" />
+    <Content Include="WebResources\ipg_\intake\task\AssignTask.js" />
+    <Content Include="WebResources\ipg_\intake\task\closeTask.css" />
+    <Content Include="WebResources\ipg_\intake\task\closeTask.html" />
+    <Content Include="WebResources\ipg_\intake\task\closeTask.js" />
+    <Content Include="WebResources\ipg_\intake\task\onFilteredOwnerChange.js" />
+    <Content Include="WebResources\ipg_\intake\task\onTaskTypeChange.js" />
+    <Content Include="WebResources\ipg_\intake\task\rescheduleTask.css" />
+    <Content Include="WebResources\ipg_\intake\task\rescheduleTask.html" />
+    <Content Include="WebResources\ipg_\intake\task\rescheduleTask.js" />
+    <Content Include="WebResources\ipg_\intake\task\Task.js" />
+    <Content Include="WebResources\ipg_\intake\task\TaskRibbon.js" />
+    <Content Include="WebResources\ipg_\intake\Utility.js" />
+    <Content Include="WebResources\ipg_\intake\Utility.ts" />
+    <Content Include="WebResources\ipg_\intake\ValidateDate.js" />
+    <Content Include="WebResources\ipg_\intake\ValidateDate.ts" />
+    <Content Include="WebResources\ipg_\intake\ValidateDateRange.js" />
+    <Content Include="WebResources\ipg_\intake\ValidateDateRange.ts" />
+    <Content Include="WebResources\ipg_\intake\ViewSettings.xml" />
+    <Content Include="WebResources\ipg_\intake\ZipCodeLookup.js" />
+    <Content Include="WebResources\package-lock.json" />
+    <Content Include="WebResources\package.json" />
+    <Content Include="WebResources\react-app\.gitignore" />
+    <Content Include="WebResources\react-app\config\env.js" />
+    <Content Include="WebResources\react-app\config\getHttpsConfig.js" />
+    <Content Include="WebResources\react-app\config\jest\cssTransform.js" />
+    <Content Include="WebResources\react-app\config\jest\fileTransform.js" />
+    <Content Include="WebResources\react-app\config\modules.js" />
+    <Content Include="WebResources\react-app\config\paths.js" />
+    <Content Include="WebResources\react-app\config\pnpTs.js" />
+    <Content Include="WebResources\react-app\config\webpack.config.js" />
+    <Content Include="WebResources\react-app\config\webpackDevServer.config.js" />
+    <Content Include="WebResources\react-app\public\case-actual-parts-grid.html" />
+    <Content Include="WebResources\react-app\public\case-actual-parts.html" />
+    <Content Include="WebResources\react-app\public\robots.txt" />
+    <Content Include="WebResources\react-app\scripts\build.js" />
+    <Content Include="WebResources\react-app\scripts\start.js" />
+    <Content Include="WebResources\react-app\scripts\test.js" />
+    <Content Include="WebResources\react-app\src\index.css" />
+    <Content Include="WebResources\react-app\src\pages\case-actual-parts\index.css" />
+    <Content Include="WebResources\tsconfig.json" />
+    <Content Include="WebResources\types\WIndow.d.ts" />
+    <Content Include="WebResources\types\Xrm.d.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\PortalUpdate\PortalUpdate.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\RibbonCommands\RemoveRecordsFromGrid.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\StatementGenerationTask\StatementGenerationTaskRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\State\StateOptionSet.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\TaskTypeConfiguration\TaskTypeConfiguration.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\AssignTask.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\onFilteredOwnerChange.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\onTaskTypeChange.ts" />
+    <TypeScriptCompile Include="WebResources\react-app\server\server.ts" />
+    <TypeScriptCompile Include="WebResources\react-app\src\components\open-portal-comments-screen\open-portal-comments-screen.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\enums\grid-views.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\factories\case-factory.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\factories\case-part-detail-factory.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\IActualPart.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\ICase.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\IEntity.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\IEntityCollection.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IActualPartsCardsGridHeaderProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IActualPartsCardsGridProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IActualPartsCardsGridViewsProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IActualPartsGridCardProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IActualPartsGridProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IHeaderProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\ITitleProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\models\properties\IWebresourceProps.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\pages\case-actual-parts-grid\index.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\pages\case-actual-parts\index.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\react-app-env.d.ts" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\case-part-detail-service.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\case-service.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\mocks\actual-parts-mock.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\mocks\case-mock.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\portal-comment-service.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\web-api-service.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\services\webresource-properties-service.tsx" />
+    <TypeScriptCompile Include="WebResources\react-app\src\serviceWorker.ts" />
+    <TypeScriptCompile Include="WebResources\react-app\src\setupTests.ts" />
+    <TypeScriptCompile Include="WebResources\react-app\src\types\table-order.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\AdvancedAutoCompleteControl\locale\AdvancedAutoCompleteControl.1033.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DocumentUploadControl\DocumentUploadComponent\strings\DocumentUploadComponent.1033.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\FilterPlanTypeInCase.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\Model\EntityReference.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ChangeColumnTitles.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\CheckCPTForDuplicates.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ChargeCenter\ChargeCenter.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimConfiguration\ClaimConfiguration.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseBatch\ClaimResponseBatch.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimResponseHeader\ClaimResponseHeaderRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\claim\ClaimRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\claim\PaymentProcessing.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contactsAccount\contactsAccount.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contactsAccount\contactsAccountRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contact\Contact.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\contact\ContactRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\document\document.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\document\merge.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\entitlement\Entitlement.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\entitlement\EntitlementRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\FilterPlanTypes.ts" />
+    <Content Include="WebResources\ipg_\intake\document\DocumentRibbon.ts" />
+    <Content Include="WebResources\ipg_\intake\document\split.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\GLTransaction\GLTransactionRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\holdCase.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\closeCase.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\incidentRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\RemoveDraftCasePartDetailsAfterApproving.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ClaimGenerationParameters\InitiallizeQuickCreateForm.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\document\CallCloneDocumentAction.ts" />
+    <Content Include="WebResources\ipg_\intake\document\SetInlineContentDisposition.ts" />
+    <Content Include="WebResources\ipg_\intake\NextGen\NextGenApp.js" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\PDL.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\incident\POPreview.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\facilitycarriercptrule\facilitycarriercptrule.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\orderProduct\orderProductRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\order\order.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\payment\Payment.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\payment\PaymentRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\referral\referral.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\referral\referralRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\SetDistributorVendorId.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\FormatPhoneNumber.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\ValidatePhoneNumber.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\case\Model\Patient.ts" />
+    <Content Include="WebResources\ipg_\intake\product\Product.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\closeTask.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\rescheduleTask.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\Task.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\task\TaskRibbon.ts" />
+    <TypeScriptCompile Include="WebResources\ipg_\intake\ZipCodeLookup.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="Controls\DocumentUploadControl\DocumentUploadComponent\.vs\DocumentUploadComponent\v15\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\xunit.core.2.3.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.3.1\build\xunit.core.props'))" />
+    <Error Condition="!Exists('..\packages\xunit.core.2.3.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.3.1\build\xunit.core.targets'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.props'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets'))" />
+  </Target>
+  <Import Project="..\packages\xunit.core.2.3.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.3.1\build\xunit.core.targets')" />
+  <Import Project="..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets" Condition="'$(Configuration)'=='Release' AND Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

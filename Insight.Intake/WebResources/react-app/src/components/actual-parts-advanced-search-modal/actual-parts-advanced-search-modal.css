@@ -1,0 +1,21 @@
+.actual-parts-advanced-search-modal {
+    width: 80%;
+    min-height: 60%;
+    max-height: 80%;
+    position: absolute;
+    background: lightgray;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 15%;
+    left: 10%;
+}
+
+.actual-parts-advanced-search-buttons {
+    margin: 10px;
+}
+
+.button {
+    width: 200px;
+    margin: 5px !important;
+    background: white !important;
+}

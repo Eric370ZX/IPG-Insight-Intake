@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "es6"
+    ]
+  },
+  "include": [
+    "ipg_/**/*",
+    "types/**/*", "../../Insight.Intake.UnitTests/Plugin/FacilityCarrierCPTRule/ValidateEntitlementIsNotActiveForCRUDTest.cs", "../Plugin/Gating/ValidateCPTCodesByApprovement.cs", "../../Insight.Intake.UnitTests/Plugin/Gating/ValidateCPTCodesByApprovementTests.cs", "../Plugin/Gating/CheckForApprovedPartsDate.cs", "../Plugin/AssociatedCpt/CheckCarrierCPTOverlappingDates.cs", "../Plugin/Case/SetReferralTypeCanBeModified.cs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

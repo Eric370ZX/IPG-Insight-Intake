@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+
+  <script src="CarriersFilter.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div style="float: left">
+    <span id="carrierNameElement"></span>
+  </div>
+  
+  <div style="float: right">
+    <span style="margin-right: 30px;">
+      <input type="radio" value="carrier1" name="carriersRadio" id="carrier1Radio" checked onclick="return Intake.CarriersFilter.onCarrierClick(event)"
+             onchange="Intake.CarriersFilter.onCarrierChanged()" />
+      <label for="carrier1Radio" id="carrier1Label"></label>
+
+      <input type="radio" value="carrier2" name="carriersRadio" id="carrier2Radio" style="display: none" onclick="return Intake.CarriersFilter.onCarrierClick(event)"
+             onchange="Intake.CarriersFilter.onCarrierChanged()" />
+      <label for="carrier2Radio" id="carrier2Label" style="display: none"></label>
+    </span>
+
+    <button id="addCarrierButton" onclick="Intake.CarriersFilter.onAddCarrierClick()">Add Carrier</button>
+  </div>
+
+  <script>
+    Intake.CarriersFilter.init()
+  </script>
+
+</body>
+
+</html>

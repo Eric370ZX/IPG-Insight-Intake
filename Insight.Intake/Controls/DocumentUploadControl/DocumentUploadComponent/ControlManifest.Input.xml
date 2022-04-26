@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="DocumentUploadComponent" constructor="DocumentUploadComponent" version="0.0.10" display-name-key="DocumentUploadComponent_Display_Key" description-key="DocumentUploadComponent_Desc_Key" control-type="standard">
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="value" display-name-key="value_Display_Key" description-key="value_Desc_Key" of-type="Multiple" usage="bound" required="true" />
+    <property name="fileName" display-name-key="fileName_Desc_Key" description-key="fileName_Desc_Key" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="mimeType" display-name-key="mimeType_Desc_Key" description-key="mimeType_Desc_Key" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="documentName" display-name-key="documentName_Desc_Key" description-key="documentName_Desc_Key" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="accept" display-name-key="accept_Desc_Key" description-key="accept_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <!-- 
+      Property node's of-type attribute can be of-type-group attribute. 
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/DocumentUploadComponent.css" order="1" />
+      <img path="img/default.png" />
+      <img path="img/uploadedFile.png" />
+      <resx path="strings/DocumentUploadComponent.1033.resx" version="1.0.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/DocumentUploadComponent.css" order="1" />
+      <resx path="strings/DocumentUploadComponent.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+  </control>
+</manifest>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EligibilityInquiry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <id>efc53468-e3a3-4d6a-952c-82b874d1fb95</id>
+  <CaseId>fb97b9f9-47f1-45dc-9da7-ec2173a0d193</CaseId>
+  <IsUserGenerated>true</IsUserGenerated>
+  <CreatedAt>2018-12-20T09:39:42.7094172Z</CreatedAt>
+  <Status>PENDING</Status>
+  <SenderId>174645</SenderId>
+  <ReceiverId>ZIRMED</ReceiverId>
+  <PayerName>66666</PayerName>
+  <PayerCode>66666</PayerCode>
+  <ProviderName>IMPLANTABLE PROVIDER GROUP, INC</ProviderName>
+  <ProviderNpi>HPI-1114077419</ProviderNpi>
+  <ProviderTaxId>113667807</ProviderTaxId>
+  <MemberId>12345</MemberId>
+  <RelationToInsured>S</RelationToInsured>
+  <SubscriberLastName>LastName1</SubscriberLastName>
+  <SubscriberFirstName>FirstName1</SubscriberFirstName>
+  <SubscriberMiddleName>MiddleName1</SubscriberMiddleName>
+  <SubscriberDOB>1960-01-25T00:00:00</SubscriberDOB>
+  <SubscriberGender>M</SubscriberGender>
+  <DOS>2018-09-20T00:00:00</DOS>
+</EligibilityInquiry>

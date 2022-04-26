@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Split Document</title>
+    <style>
+      body {
+        background-color: white;
+      }
+      button {
+        background-color: #cfe7e4;
+      }
+      input,
+      select,
+      button {
+        height: 35px;
+      }
+      .form-section {
+        margin-top: 10px;
+      }
+      table td {
+        text-align: right;
+      }
+      .desciption {
+        width: 300px;
+      }
+    </style>
+    <meta />
+    <meta />
+  </head>
+  <body onfocusout="parent.setEmailRange();" style="overflow-wrap: break-word">
+    <h1>Split Document</h1>
+    <div class="form-section">
+      <label>
+        Document: <a id="documentTitleHyperlink" href="#"></a>
+        <button onclick="Intake.Document.Split.onPreviewClick()">
+          Preview
+        </button>
+      </label>
+    </div>
+    <div class="form-section">
+      <label>
+        Referral or Case ID:
+        <input type="text" disabled="" id="referralOrCaseNameInput" /><input
+          type="hidden"
+          id="referralIdInput"
+        /><input type="hidden" id="caseIdInput" />
+        <button onclick="Intake.Document.Split.onSelectReferralOrCaseClick()">
+          Select...
+        </button>
+      </label>
+    </div>
+    <table class="form-section">
+      <tbody>
+        <tr>
+          <th>Page Range</th>
+          <th>Document Type</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>
+            <span style="color: red">*</span>
+            <input type="text" id="rangeInput0" />
+          </td>
+          <td>
+            <span style="color: red">*</span>
+            <select id="docTypeSelect0">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description0" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput1" /></td>
+          <td>
+            <select id="docTypeSelect1">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description1" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput2" /></td>
+          <td>
+            <select id="docTypeSelect2">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description2" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput3" /></td>
+          <td>
+            <select id="docTypeSelect3">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description3" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput4" /></td>
+          <td>
+            <select id="docTypeSelect4">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description4" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput5" /></td>
+          <td>
+            <select id="docTypeSelect5">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description5" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput6" /></td>
+          <td>
+            <select id="docTypeSelect6">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description6" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput7" /></td>
+          <td>
+            <select id="docTypeSelect7">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description7" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput8" /></td>
+          <td>
+            <select id="docTypeSelect8">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description8" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" id="rangeInput9" /></td>
+          <td>
+            <select id="docTypeSelect9">
+              <option></option>
+            </select>
+          </td>
+          <td>
+            <input id="description9" class="desciption" maxlength="2000" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-section" style="margin-top: 20px">
+      <button onclick="Intake.Document.Split.onProcessClick()">
+        Process Document
+      </button>
+      <button onclick="Intake.Document.Split.onSplitAndInitiateClick()">
+        Split and Initiate Referral
+      </button>
+      <button onclick="Intake.Document.Split.onCancelClick()">Cancel</button>
+    </div>
+
+    <script src="../Utility.js" type="text/javascript"></script>
+    <script
+      src="../../core/InitiateReferraICommand"
+      type="text/javascript"
+    ></script>
+    <script src="../Document/DocumentCommon.js" type="text/javascript"></script>
+    <script src="split.js" type="text/javascript"></script>
+
+    <script>
+      Intake.Document.Split.InitPage();
+    </script>
+  </body>
+</html>

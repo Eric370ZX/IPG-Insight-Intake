@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title>Close task</title>
+  <link href="closeTask.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <label id="lblcloseReason" class="required">Task Status Reason</label>
+      </div>
+      <div class="col-8">
+        <select id="closeReason" class="wizardValue">
+          <option value="5" selected>Resolved</option>
+          <option value="923720001" style="display: none;">Cancelled</option>
+          <option value="923720000" style="display: none;">Exception Approved</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" id="taskReason" style="display: none;">
+      <div class="col-4">
+        <label id="lbltaskReason" class="required">Task Reason</label>
+      </div>
+      <div class="col-8">
+        <select id="taskreasonid" class="wizardValue">
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <label class="required">Closure Note</label>
+      </div>
+      <div class="col-8">
+        <textarea id="closeNote" rows="5" class="wizardValue"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="float-right">
+          <button type="button" class="btn btn-primary" id="okBtn">Ok</button>
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="closeTask.js" type="text/javascript"></script>
+</body>
+</html>

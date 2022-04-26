@@ -1,0 +1,155 @@
+<head>
+  <script type="text/javascript" src="../../../adx_scripts/jquery1.10.2.min.js"></script>
+  <script src="../../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+  <script type="text/javascript" src="../Utility.js"></script>
+  <script type="text/javascript" src="PDL.js"></script>
+  <link rel="stylesheet" href="pdl.css">
+  <script>
+    $(document).ready(function () {
+      Intake.Incident.FillPDL();
+      $("#print").click(function () {
+        window.print();
+      });
+      $("#close").click(function () {
+        window.close();
+      });
+    });
+  </script>
+</head>
+<div master-page>
+  <div class="content">
+    <img class="pdlBanner" src="IPG_PDL_BannerLogo.jpg" />
+
+    <div id="container">
+
+      <div id="left">
+
+          <table class="table-condensed">
+
+            <tr>
+              <th class="text-nowrap text-right">
+                Patient Name:
+              </th>
+              <td colspan="3" id="patient"></td>
+            </tr>
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Date of Service:</th>
+              <td id="surgeryDate"></td>
+            </tr>
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Procedure #:</th>
+              <td id="title"></td>
+            </tr>
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Physician:</th>
+              <td colspan="3" id="physician"></td>
+            </tr>
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Facility:</th>
+              <td colspan="3" id="facility"></td>
+            </tr>
+
+          </table>
+
+      </div>
+
+      <div id="right">
+
+          <table class="table-condensed">
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Primary CPT:</th>
+              <td colspan="3" id="cpt"></td>
+            </tr>
+
+            <tr>
+              <th width="100" class="text-nowrap text-right">Primary Dx:</th>
+              <td id="dx"></td>
+            </tr>
+
+          </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="row text-center" style="text-align:center">
+      <h1>Products Billed on This Claim</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xl-12">
+
+        <table class="table table-bordered table-striped table-condensed" width="100%" border="1">
+
+          <thead>
+
+            <tr>
+              <th style='text-align:left'>HCPCS Code</thstyle='text-align:center'>
+              <th style='text-align:center'>Count</th>
+              <th style='text-align:left'>Production Description</th>
+              <th style='text-align:left'>Part #</thstyle='text-align:center'>
+              <th style='text-align:right'>Billed Charges</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="parts">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="noprint" style='text-align:center'>
+
+    <div class="col-md-12 text-center">
+      <input id="print" type="submit" value="Print" />
+      <input id="close" type="submit" value="Close" />
+    </div>
+
+  </div>
+
+  <div style='text-align:center'">
+    <div class="col-md-12 text-center">
+      Implantable Provider Group (IPG)
+      <br />
+      NPI: 1114077419 Tax ID: 11-3667807
+      <br />
+      <span id="IPGAddress"></span>
+      <br />
+      Toll Free: 1-866-753-0046 * Online at <a href="http://www.ipg.com">www.ipg.com</a>
+    </div>
+
+  </div>
+
+  <div style='text-align:right'>
+    <div class="col-md-12 text-right" id="currentdate">
+    </div>
+  </div>
+
+  <hr class="border-top-black" />
+
+
+  <div class="row footer">
+    <div class="col-md-12">
+      The information contained in this document may be confidential and intended solely for the use of the individual or entity to whom it is addressed. The materials in this document
+      may contain Protected Health Information and is covered under HIPAA regulations. If you are not the intended recipient be advised that any unauthorized use, disclosure,
+      copying, distribution or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this document in error, please
+      immediately notify the sender.
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,71 @@
+/**
+ * @license Copyright (c) Microsoft Corporation. All rights reserved.
+ */
+.crm-wijmo-autocomplete.wj-content.wj-control.wj-dropdown,
+.crm-wijmo-autocomplete.wj-dropdown-panel .wj-listbox-item {
+  display: block;
+  -ms-opacity: 1;
+  -moz-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+.crm-wijmo-autocomplete .wj-input-group .wj-form-control {
+  padding: 7px 8px;
+}
+.crm-wijmo-autocomplete.wj-content.wj-control.wj-dropdown {
+  background-color: white;
+  height: 41px;
+}
+.crm-wijmo-autocomplete .wj-input-group-btn:last-child > .wj-btn {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border-right: 0;
+}
+.crm-wijmo-autocomplete.wj-content,
+.crm-wijmo-autocomplete .wj-input-group-btn:last-child > .wj-btn {
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.crm-wijmo-autocomplete.wj-dropdown-panel {
+  position: absolute;
+  display: block;
+}
+.crm-wijmo-autocomplete.wj-dropdown-panel .wj-listbox-item {
+  height: 20px;
+  padding: 0 7px;
+}
+/* Platform-specific classes */
+.tablet .crm-wijmo-autocomplete.wj-content {
+  border: 1px #8f8f8f solid;
+}
+.phone .crm-wijmo-autocomplete.wj-content {
+  border: 2px #888888 solid;
+}
+.tablet .crm-wijmo-autocomplete .wj-input-group-btn:last-child > .wj-btn {
+  border-left-width: 1px;
+  border-color: #8f8f8f;
+}
+.phone .crm-wijmo-autocomplete .wj-input-group-btn:last-child > .wj-btn {
+  border-left-width: 2px;
+  border-color: #888888;
+}
+.tablet .crm-wijmo-autocomplete.wj-content.wj-control .wj-form-control,
+.tablet .crm-wijmo-autocomplete.wj-dropdown-panel .wj-listbox-item {
+  font: normal normal normal 14px / 20px 'SegoeUI', 'Segoe UI';
+}
+.phone .crm-wijmo-autocomplete.wj-content.wj-control .wj-form-control,
+.phone .crm-wijmo-autocomplete.wj-dropdown-panel .wj-listbox-item {
+  font: normal normal normal 15px / 1em 'SegoeUI', 'Segoe UI';
+}
+.crm-wijmo-readmode .wj-content.crm-wijmo-autocomplete {
+  border: none;
+}
+.crm-wijmo-readmode .crm-wijmo-autocomplete .wj-input-group .wj-btn-default {
+  display: none;
+}
+.crm-wijmo-readmode .crm-wijmo-autocomplete .wj-input {
+  background-color: transparent;
+}

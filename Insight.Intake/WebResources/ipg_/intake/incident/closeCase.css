@@ -1,0 +1,15 @@
+.wizardValue {
+  width: 100%;
+}
+
+.required:before {
+  content: "* ";
+  color: red;
+}
+[disabled]:hover {
+  cursor: not-allowed
+}
+
+.btn-primary {
+  background-color: rgb(71,191,192) !important
+}

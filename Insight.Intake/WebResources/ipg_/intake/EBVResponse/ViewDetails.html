@@ -1,0 +1,269 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>EBV Response Details</title>
+  <style>
+    body {
+      background-color: white;
+    }
+
+    button {
+      background-color: #cfe7e4;
+    }
+
+    input, select, button {
+      height: 35px;
+    }
+
+    .form-section {
+      margin-top: 10px;
+    }
+
+    h4 {
+      background-color: #47BFC0;
+      padding: 5px;
+      margin: 10px 0 0 0;
+    }
+
+    .header-cell {
+      background-color: #cfe7e4 !important;
+    }
+
+    .tabDetailViewDL {
+      background-color: #F6F6F6;
+    }
+
+    td {
+      border-bottom: solid 1px #cfe7e4;
+      padding: 3px;
+    }
+
+    h4 td{
+      border: none;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script src="../Utility.js" type="text/javascript"></script>
+  <script src="ViewDetails.js" type="text/javascript"></script>
+
+</head>
+<body onload="javascript:displaysection('');">
+  <ul>
+    <li class="active">
+      <a href="#t1" onclick="javascript:displaysection('t1');"><b>INSURED INFORMATION</b>&gt;</a>
+    </li>
+    <li>
+      <a href="#t2" onclick="javascript:displaysection('t2');"><b>PATIENT INFORMATION</b>&gt;</a>
+    </li>
+    <li>
+      <a href="#t3" onclick="javascript:displaysection('t3');"><b>BENEFIT COVERAGE DETAILS</b>&gt;</a>
+    </li>
+  </ul>
+
+  <h4 class="dataLabel">
+    EBV TRANSACTION INFO
+  </h4>
+  <table class="tabDetailView" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="tabDetailViewDL" width="20%">Inquiry ID:</td>
+        <td id="inquiryId" class="tabDetailViewDF" width="37%"></td>
+        <td class="tabDetailViewDL" width="20%">Carrier:</td>
+        <td id="carrierName" class="tabDetailViewDF" width="37%"></td>
+      </tr>
+      <tr>
+        <td class="tabDetailViewDL" width="20%">Date / Time:</td>
+        <td id="responseDateTime" class="tabDetailViewDF" width="29%"></td>
+        <td class="tabDetailViewDL" width="20%">Service Dates:</td>
+        <td id="serviceDates" class="tabDetailViewDF" width="29%"></td>
+      </tr>
+      <tr>
+        <td class="tabDetailViewDL" width="20%">Message:</td>
+        <td id="responseMessage" class="tabDetailViewDF" colspan="3"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div name="t1" id="t1">
+    <h4 class="dataLabel">INSURED INFORMATION</h4>
+    <table class="tabDetailView" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td class="tabDetailViewDL" width="20%">First Name:</td>
+          <td id="insuredFirstName" class="tabDetailViewDF" width="78%"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL" width="20%">Middle Name:</td>
+          <td id="insuredMiddleName" class="tabDetailViewDF" width="78%"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Last Name:</td>
+          <td id="insuredLastName" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Date of Birth:</td>
+          <td id="insuredDateOfBirth" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Address (1):</td>
+          <td id="insuredAddress1" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Address (2):</td>
+          <td id="insuredAddress2" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">City:</td>
+          <td id="insuredCity" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">State:</td>
+          <td id="insuredState" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Zip:</td>
+          <td id="insuredZip" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Sex:</td>
+          <td id="insuredSex" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">MI:</td>
+          <td id="insuredMI" class="tabDetailViewDF"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4 class="dataLabel">COVERAGE INFORMATION</h4>
+    <table class="tabDetailView" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody id="insuredCoverageInfo"></tbody>
+    </table>
+
+  </div>
+  <div name="t2" id="t2">
+    <h4 class="dataLabel">PATIENT INFORMATION</h4>
+    <table class="tabDetailView" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td class="tabDetailViewDL" width="20%">First Name:</td>
+          <td id="patientFirstName" class="tabDetailViewDF" width="78%"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL" width="20%">Middle Name:</td>
+          <td id="patientMiddleName" class="tabDetailViewDF" width="78%"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Last Name:</td>
+          <td id="patientLastName" class="tabDetailViewDF"></td>
+        </tr>
+
+        <tr>
+          <td class="tabDetailViewDL">Date of Birth:</td>
+          <td id="patientDateOfBirth" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Address (1):</td>
+          <td id="patientAddress1" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Address (2):</td>
+          <td id="patientAddress2" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">City:</td>
+          <td id="patientCity" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">State:</td>
+          <td id="patientState" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Zip:</td>
+          <td id="patientZip" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">Sex:</td>
+          <td id="patientSex" class="tabDetailViewDF"></td>
+        </tr>
+        <tr>
+          <td class="tabDetailViewDL">MI:</td>
+          <td id="patientMI" class="tabDetailViewDF"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div name="t3" id="t3">
+    <h4 class="dataLabel">BENEFIT COVERAGE DETAILS</h4>
+    <div id="benefitsContainer"></div>
+  </div>
+
+  <script id="coverageInformation-template" type="text/x-custom-template">
+    <tr>
+      <td data-fieldName class="tabDetailViewDL" width="20%"></td>
+      <td data-fieldValue class="tabDetailViewDF" width="78%"></td>
+    </tr>
+  </script>
+
+  <script id="serviceType-template" type="text/x-custom-template">
+    <h4 class="dataLabel">
+      <table width='100%'>
+        <tr>
+          <td data-serviceTypeName width='80%'></td>
+          <td data-status width='18%' style='padding:5px; text-align:center;color:white;'></td>
+        </tr>
+      </table>
+    </h4>
+    <table class="tabDetailView" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody data-benefits></tbody>
+    </table>
+  </script>
+
+  <script id="benefitHeader-template" type="text/x-custom-template">
+    <tr>
+      <td data-leftHeader class="header-cell tabDetailViewDL" width="20%"></td>
+      <td class="header-cell tabDetailViewDF" width="29%"></td>
+      <td data-rightHeader class="header-cell tabDetailViewDL" width="20%"></td>
+      <td class="header-cell tabDetailViewDF" width="29%"></td>
+    </tr>
+  </script>
+
+  <script id="benefitRow-template" type="text/x-custom-template">
+    <tr>
+      <td data-labelCell1 class="tabDetailViewDL"></td>
+      <td data-valueCell1 class="tabDetailViewDF"></td>
+      <td data-labelCell2 class="tabDetailViewDL"></td>
+      <td data-valueCell2 class="tabDetailViewDF"></td>
+    </tr>
+  </script>
+
+  <script>
+
+    function displaysection(id) {
+      if (id == "") {
+        document.getElementById("t1").style.display = "none";
+        document.getElementById("t2").style.display = "none";
+        document.getElementById("t3").style.display = "none";
+      }
+      if (id == "t1") {
+        document.getElementById("t1").style.display = "block";
+        document.getElementById("t2").style.display = "none";
+        document.getElementById("t3").style.display = "none";
+      }
+      if (id == "t2") {
+        document.getElementById("t1").style.display = "none";
+        document.getElementById("t2").style.display = "block";
+        document.getElementById("t3").style.display = "none";
+      }
+      if (id == "t3") {
+        document.getElementById("t1").style.display = "none";
+        document.getElementById("t2").style.display = "none";
+        document.getElementById("t3").style.display = "block";
+      }
+    }
+
+    Intake.EBVResponse.InitViewDetailsPage();
+  </script>
+</body>
+</html>

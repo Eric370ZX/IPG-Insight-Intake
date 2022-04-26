@@ -1,0 +1,14 @@
+﻿<Settings>
+  <setting name="IPGProviderName">
+    <value>IMPLANTABLE PROVIDER GROUP, INC</value>
+  </setting>
+  <setting name="IPGProviderNpi">
+    <value>HPI-1114077419</value>
+  </setting>
+  <setting name="IPGProviderTaxId">
+    <value>113667807</value>
+  </setting>
+  <setting name="IPGZirmedSenderId">
+    <value>174645</value>
+  </setting>
+</Settings>

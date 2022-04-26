@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Views>
+  <View Name="Authorization Pending Cases List" Entity="incident">
+    <Field Name="ipg_network" Title = "Network Type Name"></Field>
+  </View>
+  <View Name="Tasks for Authorization Pending Cases" Entity="task">
+    <Field Name="subject" Title = "Task name"></Field>
+    <Field Name="ipg_primarycptcodeorprocedurename" Title = "Procedure Name"></Field>
+    <Field Name="ownerid" Title = "Full name of Specialist the Task is Assigned to"></Field>
+    <Field Name="createdon" Title = "Date the Task was created"></Field>
+    <Field Name="scheduledend" Title = "Date the Task is due"></Field>
+    <Field Name="statecode" Title = "Task Status"></Field>
+    <Field Name="prioritycode" Title = "Task Urgency level"></Field>
+  </View>
+  <View Name="Authorization in Process - Pending Info" Entity="incident">
+    <Field Name="title" Title = "Case ID"></Field>
+    <Field Name="ipg_surgerydate" Title = "Scheduled DOS"></Field>
+    <Field Name="createdon" Title = "Case Create Date"></Field>
+    <Field Name="ipg_carrierid" Title = "Carrier Name"></Field>
+    <Field Name="ipg_facilityid" Title = "Facility Name"></Field>
+    <Field Name="ipg_patientdateofbirth" Title = "Patient DOB"></Field>
+    <Field Name="ownerid" Title = "Auth user assigned to the case"></Field>
+    <Field Name=".ownerid" Title = "Task Assigned to"></Field>
+  </View>
+  <View Name="Active Claim Response Batches" Entity="ipg_claimresponsebatch">
+    <Field Name="statuscode" Title = "Status"></Field>
+  </View>
+  <View Name="Claim Line View for Payment form" Entity="ipg_claimresponseline">
+    <Field Name="ipg_adjproc" Title = "HCPCS Code"></Field>
+    <Field Name="ipg_amountsubmitted" Title = "Billed Amt"></Field>
+    <Field Name="ipg_allowedactual" Title = "Allowed Amt"></Field>
+    <Field Name="ipg_amountpaid" Title = "Paid Amt"></Field>
+  </View>
+  <View Name="View for Payment form" Entity="ipg_payment">
+    <Field Name="createdon" Title = "Date"></Field>
+    <Field Name="ipg_paymentamount" Title = "Amount"></Field>
+  </View>
+  <View Name="All Part Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="All Parts, Families and Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Active Part Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Active Parts, Families and Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Draft Part Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Draft Parts, Families and Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="PartsView" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Retired Part Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Retired Parts, Families and Bundles" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Web - Parts" Entity="product">
+    <Field Name=".name" Title = "Category"></Field>
+  </View>
+  <View Name="Missed Payments" Entity="incident">
+    <Field Name="ipg_remainingpatientbalance" Title = "Balance"></Field>
+    <Field Name="ipg_collectionvendor" Title = "Collected by"></Field>
+  </View>
+  <View Name="Authorization In Progress Cases" Entity="incident">
+    <Field Name="ipg_network" Title = "Network Type Name"></Field>
+  </View>
+  <View Name="Cases on hold" Entity="incident">
+    <Field Name="title" Title = "Case ID"></Field>
+    <Field Name="ipg_caseholdreason" Title = "Hold Type"></Field>
+    <Field Name="ipg_remainingpatientbalance" Title = "Balance"></Field>
+    <Field Name="ipg_collectionvendor" Title = "Collected by"></Field>
+  </View>
+  <View Name="Active Statement Generation Tasks" Entity="ipg_statementgenerationtask">
+    <Field Name="ipg_caseid" Title="Case ID"></Field>
+    <Field Name="ipg_casestatusdisplayedid" Title="Case Status"></Field>
+    <Field Name="ipg_carrierid" Title="Carrier (Display) Name"></Field>
+    <Field Name="ipg_patientfullname" Title="Patient Full Name"></Field>
+  </View>
+  <View Name="Case Open Portal Comments Auth" Entity="adx_portalcomment">
+    <Field Name="regardingobjectid" Title="Case"></Field>
+    <Field Name="description" Title="Portal Comment message"></Field>
+    <Field Name="ipg_surgerydate" Title="Scheduled DOS"></Field>
+    <Field Name="ipg_facilityid" Title="Facility Name"></Field>
+    <Field Name=".createdon" Title="Case Created On"></Field>
+    <Field Name=".ownerid" Title="Case Assigned to"></Field>
+  </View>
+  <View Name="Authorization in Process - Pending Medical Policy Review" Entity="incident">
+    <Field Name="ipg_surgerydate" Title = "Scheduled DOS"></Field>
+    <Field Name="ipg_carrierid" Title = "Carrier Name"></Field>
+    <Field Name="ipg_patientdateofbirth" Title = "Patient DOB"></Field>
+    <Field Name=".scheduledend" Title = "SLA Due Date"></Field>
+    <Field Name="ownerid" Title = "Case Assigned to"></Field>
+    <Field Name=".ownerid" Title = "Task Assigned to"></Field>
+  </View>
+  <View Name="All Cases with Open Auth Tasks" Entity="incident">
+    <Field Name="ipg_surgerydate" Title = "Scheduled DOS"></Field>
+    <Field Name="ipg_carrierid" Title = "Carrier Name"></Field>
+    <Field Name="ipg_patientdateofbirth" Title = "Patient DOB"></Field>
+    <Field Name=".scheduledend" Title = "SLA Due Date"></Field>
+    <Field Name="ownerid" Title = "Case Assigned to"></Field>
+    <Field Name=".ownerid" Title = "Task Assigned to"></Field>
+  </View>
+  <View Name="Cases with Open EHR Update Tasks" Entity="task">
+    <Field Name=".title" Title = "Case Title"></Field>
+    <Field Name=".ipg_surgerydate" Title = "Scheduled DOS"></Field>
+    <Field Name=".createdon" Title = "Case Create Date"></Field>
+    <Field Name=".ipg_statecode" Title = "Case State"></Field>
+    <Field Name=".statuscode" Title = "Case Reason"></Field>
+    <Field Name="subject" Title = "EHR Update Note"></Field>
+    <Field Name="ownerid" Title = "Task Assigned to"></Field>
+    <Field Name=".ownerid" Title = "Case Assigned to"></Field>
+  </View>
+  <View Name="My Open Facility Communication" Entity="adx_portalcomment">
+    <Field Name="regardingobjectid" Title="Case"></Field>
+    <Field Name="description" Title="Comment details"></Field>
+    <Field Name=".ipg_facilityid" Title="Facility Name"></Field>
+    <Field Name="ownerid" Title="Assigned To"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="from" Title="Created by (Portal User)"></Field>
+  </View>
+  <View Name="All" Entity="adx_portalcomment">
+    <Field Name="createdon" Title="Created on"></Field>
+  </View>
+  <View Name="My Team's Open Facility Communication" Entity="adx_portalcomment">
+    <Field Name="regardingobjectid" Title="Case"></Field>
+    <Field Name="description" Title="Comment details"></Field>
+    <Field Name=".ipg_facilityid" Title="Facility Name"></Field>
+    <Field Name="ownerid" Title="Assigned To"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="from" Title="Created by (Portal User)"></Field>
+  </View>
+  <View Name="Open Patient Follow-Up Tasks" Entity="incident">
+    <Field Name="title" Title="Case ID"></Field>
+    <Field Name="ipg_lastpatientpaymentdate" Title="Last Payment Posted date"></Field>
+    <Field Name="ipg_remainingpatientbalance" Title="Balance"></Field>
+    <Field Name="ipg_collectionvendor" Title="Collected by"></Field>
+    <Field Name="ipg_numberofopentasks" Title="Tasks"></Field>
+  </View>
+  <View Name="Open Portal Comments" Entity="adx_portalcomment">
+    <Field Name="title" Title="Referral or Case ID"></Field>
+    <Field Name="ipg_facilityid" Title="Facility Name"></Field>
+    <Field Name="createdon" Title="Date Created"></Field>
+    <Field Name="description" Title="Message Description"></Field>
+    <Field Name="statuscode" Title="Message Status "></Field>
+    <Field Name="ipg_casestatus" Title="Referral or Case Status"></Field>
+  </View>
+  <View Name="Manufacturer" Entity="account">
+    <Field Name="name" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerhascontract" Title="Contract"></Field>
+    <Field Name="ipg_manufactureraallowdirectbilling" Title="Direct Bill"></Field>
+    <Field Name="ipg_billingaddress1_city" Title="City"></Field>
+    <Field Name="ipg_billingstateid" Title="State"></Field>
+  </View>
+  <View Name="Active Manufacturers" Entity="account">
+    <Field Name="name" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerhascontract" Title="Contract"></Field>
+    <Field Name="ipg_manufactureraallowdirectbilling" Title="Direct Bill"></Field>
+    <Field Name="ipg_billingaddress1_city" Title="City"></Field>
+    <Field Name="ipg_billingstateid" Title="State"></Field>
+  </View>
+  <View Name="InActive Manufacturers" Entity="account">
+    <Field Name="name" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerhascontract" Title="Contract"></Field>
+    <Field Name="ipg_manufactureraallowdirectbilling" Title="Direct Bill"></Field>
+    <Field Name="ipg_billingaddress1_city" Title="City"></Field>
+    <Field Name="ipg_billingstateid" Title="State"></Field>
+  </View>
+  <View Name="All Manufacturers" Entity="account">
+    <Field Name="name" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerhascontract" Title="Contract"></Field>
+    <Field Name="ipg_manufactureraallowdirectbilling" Title="Direct Bill"></Field>
+    <Field Name="ipg_billingaddress1_city" Title="City"></Field>
+    <Field Name="ipg_billingstateid" Title="State"></Field>
+  </View>
+  <View Name="Facility Carrier Contracts" Entity="entitlement">
+    <Field Name="startdate" Title="Case Acceptance Effective Date"></Field>
+    <Field Name="enddate" Title="Case Acceptance Expiration Date"></Field>
+  </View>
+  <View Name="EBV History" Entity="ipg_ebvinquiry">
+    <Field Name="ipg_responseid" Title="Message"></Field>
+  </View>
+  <View Name="Patient Statements" Entity="ipg_document">
+    <Field Name="ipg_documenttypeid" Title="Statement Type"></Field>
+    <Field Name="ipg_name" Title="Statement Name"></Field>
+    <Field Name="createdon" Title="Generation Date"></Field>
+    <Field Name="createdby" Title="Created By"></Field>
+    <Field Name="ipg_accountbalance" Title="Statement Amount"></Field>
+  </View>
+  <View Name="Used Actual Parts" Entity="ipg_casepartdetail">
+    <Field Name="ipg_purchaseorderid" Title="PO #"></Field>
+    <Field Name="ipg_name" Title="Part Name"></Field>
+    <Field Name="ipg_manufacturerid" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerpartnumber" Title="Part #"></Field>
+    <Field Name="ipg_quantity" Title="Qty Implanted"></Field>
+    <Field Name="ipg_enteredunitcost" Title="Unit Cost"></Field>
+    <Field Name="ipg_enteredshipping" Title="Unit Shipping"></Field>
+    <Field Name="ipg_enteredtax" Title="Unit Tax"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="ipg_ipgpartnumber" Title="Keyword"></Field>
+    <Field Name="modifiedon" Title="Modified Date"></Field>
+  </View>
+  <View Name="All Actual Parts" Entity="ipg_casepartdetail">
+    <Field Name="ipg_purchaseorderid" Title="PO #"></Field>
+    <Field Name="ipg_manufacturerid" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerpartnumber" Title="Part #"></Field>
+    <Field Name="ipg_quantity" Title="Qty Implanted"></Field>
+    <Field Name="ipg_enteredunitcost" Title="Unit Cost"></Field>
+    <Field Name="ipg_enteredshipping" Title="Unit Shipping"></Field>
+    <Field Name="ipg_enteredtax" Title="Unit Tax"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="ipg_ipgpartnumber" Title="Keyword"></Field>
+    <Field Name="modifiedon" Title="Modified Date"></Field>
+  </View>
+  <View Name="Unused Actual Parts" Entity="ipg_casepartdetail">
+    <Field Name="ipg_purchaseorderid" Title="PO #"></Field>
+    <Field Name="ipg_manufacturerid" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerpartnumber" Title="Part #"></Field>
+    <Field Name="ipg_quantity" Title="Qty Implanted"></Field>
+    <Field Name="ipg_enteredunitcost" Title="Unit Cost"></Field>
+    <Field Name="ipg_enteredshipping" Title="Unit Shipping"></Field>
+    <Field Name="ipg_enteredtax" Title="Unit Tax"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="ipg_ipgpartnumber" Title="Keyword"></Field>
+    <Field Name="modifiedon" Title="Modified Date"></Field>
+  </View>
+  <View Name="Active Estimated Case Part Details" Entity="ipg_estimatedcasepartdetail">
+    <Field Name="ipg_purchaseorderid" Title="PO #"></Field>
+    <Field Name="ipg_manufacturerid" Title="Manufacturer"></Field>
+    <Field Name="ipg_manufacturerpartnumber" Title="Part #"></Field>
+    <Field Name="ipg_quantity" Title="Qty Implanted"></Field>
+    <Field Name="statuscode" Title="Status"></Field>
+    <Field Name="ipg_ipgpartnumber" Title="Keyword"></Field>
+    <Field Name="modifiedon" Title="Modified Date"></Field>
+  </View>
+  <View Name="Manufacturer Documents" Entity="ipg_document">
+    <Field Name="ipg_name" Title = "Subject"></Field>
+  </View>
+  <View Name="Active Manufacturers" Entity="account">
+    <Field Name="ipg_abbreviation" Title = "State"></Field>
+  </View>
+  <View Name="All Manufacturers" Entity="account">
+    <Field Name="ipg_abbreviation" Title = "State"></Field>
+  </View>
+  <View Name="InActive Manufacturers" Entity="account">
+    <Field Name="ipg_abbreviation" Title = "State"></Field>
+  </View>
+  <View Name="Physicians" Entity="ipg_facilityphysician">
+    <Field Name="ipg_physiciannpi" Title="Physician NPI"></Field>
+    <Field Name="address1_city" Title="City"></Field>
+    <Field Name="ipg_stateid" Title="State"></Field>
+  </View>
+  <View Name="Facilities" Entity="ipg_facilityphysician">
+    <Field Name="primarycontactid" Title="Primary Contact"></Field>
+    <Field Name="telephone1" Title="Main Phone"></Field>
+  </View>
+  <View Name="FacilityContacts" Entity="ipg_contactsaccounts">
+    <Field Name=".ipg_contactid" Title="Contact Name"></Field>
+    <Field Name="ipg_contactrolecode" Title="Title or Role"></Field>
+    <Field Name="telephone1" Title="Main Phone"></Field>
+    <Field Name="telephone2" Title="Other Phone"></Field>
+    <Field Name="emailaddress1" Title="Email"></Field>
+    <Field Name="fax" Title="Fax"></Field>
+    <Field Name="preferredcontactmethodcode" Title="Communication Preference"></Field>
+  </View>
+  <View Name="Facility Portal Users" Entity="ipg_contactsaccounts">
+    <Field Name="firstname" Title="First Name"></Field>
+    <Field Name="lastname" Title="Last Name"></Field>
+    <Field Name="ipg_titleorrole" Title="Title or Role"></Field>
+    <Field Name="emailaddress1" Title="Email"></Field>
+    <Field Name="ipg_isadmin" Title="Administrator"></Field>
+    <Field Name="adx_identity_lastsuccessfullogin" Title="Last Successful Login"></Field>
+    <Field Name="adx_identity_logonenabled" Title="Account Status"></Field>
+    <Field Name="adx_identity_lockoutenddate" Title="Account Locked On"></Field>
+    <Field Name="ipg_facility_user_status_typecode" Title="Account Review Status "></Field>
+  </View>
+  <View Name="DX Code Cases" Entity="incident">
+    <Field Name="ipg_facilityid" Title="Facility Name"></Field>
+    <Field Name="ipg_carrierid" Title="Carrier Name"></Field>
+    <Field Name="ipg_patientid" Title="Patient Name"></Field>
+    <Field Name="ipg_surgerydate" Title="DOS"></Field>
+  </View>
+  <View Name="DX Code Referrals" Entity="ipg_referral">
+    <Field Name="ipg_referralnumber" Title="Referral Number"></Field>
+    <Field Name="ipg_patientid" Title="Patient Name"></Field>
+    <Field Name="ipg_surgerydate" Title="DOS"></Field>
+  </View>
+  <View Name="Event Log" Entity="ipg_importanteventslog">
+    <Field Name="ipg_activity" Title="Event Type"></Field>
+    <Field Name="ipg_activitydescription" Title="Event Description"></Field>
+    <Field Name="ipg_datetimestamp" Title="Event Date"></Field>
+    <Field Name="ipg_performedby" Title="Created By"></Field>
+    <Field Name="ipg_casestatusdisplayed" Title="Case State"></Field>
+  </View>
+  <View Name="BVFInfo" Entity="ipg_benefitsverificationform">
+    <Field Name="ipg_carrierid" Title="Carrier Name"></Field>
+  </View>
+  <View Name="Rejected EHR records" Entity="ipg_ehrstaging">
+    <Field Name="ipg_datereceived" Title="File Created On"></Field>
+    <Field Name="ipg_scheduleddos" Title="Scheduled Procedure Date"></Field>
+    <Field Name="ipg_patientlastname" Title="Patient Last Name"></Field>
+    <Field Name="ipg_patientfirstname" Title="Patient First Name"></Field>
+    <Field Name="ipg_primarypayer" Title="Primary Carrier Name"></Field>
+    <Field Name="ipg_procedure1" Title="EHR Procedure Name"></Field>
+    <Field Name="ipg_statuscode" Title="Status"></Field>
+    <Field Name="ipg_notes" Title="Reason"></Field>
+  </View>
+  <View Name="All EHR records" Entity="ipg_ehrstaging">
+    <Field Name="ipg_datereceived" Title="File Created On"></Field>
+    <Field Name="ipg_scheduleddos" Title="Scheduled Procedure Date"></Field>
+    <Field Name="ipg_patientlastname" Title="Patient Last Name"></Field>
+    <Field Name="ipg_patientfirstname" Title="Patient First Name"></Field>
+    <Field Name="ipg_primarypayer" Title="Primary Carrier Name"></Field>
+    <Field Name="ipg_procedure1" Title="EHR Procedure Name"></Field>
+    <Field Name="ipg_statuscode" Title="Status"></Field>
+    <Field Name="ipg_notes" Title="Reason"></Field>
+  </View>
+  <View Name="Accepted EHR records" Entity="ipg_ehrstaging">
+    <Field Name="ipg_datereceived" Title="File Created On"></Field>
+    <Field Name="ipg_scheduleddos" Title="Scheduled Procedure Date"></Field>
+    <Field Name="ipg_patientlastname" Title="Patient Last Name"></Field>
+    <Field Name="ipg_patientfirstname" Title="Patient First Name"></Field>
+    <Field Name="ipg_primarypayer" Title="Primary Carrier Name"></Field>
+    <Field Name="ipg_procedure1" Title="EHR Procedure Name"></Field>
+    <Field Name="ipg_statuscode" Title="Status"></Field>
+    <Field Name="ipg_notes" Title="Reason"></Field>
+  </View>
+  <View Name="All EHR Facility-Carrier Mappings" Entity="ipg_ehrcarriermapping">
+    <Field Name="ipg_ehrname" Title="EHR Facility Name"></Field>
+  </View>
+  <View Name="Active EHR Facility-Carrier Mappings" Entity="ipg_ehrcarriermapping">
+    <Field Name="ipg_ehrname" Title="EHR Facility Name"></Field>
+  </View>
+  <View Name="Inactive EHR Facility-Carrier Mappings" Entity="ipg_ehrcarriermapping">
+    <Field Name="ipg_ehrname" Title="EHR Facility Name"></Field>
+  </View>
+  <View Name="My New Documents" Entity="ipg_document">
+    <Field Name="ipg_name" Title="Original File Name"></Field>
+    <Field Name="ipg_numberofpages" Title="No. of Pages"></Field>
+    <Field Name="ipg_originaldocdate" Title="Created On"></Field>
+  </View>
+  <View Name="All Documents" Entity="ipg_document">
+    <Field Name="ipg_name" Title="Original File Name"></Field>
+    <Field Name="ipg_numberofpages" Title="No. of Pages"></Field>
+    <Field Name="ipg_originaldocdate" Title="Created On"></Field>
+  </View>
+  <View Name="My Processed Documents" Entity="ipg_document">
+    <Field Name="ipg_name" Title="Original File Name"></Field>
+    <Field Name="ipg_numberofpages" Title="No. of Pages"></Field>
+    <Field Name="ipg_originaldocdate" Title="Created On"></Field>
+  </View>
+  <View Name="Unassigned Documents" Entity="ipg_document">
+    <Field Name="ipg_name" Title="Original File Name"></Field>
+    <Field Name="ipg_numberofpages" Title="No. of Pages"></Field>
+    <Field Name="ipg_originaldocdate" Title="Created On"></Field>
+  </View>
+  <View Name="Patient Statements Task" Entity="ipg_statementgenerationtask">
+    <Field Name="ipg_documentid" Title="Statement Name"></Field>
+  </View>
+  <View Name="Patient Statements Task" Entity="ipg_statementgenerationtask">
+    <Field Name="ipg_documentid" Title="Statement Name"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="contact">
+    <Field Name="ipg_referralcasenumber" Title="Referral ID"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="contact">
+    <Field Name="ipg_proceduredate" Title="Scheduled Procedure Date"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="contact">
+    <Field Name="ipg_carrierid" Title="Primary Carrier Name"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="Case">
+    <Field Name="title" Title="Case ID"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="Case">
+    <Field Name="ipg_facilityid" Title="	Facility Name"></Field>
+  </View>
+  <View Name="Patient Referral" Entity="Case">
+    <Field Name="ipg_referralid" Title="Referral Source"></Field>
+  </View>
+  <View Name="Active Carrier Claims Mailing Addresses" Entity="ipg_carrierclaimsmailingaddress">
+    <Field Name="ipg_claimsmailingaddress" Title="Claims Address"></Field>
+  </View>
+  <View Name="Active Carrier Claims Mailing Addresses" Entity="ipg_carrierclaimsmailingaddress">
+    <Field Name="ipg_claimsmailingcity" Title="Claims City"></Field>
+  </View>
+  <View Name="Active Carrier Claims Mailing Addresses" Entity="ipg_carrierclaimsmailingaddress">
+    <Field Name="ipg_claimsmailingstate" Title="Claims State"></Field>
+  </View>
+  <View Name="Active Carrier Claims Mailing Addresses" Entity="ipg_carrierclaimsmailingaddress">
+    <Field Name="ipg_claimsmailingzipcodeidid" Title="Claims Zip Code"></Field>
+  </View>
+
+  <View Name="Active Manufacturers" Entity="account">
+    <Field Name="ipg_abbreviation" Title="States"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_name" Title="Document Title"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_documenttypeid" Title="Document Type"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_facilityid" Title="Facility Name"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_numberofpages" Title="No. Of Pages"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ownerid" Title="Assigned To"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_reviewstatus" Title="Review Status"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="createdon" Title="Original Doc Date"></Field>
+  </View>
+  <View Name="All Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_category" Title="Document Category"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_caseid" Title="Case Id"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_name" Title="Document Title"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_documenttypeid" Title="Document Type"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_reviewstatus" Title="Review Status"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ipg_reviewdate" Title="Review Date"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="createdon" Title="Date Created"></Field>
+  </View>
+  <View Name="Common Documents (Document Record Copy)" Entity="ipg_documentrecordcopy">
+    <Field Name="ownerid" Title="Assigned To"></Field>
+  </View>
+
+  <View Name="Used Actual Part" Entity="ipg_documentrecordcopy">
+    <Field Name="name" Title="Manufacturer"></Field>
+  </View>
+
+  <View Name="All Actual Parts" Entity="ipg_casepartdetail">
+    <Field Name="name" Title="Manufacturer"></Field>
+  </View>
+
+  <View Name="Unused Actual Parts" Entity="ipg_casepartdetail">
+    <Field Name="name" Title="Manufacturer"></Field>
+  </View>
+
+  <View Name="Active Web Roles" Entity="adx_webrole">
+    <Field Name="adx_name" Title="Web Role"></Field>
+  </View>
+
+  <View Name="Servicing Provider" Entity="invoice">
+    <Field Name="address1_line1" Title="Servicing Provider Address To"></Field>
+  </View>
+  <View Name="Servicing Provider" Entity="invoice">
+    <Field Name="address1_city" Title="Servicing Provider City To"></Field>
+  </View>
+  <View Name="Servicing Provider" Entity="invoice">
+    <Field Name="ipg_stateid" Title="Servicing Provider State To"></Field>
+  </View>
+  <View Name="Servicing Provider" Entity="invoice">
+    <Field Name="ipg_zipcodeid" Title="Servicing Provider Zip Code To"></Field>
+  </View>
+
+  <View Name="Active Portal Contacts" Entity="contact">
+    <Field Name="ipg_facilitiescount" Title="Associated Facilities"></Field>
+  </View>
+  <View Name="Inactive Portal Contacts" Entity="contact">
+    <Field Name="ipg_facilitiescount" Title="Associated Facilities"></Field>
+  </View>
+  <View Name="All Portal Contacts" Entity="contact">
+    <Field Name="ipg_facilitiescount" Title="Associated Facilities"></Field>
+  </View>
+
+  <View Name="Active Physicians" Entity="contact">
+    <Field Name="ipg_fullname" Title="Physician Name"></Field>
+    <Field Name="ipg_physiciantaxonomycode" Title="Physician Taxonomy"></Field>
+    <Field Name="ipg_facility_user_status_typecode" Title="Review Status"></Field>
+  </View>
+  <View Name="Inactive Physicians" Entity="contact">
+    <Field Name="ipg_fullname" Title="Physician Name"></Field>
+    <Field Name="ipg_physiciantaxonomycode" Title="Physician Taxonomy"></Field>
+    <Field Name="ipg_facility_user_status_typecode" Title="Review Status"></Field>
+  </View>
+  <View Name="All Physicians" Entity="contact">
+    <Field Name="ipg_fullname" Title="Physician Name"></Field>
+    <Field Name="ipg_physiciantaxonomycode" Title="Physician Taxonomy"></Field>
+    <Field Name="ipg_facility_user_status_typecode" Title="Review Status"></Field>
+  </View>
+
+  <View Name="FacilitiesForPortalUsersDashboard" Entity="ipg_contactsaccounts">
+    <Field Name="ipg_accountid" Title="Facility Name"></Field>
+  </View>
+
+
+  <View Name="Patient Statements" Entity="ipg_document">
+    <Field Name="ipg_documenttypeabbreviation" Title="Document Type"></Field>
+  </View>
+
+
+  <View Name="FacilityContacts" Entity="ipg_contactsaccounts">
+    <Field Name="ipg_contactid" Title="Contact Name"></Field>
+  </View>
+
+
+  <View Name="All Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="All Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="All New Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="All New Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="All Processed Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="All Processed Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="Carrier Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="Carrier Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="Facility Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="Facility Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+
+  <View Name="Manufacturer Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="Manufacturer Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="My New Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="My New Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="My Processed Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="My Processed Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="Unassigned Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="Unassigned Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="Web - Forms center view" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="Web - Forms center view" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="My New Documents" Entity="document">
+    <Field Name="createdon" Title="Created On"></Field>
+  </View>
+  <View Name="My New Documents" Entity="document">
+    <Field Name="ipg_documenttypecategoryid" Title="Related Record"></Field>
+  </View>
+
+  <View Name="Active HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_isactive" Title="Active"></Field>
+  </View>
+
+  <View Name="Active HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_name" Title="HCPCS Codes"></Field>
+  </View>
+
+  <View Name="InActive HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_isactive" Title="Active"></Field>
+  </View>
+
+  <View Name="InActive HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_name" Title="HCPCS Codes"></Field>
+  </View>
+
+  <View Name="All HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_isactive" Title="Active"></Field>
+  </View>
+
+  <View Name="All HCPCS Codes" Entity="ipg_masterhcpcs">
+    <Field Name="ipg_name" Title="HCPCS Codes"></Field>
+  </View>
+
+  <View Name="New Manufacturer Contacts" Entity="contact">
+    <Field Name="fullname" Title="Name"></Field>
+  </View>
+
+  <View Name="New Manufacturer Contacts" Entity="contact">
+    <Field Name="ipg_contacttype" Title="Type"></Field>
+  </View>
+  <View Name="New Manufacturer Contacts" Entity="contact">
+    <Field Name="telephone1" Title="Phone"></Field>
+  </View>
+
+  <View Name="Related Facilities" Entity="FacilityPhysician">
+    <Field Name="ipg_active" Title="Active"></Field>
+  </View>
+
+  <View Name="Related Facilities" Entity="FacilityPhysician">
+    <Field Name="ipg_facilitymddid" Title="MDD Name"></Field>
+  </View>
+
+  <View Name="Related Facilities" Entity="FacilityPhysician">
+    <Field Name="ipg_facilitycimid" Title="MDM Name"></Field>
+  </View>
+
+</Views>

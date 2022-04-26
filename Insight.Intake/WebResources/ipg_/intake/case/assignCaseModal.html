@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Assign case</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-12">
+            <h5>Assign to User and/or Team</h5>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-12">
+            <label id="selected-records-label"></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <label>Assign to</label>
+        </div>
+        <div class="col-6">
+            <select id="assign-to-type-select" class="wizardValue required">
+                <option value="1" selected>Me</option>
+                <option value="2">User or team</option>
+            </select>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <label>Assign To Team</label>
+        </div>
+        <div class="col-6">
+            <select id="assign-to-team-select" class="w-100 wizardValue required">
+                <option value="0" selected></option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <label>Assign To User</label>
+        </div>
+        <div class="col-6">
+            <select id="assign-to-user-select" class="w-100 wizardValue required">
+                <option value="0" selected></option>
+            </select>
+        </div>
+    </div>
+    <div class="row fixed-bottom pb-3">
+        <div class="col-12">
+          <div class="float-right mr-4">
+            <button type="button" class="btn btn-primary" id="okBtn">Ok</button>
+            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+          </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="assignCaseModal" type="text/javascript"></script>
+</body>
+</html>

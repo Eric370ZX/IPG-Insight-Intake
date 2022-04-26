@@ -1,0 +1,22 @@
+{
+  "name": "@ipg-d365/web-resources",
+  "version": "1.0.0",
+  "description": "D365 Web Resources for Intake solution",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "build-react": "cd react-app && npm ci && npm run build",
+    "build-all": "npm run build && npm run build-react"
+  },
+  "author": "IPG",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^3.5.1",
+    "@types/xrm": "^9.0.40",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "react-number-format": "^4.5.3"
+  }
+}

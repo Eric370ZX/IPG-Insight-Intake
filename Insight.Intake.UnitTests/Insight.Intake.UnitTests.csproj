@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" />
+  <Import Project="..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props" Condition="Exists('..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props')" />
+  <Import Project="..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.props" Condition="Exists('..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.props')" />
+  <Import Project="..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.props" Condition="Exists('..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{800A1FBA-ABDD-4968-A60F-C108F46042F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Insight.Intake.UnitTests</RootNamespace>
+    <AssemblyName>Insight.Intake.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXSSLibrary, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Extensions.7.1.0.1\lib\net45\AntiXSSLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Bogus, Version=22.3.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a">
+      <HintPath>..\packages\Bogus.22.3.2\lib\net40\Bogus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FakeItEasy, Version=6.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.6.2.1\lib\net45\FakeItEasy.dll</HintPath>
+    </Reference>
+    <Reference Include="FakeXrmEasy, Version=1.57.1.0, Culture=neutral, PublicKeyToken=dd4e58c4492635a6, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeXrmEasy.9.1.57.1\lib\net462\FakeXrmEasy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.34\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.79\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.CodeCoverage.Shim, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeCoverage.15.9.0\lib\net45\Microsoft.VisualStudio.CodeCoverage.Shim.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Extensions.7.1.0.1\lib\net45\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client.CodeGeneration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Extensions.7.1.0.1\lib\net45\Microsoft.Xrm.Client.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Portal, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Extensions.7.1.0.1\lib\net45\Microsoft.Xrm.Portal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Portal.Files, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Extensions.7.1.0.1\lib\net45\Microsoft.Xrm.Portal.Files.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.34\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.25\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.25\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.79\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.8.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.8.2\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>..\Insight.Intake\lib\PdfSharp.dll</HintPath>
+      <Aliases>PdfSharpUnitTests</Aliases>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.3\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.4.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.4.1\lib\net452\xunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.4.1.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.4.1\lib\net452\xunit.execution.desktop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeActivities\AddBusinessDaysTests.cs" />
+    <Compile Include="Fakes\FakeEBVBenefit.cs" />
+    <Compile Include="Fakes\FakeAdjustment.cs" />
+    <Compile Include="Fakes\FakeCarrierClaimAddresscs.cs" />
+    <Compile Include="Fakes\FakeCarrierNetWorkState.cs" />
+    <Compile Include="Fakes\FakeClaimStatusCode.cs" />
+    <Compile Include="Fakes\FakeEhrCarrierMap.cs" />
+    <Compile Include="Fakes\FakeEhrStaging.cs" />
+    <Compile Include="Fakes\FakeGWServiceTypeCode.cs" />
+    <Compile Include="Fakes\FakeGLTransaction.cs" />
+    <Compile Include="Fakes\Fakeipg_assigntorule.cs" />
+    <Compile Include="Fakes\FakeAccountUser.cs" />
+    <Compile Include="Fakes\FakeAssociatedCptDateRange.cs" />
+    <Compile Include="Fakes\FakeAuthorization.cs" />
+    <Compile Include="Fakes\FakeBenefit.cs" />
+    <Compile Include="Fakes\FakeBVF.cs" />
+    <Compile Include="Fakes\FakeCarrierNetworkCptRule.cs" />
+    <Compile Include="Fakes\FakeCarrierPrecertCpt.cs" />
+    <Compile Include="Fakes\FakeAccount.cs" />
+    <Compile Include="Fakes\FakeAnnotation.cs" />
+    <Compile Include="Fakes\FakeAssociatedCpt.cs" />
+    <Compile Include="Fakes\FakeCaseCarrierAddingParameters.cs" />
+    <Compile Include="Fakes\FakeCaseHoldConfiguration.cs" />
+    <Compile Include="Fakes\FakeCaseStatusDisplayed.cs" />
+    <Compile Include="Fakes\FakeClaimConfiguration.cs" />
+    <Compile Include="Fakes\FakeClaimResponseBatch.cs" />
+    <Compile Include="Fakes\FakeClaimResponseHeader.cs" />
+    <Compile Include="Fakes\FakeClaimZirmedStatus.cs" />
+    <Compile Include="Fakes\FakeContactType.cs" />
+    <Compile Include="Fakes\FakeContactAccount.cs" />
+    <Compile Include="Fakes\FakeDocumentTypeCategory.cs" />
+    <Compile Include="Fakes\FakeEBVSubscriber.cs" />
+    <Compile Include="Fakes\FakeEbvResponse.cs" />
+    <Compile Include="Fakes\FakeEntitlementRelationship.cs" />
+    <Compile Include="Fakes\FakeCasePartDetail.cs" />
+    <Compile Include="Fakes\FakeContact.cs" />
+    <Compile Include="Fakes\FakeDxCode.cs" />
+    <Compile Include="Fakes\FakeCptCode.cs" />
+    <Compile Include="Fakes\FakeDocument.cs" />
+    <Compile Include="Fakes\FakeDocumentType.cs" />
+    <Compile Include="Fakes\FakeEntityCollection.cs" />
+    <Compile Include="Fakes\FakeEstimatedCasePartDetail.cs" />
+    <Compile Include="Fakes\FakeFacilityCarrierCPTRuleContract.cs" />
+    <Compile Include="Fakes\FakeFacilityCarrierCptRule.cs" />
+    <Compile Include="Fakes\FakeFacilityCPT.cs" />
+    <Compile Include="Fakes\FakeFacilityManufacturerRelationship.cs" />
+    <Compile Include="Fakes\FakeCarrierNetwork.cs" />
+    <Compile Include="Fakes\FakeGateProcessingRule.cs" />
+    <Compile Include="Fakes\FakeGlobalSetting.cs" />
+    <Compile Include="Fakes\FakeHomePlanCarrierMap.cs" />
+    <Compile Include="Fakes\FakeInformationTypeRequiredInformationRule.cs" />
+    <Compile Include="Fakes\FakeInvoice.cs" />
+    <Compile Include="Fakes\Fakeipg_activitytype.cs" />
+    <Compile Include="Fakes\Fakeipg_facilityphysician.cs" />
+    <Compile Include="Fakes\Fakeipg_documenttype.cs" />
+    <Compile Include="Fakes\Fakeipg_gatedetermination.cs" />
+    <Compile Include="Fakes\Fakeipg_workflowtaskoutputconfig.cs" />
+    <Compile Include="Fakes\FakeLifeCycleStep.cs" />
+    <Compile Include="Fakes\FakeMasterHCPCS.cs" />
+    <Compile Include="Fakes\FakeMessageExecutor.cs" />
+    <Compile Include="Fakes\FakeOptionSetMetadata.cs" />
+    <Compile Include="Fakes\FakePatientConfigTaskReasonDetail.cs" />
+    <Compile Include="Fakes\FakePayment.cs" />
+    <Compile Include="Fakes\FakePluginTestContext.cs" />
+    <Compile Include="Fakes\FakeIncident.cs" />
+    <Compile Include="Fakes\FakePortalComment.cs" />
+    <Compile Include="Fakes\FakeProcedureName.cs" />
+    <Compile Include="Fakes\FakePost.cs" />
+    <Compile Include="Fakes\FakeFacilityEhrConnection.cs" />
+    <Compile Include="Fakes\FakeProduct.cs" />
+    <Compile Include="Fakes\FakeGateConfiguration.cs" />
+    <Compile Include="Fakes\FakeGateConfigurationDetail.cs" />
+    <Compile Include="Fakes\FakeQueue.cs" />
+    <Compile Include="Fakes\FakeQueueItem.cs" />
+    <Compile Include="Fakes\FakeReferral.cs" />
+    <Compile Include="Fakes\FakeReferralBPF.cs" />
+    <Compile Include="Fakes\FakeRequiredInformation.cs" />
+    <Compile Include="Fakes\FakeRole.cs" />
+    <Compile Include="Fakes\FakeSalesOrder.cs" />
+    <Compile Include="Fakes\FakeSalesOrderDetail.cs" />
+    <Compile Include="Fakes\FakeMelissaZipCode.cs" />
+    <Compile Include="Fakes\FakeState.cs" />
+    <Compile Include="Fakes\FakeStatement.cs" />
+    <Compile Include="Fakes\FakeSystemUser.cs" />
+    <Compile Include="Fakes\FakeTask.cs" />
+    <Compile Include="Fakes\FakeTaskCategory.cs" />
+    <Compile Include="Fakes\FakeTaskConfiguration.cs" />
+    <Compile Include="Fakes\FakeTaskReason.cs" />
+    <Compile Include="Fakes\FakeTaskReasonDetail.cs" />
+    <Compile Include="Fakes\FakeTaskreasondetailsStatement.cs" />
+    <Compile Include="Fakes\FakeTaskReasonTaskReasonDetail.cs" />
+    <Compile Include="Fakes\FakeTasks.cs" />
+    <Compile Include="Fakes\FakeTaskType.cs" />
+    <Compile Include="Fakes\FakeTeam.cs" />
+    <Compile Include="Fakes\FakeTeamMembership.cs" />
+    <Compile Include="Fakes\FakeUnsupportedPart.cs" />
+    <Compile Include="Fakes\FakeWebRole.cs" />
+    <Compile Include="Fakes\FakeWorkFlow.cs" />
+    <Compile Include="Fakes\FakeWorkflowTask.cs" />
+    <Compile Include="Fakes\FakeZirmedEventCode.cs" />
+    <Compile Include="Fakes\FakeImportantEventConfig.cs" />
+    <Compile Include="Helpers\PdfSharpExtensions.cs" />
+    <Compile Include="Helpers\PreImagePostImageHelperTest.cs" />
+    <Compile Include="Helper\Utility.cs" />
+    <Compile Include="LanguageCodes.cs" />
+    <Compile Include="PluginTestsBase.cs" />
+    <Compile Include="Plugin\AccountUser\CheckAccountUserOnDuplicatePluginTests.cs" />
+    <Compile Include="Plugin\AccountUser\CheckThereIsOnlyOnePrimaryCaseManagerTests.cs" />
+    <Compile Include="Plugin\AccountUser\CreateTaskWhenThereIsNoCaseManagerForAccountTests.cs" />
+    <Compile Include="Plugin\Account\SetCarrierTimelyFilingRulePluginTests.cs" />
+    <Compile Include="Plugin\Account\VerifyBenefitsByCarrierTests.cs" />
+    <Compile Include="Plugin\Account\SetDocumentAssociationDateTests.cs" />
+    <Compile Include="Plugin\Account\FacilityBAADocumentValidationTests.cs" />
+    <Compile Include="Plugin\Account\CheckFacilityBSAEntitlementsPluginTests.cs" />
+    <Compile Include="Plugin\Account\FacilityDIFDocumentValidationTests.cs" />
+    <Compile Include="Plugin\Account\SetBillToPatientTests.cs" />
+    <Compile Include="Plugin\Actions\AddBusinessDaysTests.cs" />
+    <Compile Include="Plugin\Adjustment\AutoCaseCloseTest.cs" />
+    <Compile Include="Plugin\Adjustment\AutomatedWriteOffTests.cs" />
+    <Compile Include="Plugin\Adjustment\CalculateCaseAdjustmentAndWriteOffTests.cs" />
+    <Compile Include="Plugin\Adjustment\InsertGLTransactionOnAdjustmentCreationTests.cs" />
+    <Compile Include="Plugin\Adjustment\RunGateOnAdjustmentCreationTest.cs" />
+    <Compile Include="Plugin\AssociatedCptDateRange\CheckForOverlappingDatesTest.cs" />
+    <Compile Include="Plugin\AssociatedCpt\PopulatePrimaryAttributePluginTests.cs" />
+    <Compile Include="Plugin\Authorization\CompleteTasksTests.cs" />
+    <Compile Include="Plugin\Authorization\CaseRecentAuthorizationTests.cs" />
+    <Compile Include="Plugin\Authorization\CreateCallTests.cs" />
+    <Compile Include="Plugin\Benefit\UpdateCaseCoverageLevelsTest.cs" />
+    <Compile Include="Plugin\BVF\PopulatePrimaryAttributeTest.cs" />
+    <Compile Include="Plugin\BVF\SubmitBVFPluginTest.cs" />
+    <Compile Include="Plugin\CarrierPrecertCPT\ValidateDuplicateOrOverlappingCarrierPrecertCPTTest.cs" />
+    <Compile Include="Plugin\CaseGateExecution\CalculateExecutionTimeTests.cs" />
+    <Compile Include="Plugin\CasePartDetail\CasePartPostPluginTests.cs" />
+    <Compile Include="Plugin\CasePartDetail\CasePartValidationPluginTest.cs" />
+    <Compile Include="Plugin\CasePartDetail\RemoveTests.cs" />
+    <Compile Include="Plugin\CasePartDetail\SetActualPartIsChangedFlagTests.cs" />
+    <Compile Include="Plugin\CasePartDetail\VoidTests.cs" />
+    <Compile Include="Plugin\Case\AddNewBenefitNoteAndAuthorizationNoteTests.cs" />
+    <Compile Include="Plugin\Case\CalculateProcedureDateTest.cs" />
+    <Compile Include="Plugin\Case\CaseIsUnlockedTests.cs" />
+    <Compile Include="Plugin\Case\CreateDefaultAuthRecordTests.cs" />
+    <Compile Include="Plugin\Case\OnUpdateScheduledProcedureDateTests.cs" />
+    <Compile Include="Plugin\Case\SetOwnerByStateLifecycleTests.cs" />
+    <Compile Include="Plugin\Case\DetermineCMtoAssignTests.cs" />
+    <Compile Include="Plugin\Case\DetermineCStoAssignTests.cs" />
+    <Compile Include="Plugin\Case\UnlockCaseActionTest.cs" />
+    <Compile Include="Plugin\Common\EbvBenefitImporterTests.cs" />
+    <Compile Include="Plugin\ContactsAccount\UpsertContactsAccountTest.cs" />
+    <Compile Include="Plugin\Contact\ImpersonationTests.cs" />
+    <Compile Include="Plugin\Contact\NewPhysicianRequestPluginTests.cs" />
+    <Compile Include="Plugin\Contact\PortalContactDisallowDublicatesTests.cs" />
+    <Compile Include="Plugin\Contact\RequestNewFacilityUserNotificationPluginTests.cs" />
+    <Compile Include="Plugin\Case\SetRelatedToInsuredTests.cs" />
+    <Compile Include="Plugin\Case\SetAuthorizationRequiredTests.cs" />
+    <Compile Include="Plugin\Case\CaseIsClosedPluginTest.cs" />
+    <Compile Include="Plugin\Case\CaseOwnerAssignmentTests.cs" />
+    <Compile Include="Plugin\Case\ClosePatientCollectionTasksTest.cs" />
+    <Compile Include="Plugin\Case\CreateImportantEventLogCaseReopenedTests.cs" />
+    <Compile Include="Plugin\Case\CreateTissueRequestFormTaskTest.cs" />
+    <Compile Include="Plugin\Case\DeriveHomePlanPluginTest.cs" />
+    <Compile Include="Plugin\Case\CloseCaseActionPluginTest.cs" />
+    <Compile Include="Plugin\Case\DeriveInfoFromBilledCPTTests.cs" />
+    <Compile Include="Plugin\Case\GatingCompletedPluginTest.cs" />
+    <Compile Include="Plugin\Case\AddSecondCarrierTests.cs" />
+    <Compile Include="Plugin\Case\HoldCaseActionPluginTests.cs" />
+    <Compile Include="Plugin\Case\SetCaseManagerFromPoolTaskTests.cs" />
+    <Compile Include="Plugin\Case\PutCaseIntoPoolTests.cs" />
+    <Compile Include="Plugin\Case\RemoveCaseFromPoolTests.cs" />
+    <Compile Include="Plugin\Case\UpdateCaseBenefitTypeTests.cs" />
+    <Compile Include="Plugin\Case\GenerateDefaultBenefitTests.cs" />
+    <Compile Include="Plugin\Case\GenerateEligibilityInquiryPlugin\GenerateEligibilityInquiryPluginTests.cs" />
+    <Compile Include="Plugin\Case\GenerateClaimPluginTest.cs" />
+    <Compile Include="Plugin\Case\OpenCaseTests.cs" />
+    <Compile Include="Plugin\Case\GeneratePOTests.cs" />
+    <Compile Include="Plugin\Case\InitPatientOutreachTaskOnStatementTest.cs" />
+    <Compile Include="Plugin\Case\OnUpdateAllRecievedPluginTest.cs" />
+    <Compile Include="Plugin\Case\PreValidatePOTests.cs" />
+    <Compile Include="Plugin\Case\SavePatientDemographicInformationPluginTest.cs" />
+    <Compile Include="Plugin\Case\TriggerEHRUpdateFeedProcessTest.cs" />
+    <Compile Include="Plugin\Case\SetBillToPatientTest.cs" />
+    <Compile Include="Plugin\Case\TrackAllReceivedTests.cs" />
+    <Compile Include="Plugin\Case\UpdateCollectionVendorValueToIPGTest.cs" />
+    <Compile Include="Plugin\Case\UpdateCollectionVendorValueToSCGTest.cs" />
+    <Compile Include="Plugin\Case\UpdatePatientInformationPluginTests.cs" />
+    <Compile Include="Plugin\Case\SetReferralTypeCanBeModifiedTest.cs" />
+    <Compile Include="Plugin\Case\UpdateCarrierNetworkOnCaseTest.cs" />
+    <Compile Include="Plugin\Case\ValidateCarrierChangeTest.cs" />
+    <Compile Include="Plugin\Case\ValidateRequiredDocumentTest.cs" />
+    <Compile Include="Plugin\Case\ValidateMissingInformationTest.cs" />
+    <Compile Include="Plugin\ClaimResponse\CloseMatchClaimCaseTaskTest.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateCaseIdTest.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateClaimIdTest.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateClaimResponseBatchAmountsTest.cs" />
+    <Compile Include="Plugin\ClaimResponse\UpdateClaimResponseBatchStatusTest.cs" />
+    <Compile Include="Plugin\Claim\UpdateClaimStatusTest.cs" />
+    <Compile Include="Plugin\Common\CaseBenefitSwitcherTests.cs" />
+    <Compile Include="Plugin\Contact\CreateTaskForFacilityUserPluginTests.cs" />
+    <Compile Include="Plugin\Contact\CreateTaskForPhysicianPluginTest.cs" />
+    <Compile Include="Plugin\Contact\CreateTaskWhenPhysicianNPIIsUniqueTests.cs" />
+    <Compile Include="Plugin\Contact\CreateContactExtensionTaskToSaveTests.cs" />
+    <Compile Include="Plugin\Contact\PotentialDuplicatePatientTest.cs" />
+    <Compile Include="Plugin\Case\DeriveInfoFromFacilityTests.cs" />
+    <Compile Include="Plugin\Contact\SetFullNameTests.cs" />
+    <Compile Include="Plugin\CptCode\SetProcedureNameOnCaseTests.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToAccountTest.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToReferralTest.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentTest.cs" />
+    <Compile Include="Plugin\Document\AssociateDocumentToCaseTests.cs" />
+    <Compile Include="Plugin\Document\CountNumberOfPagesPlugin\CountNumberOfPagesPluginTests.cs" />
+    <Compile Include="Plugin\Document\DocumentOwnerAssignmentTests.cs" />
+    <Compile Include="Plugin\Document\ReassignDocumentToReferralTests.cs" />
+    <Compile Include="Plugin\Document\RetrieveDocumentsForDyanamicViewTest.cs" />
+    <Compile Include="Plugin\Document\AutoCloseCaseTasksTests.cs" />
+    <Compile Include="Plugin\Document\UpdateTaskPluginTest.cs" />
+    <Compile Include="Plugin\Document\ValidateFileExtensionTest.cs" />
+    <Compile Include="Plugin\Document\CreateNoteFromFileTests.cs" />
+    <Compile Include="Plugin\Document\MergeDocumentsPlugin\MergeDocumentPluginTests.cs" />
+    <Compile Include="Plugin\Document\CreateApproveMfgPriceListTaskTest.cs" />
+    <Compile Include="Plugin\Document\ReassignDocumentToCaseTests.cs" />
+    <Compile Include="Plugin\Document\RenameDocumentWhenPropertiesChangeTest.cs" />
+    <Compile Include="Plugin\Document\SplitDocumentPlugin\SplitDocumentPluginTests.cs" />
+    <Compile Include="Plugin\EhrCarrierMapping\CompleteTasksTests.cs" />
+    <Compile Include="Plugin\FacilityEhrConnection\UpdateStatusOnFacilityTests.cs" />
+    <Compile Include="Plugin\FacilityEhrConnection\EhrConnectionDatesValidationPluginTest.cs" />
+    <Compile Include="Plugin\Entitlement\SetBillToPatientTests.cs" />
+    <Compile Include="Plugin\Entitlement\ValidateFacilityCarrierEntitlementCreateAndUpdateTests.cs" />
+    <Compile Include="Plugin\EstimatedPartDetail\EstimatedPartValidationPluginTest.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRuleContract\ValidateOverlapFacilityCarrierCPTRuleContractTest.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRule\UpdateFacilityCarrierCPTRuleNameTest.cs" />
+    <Compile Include="Plugin\FacilityCarrierCPTRule\ValidateOverlappingCPTRulesTest.cs" />
+    <Compile Include="Plugin\FacilityCPT\OnFacilityCPTCreateAndUpdateTest.cs" />
+    <Compile Include="Plugin\GateProcessingRule\CheckUniquenessTests.cs" />
+    <Compile Include="Plugin\Gating\CheckActualProcedureDateTest.cs" />
+    <Compile Include="Plugin\Gating\CheckAutoCarrierTests.cs" />
+    <Compile Include="Plugin\Gating\CheckBandingRulesTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierIsContractedTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCPTorProcedureNameTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPropelNasalStentOnCPTTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPropelNasalStentOnProcedureNameTests.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate11Tests.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate3Tests.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate9Tests.cs" />
+    <Compile Include="Plugin\Gating\ValidateEhrPatientAddressTests.cs" />
+    <Compile Include="Plugin\Gating\ValidCarrierPairedAutoCarrierTests.cs" />
+    <Compile Include="Plugin\Gating\TimelyFilingRequirementsTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthCarrierPreCertCPTTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthCarrierNameTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCalcRevDateTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierNetworkCPTRulesTest.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierTypeTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCheckVerifyMissingInfoDXCodesTest.cs" />
+    <Compile Include="Plugin\Gating\CheckCheckVerifyMissingInfoCPTCodesTest.cs" />
+    <Compile Include="Plugin\Gating\CheckCriticalFieldsLastChangeDateTests.cs" />
+    <Compile Include="Plugin\Gating\CheckDisplayedStatusForCancelTests.cs" />
+    <Compile Include="Plugin\Gating\CheckDMEBenefitsJQUPrefixTests.cs" />
+    <Compile Include="Plugin\Gating\CheckFacilityAcceptCptTests.cs" />
+    <Compile Include="Plugin\Gating\CheckForCarrierAcceptCPTTests.cs" />
+    <Compile Include="Plugin\Gating\CheckHCPSCCaseDosTests.cs" />
+    <Compile Include="Plugin\Gating\CheckHighPriorityTasksTests.cs" />
+    <Compile Include="Plugin\Gating\CheckMedicalRecordsTests.cs" />
+    <Compile Include="Plugin\Gating\CheckDuplicateCaseTest.cs" />
+    <Compile Include="Plugin\Gating\CheckPhysicianValueTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPreAuthMemberIdTests.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralAssociatedCaseTests.cs" />
+    <Compile Include="Plugin\Gating\CheckVerifyAllReceivedDateTests.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralDOSTests.cs" />
+    <Compile Include="Plugin\Gating\CheckReferralRequiredFieldsTests.cs" />
+    <Compile Include="Plugin\Gating\CheckRequiredAuthForHMOTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCheckDxGenderTests.cs" />
+    <Compile Include="Plugin\Gating\CheckBSAVerificationTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierIsAcceptedTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCheckCasePartDetails.cs" />
+    <Compile Include="Plugin\Gating\CheckRequiredDocumentByGateTests.cs" />
+    <Compile Include="Plugin\Gating\CheckSupportedPartsTests.cs" />
+    <Compile Include="Plugin\Gating\CheckPatientBalanceTests.cs" />
+    <Compile Include="Plugin\Gating\CheckCarrierBalanceTests.cs" />
+    <Compile Include="Plugin\Gating\CheckValidatedAcceptedClaimTests.cs" />
+    <Compile Include="Plugin\Gating\CaseHasSubmittedClaimsTests.cs" />
+    <Compile Include="Plugin\Gating\Common\GateManagerTests.cs" />
+    <Compile Include="Plugin\Gating\CPTSupportedByIPGTests.cs" />
+    <Compile Include="Plugin\Gating\CPTSupportedByFacilityTests.cs" />
+    <Compile Include="Plugin\Gating\CPTSupportedByFacilityCarrierTests.cs" />
+    <Compile Include="Plugin\Gating\FacilityCarrierContractExistsTest.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\FakeExecuteWorkflowRequest.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate2Tests.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\Gate6Tests.cs" />
+    <Compile Include="Plugin\Gating\PostProcess\GateEHRTests.cs" />
+    <Compile Include="Plugin\Gating\ReferralOn2GateTests.cs" />
+    <Compile Include="Plugin\Gating\PatientDemographicsNotProvidedTests.cs" />
+    <Compile Include="Plugin\Gating\CheckClaimGenerationOverrideTests.cs" />
+    <Compile Include="Plugin\Gating\RunGatingOnCase.cs" />
+    <Compile Include="Plugin\Gating\ValidateDxCodeTests.cs" />
+    <Compile Include="Plugin\Gating\VerifyBenefitsTests.cs" />
+    <Compile Include="Plugin\Gating\DetermineFacilityCarrierStatus\DOSIsOutOfContractTests.cs" />
+    <Compile Include="Plugin\Gating\DetermineFacilityCarrierStatus\NoContractTests.cs" />
+    <Compile Include="Plugin\Gating\GateProcessingTest.cs" />
+    <Compile Include="Plugin\Gating\SetInitialGateConfigurationValueTest.cs" />
+    <Compile Include="Plugin\Gating\ValidateCPTCodesByApprovementTests.cs" />
+    <Compile Include="Plugin\Gating\WFTGroups\PostProcessIfFailed\PreAuthFailedTest.cs" />
+    <Compile Include="Plugin\GLTransaction\PopulateFieldsFromCaseTest.cs" />
+    <Compile Include="Plugin\InformationTypeRequiredInformationRule\InformationTypeRequiredInformationRuleValidateDuplicateTests.cs" />
+    <Compile Include="Plugin\ImportantEventsLog\RetrieveMultipleImportantEventsLogTests.cs" />
+    <Compile Include="Plugin\Logging\CasePromotedToCollectionLogPluginTests.cs" />
+    <Compile Include="Plugin\Note\CreateDocumentTest.cs" />
+    <Compile Include="Plugin\Note\GeneratePDFPatientStatementTest.cs" />
+    <Compile Include="Plugin\Note\ModifyNotesViewTest.cs" />
+    <Compile Include="Plugin\Order\CreateOrderImportantEventLogTests.cs" />
+    <Compile Include="Plugin\Order\OrderCreateUpdateCaptureCaseAIFieldsTests.cs" />
+    <Compile Include="Plugin\Order\PopulateDownloadedFromPortalFieldTest.cs" />
+    <Compile Include="Plugin\Order\SetPOIssuedOrPOPaidOnCaseTests.cs" />
+    <Compile Include="Plugin\Order\UpdateMostRecentPOsTests.cs" />
+    <Compile Include="Plugin\Payment\CreateAdjustmentTest.cs" />
+    <Compile Include="Plugin\Payment\InsertGLTransactionOnPaymentCreationTests.cs" />
+    <Compile Include="Plugin\Payment\PreValidatePaymentTest.cs" />
+    <Compile Include="Plugin\Payment\ProcessPaymentTest.cs" />
+    <Compile Include="Plugin\Payment\RoundBalanceTests.cs" />
+    <Compile Include="Plugin\Payment\UpdateClaimResponseHeaderStatusTest.cs" />
+    <Compile Include="Plugin\PortalComment\AssignToUserOrTeam.cs" />
+    <Compile Include="Plugin\PortalComment\SetDefaultPortalFieldsTests.cs" />
+    <Compile Include="Plugin\PortalComment\SetMessageStatusTests.cs" />
+    <Compile Include="Plugin\ProcedureName\CheckProcedureNameForDuplicateTests.cs" />
+    <Compile Include="Plugin\ProcedureName\CreateTaskForNewProcedureNameTests.cs" />
+    <Compile Include="Plugin\Product\CheckProductOnDuplicatePluginTests.cs" />
+    <Compile Include="Plugin\QueueItem\RouteQueueItemPluginTest.cs" />
+    <Compile Include="Plugin\Referral\AssociateDocumentsToReferralPluginTests.cs" />
+    <Compile Include="Plugin\Referral\CheckReferralDuplicatesTest.cs" />
+    <Compile Include="Plugin\Referral\CreateAnnotationFromReferralNoteTests.cs" />
+    <Compile Include="Plugin\Referral\EhrCptOverrideTests.cs" />
+    <Compile Include="Plugin\Referral\PreventBusinessProccesFlowStageChangeTests.cs" />
+    <Compile Include="Plugin\Referral\ReferralOwnerAssignmentTests.cs" />
+    <Compile Include="Plugin\Referral\CreateCasePluginTests.cs" />
+    <Compile Include="Plugin\Referral\CreatePatientPluginTests.cs" />
+    <Compile Include="Plugin\Referral\PopulatePrimaryAttributePluginTests.cs" />
+    <Compile Include="Plugin\Referral\PreventCreationNotFromInitiateReferralTests.cs" />
+    <Compile Include="Plugin\Referral\ReopenReferralPluginTests.cs" />
+    <Compile Include="Plugin\Referral\SetClosedDateTests.cs" />
+    <Compile Include="Plugin\Referral\UpdateReferralTypeTests.cs" />
+    <Compile Include="Plugin\Referral\UpdatePatientInformationPluginTests.cs" />
+    <Compile Include="Plugin\SLA\ChangeSlaTaskDueDateTests.cs" />
+    <Compile Include="Plugin\SLA\CompleteDecisionCaseTest.cs" />
+    <Compile Include="Plugin\SLA\CompleteGeneratePoTests.cs" />
+    <Compile Include="Plugin\SLA\CompletePayProviderTest.cs" />
+    <Compile Include="Plugin\SLA\CreateReferralTests.cs" />
+    <Compile Include="Plugin\SLA\DecisionCaseTest.cs" />
+    <Compile Include="Plugin\SLA\GeneratePoTest.cs" />
+    <Compile Include="Plugin\SLA\PayProviderTests.cs" />
+    <Compile Include="Plugin\StatementGenerationTask\CreateCtatmentTaskForMigratedCasesTest.cs" />
+    <Compile Include="Plugin\StatementGenerationTask\UpdateCaseCollectionVendorTests.cs" />
+    <Compile Include="Plugin\TaskEntity\AssociateCaseToReferralTasksTests.cs" />
+    <Compile Include="Plugin\TaskEntity\CloseByExceptionApprovedStatusTests.cs" />
+    <Compile Include="Plugin\TaskEntity\RequestToCloseIsResolvedTests.cs" />
+    <Compile Include="Plugin\TaskEntity\SetRequestToCloseTests.cs" />
+    <Compile Include="Plugin\TaskEntity\EhrCarrierMappingTaskTests.cs" />
+    <Compile Include="Plugin\TaskEntity\CloseByRegardingTests.cs" />
+    <Compile Include="Plugin\TaskEntity\CloseTaskActionPluginTests.cs" />
+    <Compile Include="Plugin\TaskEntity\ConfigureTaskTest.cs" />
+    <Compile Include="Plugin\TaskEntity\CreateEventLogOnOverridingSystemRejectionTests.cs" />
+    <Compile Include="Plugin\TaskEntity\CreateTaskImportantEventLogTests.cs" />
+    <Compile Include="Plugin\TaskEntity\PopulateCustomCaseFieldTests.cs" />
+    <Compile Include="Plugin\TaskEntity\PopulateSoonesTasksOnCaseTest.cs" />
+    <Compile Include="Plugin\TaskEntity\RescheduleTaskActionPluginTests.cs" />
+    <Compile Include="Plugin\TaskEntity\RouteTaskPluginTests.cs" />
+    <Compile Include="Plugin\TaskEntity\UpdateAlertFieldOnCaseTests.cs" />
+    <Compile Include="Plugin\TaskEntity\VerifyAllMissingInformationForPoolTaskTests.cs" />
+    <Compile Include="Plugin\User\CreateContactAccountTests.cs" />
+    <Compile Include="Plugin\User\RemoveCaseManagerRelationshipOnDeactivationTests.cs" />
+    <Compile Include="Plugin\Workflow\CloneRecordPluginTests.cs" />
+    <Compile Include="Plugin\Workflow\CopyDocumentsPluginTests.cs" />
+    <Compile Include="Plugin\Workflow\CopyPostsPluginTests.cs" />
+    <Compile Include="Plugin\Workflow\ValidatePreCertRequirementsOnCaseTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Plugin\Order\SetIsLockedOnActualPartsTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Content Include="Plugin\Document\CountNumberOfPagesPlugin\ErrorDetails.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugin\Document\MergeDocumentsPlugin\Doc1.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugin\Document\MergeDocumentsPlugin\Doc2.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="PDF_Files\cms1500.pdf" />
+    <None Include="PDF_Files\UB-04.pdf" />
+    <None Include="Plugin\Document\CountNumberOfPagesPlugin\MultiDoc.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugin\Document\SplitDocumentPlugin\compound.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="Plugin\TaskEntity\ManageCaseOnHoldByTaskTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugin\Case\GenerateEligibilityInquiryPlugin\EligibilityInquiryDependent.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugin\Case\GenerateEligibilityInquiryPlugin\EligibilityInquirySubscriber.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugin\Case\GenerateEligibilityInquiryPlugin\SecureConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Plugin\Case\GenerateEligibilityInquiryPlugin\UnsecureConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Wrappers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Insight.Intake\Insight.Intake.csproj">
+      <Project>{f063b96d-9089-40bc-bb48-28f512d51e31}</Project>
+      <Name>Insight.Intake</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.targets'))" />
+    <Error Condition="!Exists('..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.console.2.4.1\build\xunit.runner.console.props'))" />
+    <Error Condition="!Exists('..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.visualstudio.2.4.1\build\net20\xunit.runner.visualstudio.props'))" />
+    <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.props'))" />
+    <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.targets" Condition="Exists('..\packages\Microsoft.CodeCoverage.15.9.0\build\netstandard1.0\Microsoft.CodeCoverage.targets')" />
+  <Import Project="..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.targets" Condition="Exists('..\packages\Microsoft.NET.Test.Sdk.15.9.0\build\net45\Microsoft.Net.Test.Sdk.targets')" />
+  <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" />
+</Project>

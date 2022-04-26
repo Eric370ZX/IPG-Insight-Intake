@@ -1,0 +1,23 @@
+.actual-parts-cards-grid-header {
+    margin: 10px 0px 10px 0px;
+    display: table;
+    width: 100%;
+    /* position:fixed; */
+}
+
+.col {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.actual-parts-search {
+    width: 330px;
+}
+
+.actual-parts-advanced-search {
+    float: left;
+}
+
+.actual-parts-grid-buttons {
+    float: right;
+}
