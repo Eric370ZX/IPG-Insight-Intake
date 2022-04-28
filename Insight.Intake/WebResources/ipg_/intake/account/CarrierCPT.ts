@@ -16,8 +16,7 @@ function LoadCarrierCPTName(formContext) {
 
     formContext.getControl("ipg_carriercptname").setDisabled(true);
     formContext.getControl("ipg_carrierid").setVisible(true);
-    formContext.getControl("ipg_name").setVisible(false);
-    formContext.getControl("ipg_carrierid").setDisabled(false);
+    formContext.getControl("ipg_name").setVisible(false);  
 
   }
   else {
